@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevOps Engineer — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=Barlow+Condensed:wght@300;400;600;700;800&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0e0f11;
+    --bg2:       #141618;
+    --bg3:       #1c1e22;
+    --border:    #2a2d33;
+    --orange:    #f06a00;
+    --orange2:   #ff8c2a;
+    --orange-dim:#7a3500;
+    --steel:     #8a9099;
+    --steel-lt:  #c2c8d2;
+    --white:     #eceef2;
+    --green:     #3ddc84;
+    --red:       #ff4d4d;
+    --mono:      'Share Tech Mono', monospace;
+    --cond:      'Barlow Condensed', sans-serif;
+    --body:      'Barlow', sans-serif;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--white);
+    font-family: var(--body);
+    overflow-x: hidden;
+  }
+
+  /* ── NOISE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    pointer-events: none; z-index: 1000; opacity: .4;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 2px; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 48px;
+    height: 56px;
+    background: rgba(14,15,17,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: var(--mono);
+    font-size: .75rem;
+    color: var(--orange);
+    letter-spacing: .12em;
+  }
+  .nav-logo span { color: var(--steel); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a {
+    font-family: var(--cond);
+    font-size: .85rem;
+    font-weight: 600;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+    color: var(--steel);
+    text-decoration: none;
+    transition: color .2s;
+  }
+  .nav-links a:hover { color: var(--orange); }
+  .nav-status {
+    display: flex; align-items: center; gap: 8px;
+    font-family: var(--mono); font-size: .65rem; color: var(--green);
+  }
+  .nav-status::before {
+    content: '';
+    display: block; width: 7px; height: 7px;
+    background: var(--green); border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid-bg {
+    position: absolute; inset: 0;
+    background-image:
+      linear-gradient(rgba(240,106,0,.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(240,106,0,.06) 1px, transparent 1px);
+    background-size: 48px 48px;
+    mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 48px 80px 80px;
+    position: relative; z-index: 2;
+  }
+
+  .hero-tag {
+    font-family: var(--mono);
+    font-size: .68rem;
+    color: var(--orange);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-tag::before {
+    content: '';
+    display: block; width: 32px; height: 1px; background: var(--orange);
+  }
+
+  .hero-name {
+    font-family: var(--cond);
+    font-size: clamp(3.5rem, 7vw, 6.5rem);
+    font-weight: 800;
+    line-height: .92;
+    letter-spacing: -.01em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .hero-name .placeholder {
+    color: var(--orange);
+    display: block;
+  }
+
+  .hero-role {
+    font-family: var(--cond);
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 300;
+    color: var(--steel);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+  }
+  .hero-role strong { color: var(--orange2); font-weight: 700; }
+
+  .hero-desc {
+    font-size: .95rem;
+    color: var(--steel);
+    line-height: 1.7;
+    max-width: 440px;
+    margin-bottom: 48px;
+  }
+
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .btn {
+    font-family: var(--cond);
+    font-size: .85rem;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 13px 28px;
+    border: none; cursor: pointer;
+    transition: all .2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary {
+    background: var(--orange);
+    color: #000;
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+  .btn-primary:hover { background: var(--orange2); transform: translateY(-2px); }
+  .btn-outline {
+    background: transparent;
+    color: var(--steel-lt);
+    border: 1px solid var(--border);
+    clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+  }
+  .btn-outline:hover { border-color: var(--orange); color: var(--orange); }
+
+  /* ── HERO RIGHT — PIPELINE VISUAL ── */
+  .hero-right {
+    display: flex; align-items: center; justify-content: center;
+    padding: 80px 80px 80px 48px;
+    position: relative; z-index: 2;
+  }
+
+  .pipeline-card {
+    width: 100%; max-width: 460px;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    font-family: var(--mono);
+    font-size: .75rem;
+    animation: fadeSlide .8s ease both;
+    animation-delay: .3s;
+    opacity: 0;
+  }
+  .pipeline-card-header {
+    background: var(--bg3);
+    border-bottom: 1px solid var(--border);
+    padding: 10px 16px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .pipeline-card-header span { color: var(--orange); letter-spacing: .1em; }
+  .pipeline-run { color: var(--steel); font-size: .65rem; }
+  .pipeline-body { padding: 20px; }
+
+  .pipe-stage {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,.04);
+    animation: fadeIn .4s ease both;
+  }
+  .pipe-stage:last-child { border-bottom: none; }
+  .pipe-stage:nth-child(1) { animation-delay: .6s; }
+  .pipe-stage:nth-child(2) { animation-delay: .8s; }
+  .pipe-stage:nth-child(3) { animation-delay: 1.0s; }
+  .pipe-stage:nth-child(4) { animation-delay: 1.2s; }
+  .pipe-stage:nth-child(5) { animation-delay: 1.4s; }
+  .pipe-stage:nth-child(6) { animation-delay: 1.6s; }
+  .pipe-stage:nth-child(7) { animation-delay: 1.8s; }
+
+  .pipe-icon {
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .pipe-info { flex: 1; }
+  .pipe-name { color: var(--steel-lt); font-size: .72rem; }
+  .pipe-sub { color: var(--steel); font-size: .62rem; margin-top: 2px; }
+  .pipe-status {
+    font-size: .62rem; letter-spacing: .1em;
+    padding: 3px 8px;
+    border: 1px solid;
+  }
+  .status-pass  { color: var(--green);  border-color: var(--green);  background: rgba(61,220,132,.08); }
+  .status-run   { color: var(--orange); border-color: var(--orange); background: rgba(240,106,0,.1); animation: blink 1s infinite; }
+  .status-queue { color: var(--steel);  border-color: var(--border);  }
+
+  /* ── SECTION BASE ── */
+  section { padding: 100px 80px; }
+  .section-label {
+    font-family: var(--mono);
+    font-size: .68rem;
+    color: var(--orange);
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .section-label::before {
+    content: '//'; color: var(--orange-dim);
+  }
+  .section-title {
+    font-family: var(--cond);
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: -.01em;
+    line-height: 1;
+    margin-bottom: 56px;
+  }
+  .section-title em { font-style: normal; color: var(--orange); }
+
+  /* ── DIVIDER ── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), var(--orange-dim), var(--border), transparent);
+    margin: 0 80px;
+  }
+
+  /* ── ABOUT ── */
+  #about { background: var(--bg); }
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .about-text p {
+    color: var(--steel);
+    line-height: 1.8;
+    font-size: .95rem;
+    margin-bottom: 20px;
+  }
+  .about-text p strong { color: var(--white); }
+
+  .metrics-grid {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+  }
+  .metric {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 24px;
+    transition: border-color .2s;
+  }
+  .metric:hover { border-color: var(--orange); }
+  .metric-val {
+    font-family: var(--cond);
+    font-size: 2.8rem;
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .metric-val span { font-size: 1.4rem; color: var(--orange-dim); }
+  .metric-label {
+    font-family: var(--mono);
+    font-size: .65rem;
+    color: var(--steel);
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  /* ── SKILLS ── */
+  #skills { background: var(--bg2); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2px;
+  }
+
+  .skill-block {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 28px;
+    transition: all .25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .skill-block::before {
+    content: '';
+    position: absolute; top: 0; left: 0;
+    width: 3px; height: 0;
+    background: var(--orange);
+    transition: height .3s;
+  }
+  .skill-block:hover { border-color: var(--border); background: #1e2026; }
+  .skill-block:hover::before { height: 100%; }
+
+  .skill-icon {
+    font-size: 1.8rem; margin-bottom: 14px;
+    display: block;
+  }
+  .skill-name {
+    font-family: var(--cond);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--white);
+    margin-bottom: 8px;
+  }
+  .skill-tags {
+    display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px;
+  }
+  .tag {
+    font-family: var(--mono);
+    font-size: .6rem;
+    color: var(--steel);
+    background: rgba(255,255,255,.04);
+    border: 1px solid var(--border);
+    padding: 3px 8px;
+    letter-spacing: .08em;
+  }
+
+  .skill-bar-wrap { margin-top: 14px; }
+  .skill-bar-label {
+    display: flex; justify-content: space-between;
+    font-family: var(--mono); font-size: .62rem;
+    color: var(--steel); margin-bottom: 5px;
+  }
+  .skill-bar-track {
+    height: 3px; background: var(--border); position: relative;
+  }
+  .skill-bar-fill {
+    height: 100%; background: var(--orange);
+    transition: width 1.2s ease;
+    position: relative;
+  }
+  .skill-bar-fill::after {
+    content: '';
+    position: absolute; right: -1px; top: -2px;
+    width: 7px; height: 7px;
+    background: var(--orange2);
+    clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  }
+
+  /* ── PROJECTS ── */
+  #projects { background: var(--bg); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2px;
+  }
+
+  .project-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 32px;
+    transition: all .25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .project-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--orange), transparent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform .3s;
+  }
+  .project-card:hover { border-color: rgba(240,106,0,.3); }
+  .project-card:hover::after { transform: scaleX(1); }
+
+  .project-num {
+    font-family: var(--mono);
+    font-size: .65rem; color: var(--orange-dim);
+    letter-spacing: .15em; margin-bottom: 16px;
+  }
+  .project-name {
+    font-family: var(--cond);
+    font-size: 1.4rem; font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    color: var(--white); margin-bottom: 12px;
+  }
+  .project-desc {
+    font-size: .88rem; color: var(--steel);
+    line-height: 1.65; margin-bottom: 20px;
+  }
+  .project-stack {
+    display: flex; flex-wrap: wrap; gap: 6px;
+  }
+  .project-tag {
+    font-family: var(--mono); font-size: .6rem;
+    color: var(--orange); border: 1px solid var(--orange-dim);
+    padding: 3px 9px; letter-spacing: .08em;
+    background: rgba(240,106,0,.06);
+  }
+
+  /* ── PIPELINE SECTION ── */
+  #pipeline { background: var(--bg2); }
+
+  .pipeline-visual {
+    display: flex; align-items: stretch; gap: 0;
+    overflow-x: auto; padding-bottom: 16px;
+  }
+
+  .p-stage {
+    flex: 1; min-width: 140px;
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    padding: 24px 20px;
+    position: relative;
+    transition: border-color .2s;
+  }
+  .p-stage:not(:last-child)::after {
+    content: '▶';
+    position: absolute; right: -18px; top: 50%;
+    transform: translateY(-50%);
+    color: var(--orange); font-size: .8rem; z-index: 2;
+  }
+  .p-stage:hover { border-color: var(--orange); }
+  .p-stage-icon { font-size: 1.5rem; margin-bottom: 10px; }
+  .p-stage-name {
+    font-family: var(--cond);
+    font-size: .9rem; font-weight: 700;
+    text-transform: uppercase;
+    color: var(--white); margin-bottom: 6px;
+  }
+  .p-stage-tools {
+    font-family: var(--mono);
+    font-size: .6rem; color: var(--steel);
+    line-height: 1.6;
+  }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--bg); text-align: center; }
+  .contact-inner { max-width: 640px; margin: 0 auto; }
+  .contact-inner .section-label { justify-content: center; }
+  .contact-inner .section-title { margin-bottom: 24px; }
+  .contact-inner p {
+    color: var(--steel); line-height: 1.7; margin-bottom: 48px;
+  }
+  .contact-links {
+    display: flex; justify-content: center; gap: 16px; flex-wrap: wrap;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--bg2);
+    border-top: 1px solid var(--border);
+    padding: 24px 80px;
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: var(--mono); font-size: .65rem; color: var(--steel);
+  }
+  footer span { color: var(--orange); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes pulse {
+    0%,100% { opacity:1; transform: scale(1); }
+    50%      { opacity:.4; transform: scale(.7); }
+  }
+  @keyframes blink {
+    0%,100% { opacity:1; }
+    50%      { opacity:.3; }
+  }
+  @keyframes fadeIn {
+    from { opacity:0; transform: translateY(8px); }
+    to   { opacity:1; transform: translateY(0); }
+  }
+  @keyframes fadeSlide {
+    from { opacity:0; transform: translateX(24px); }
+    to   { opacity:1; transform: translateX(0); }
+  }
+  @keyframes scanline {
+    from { transform: translateY(-100%); }
+    to   { transform: translateY(100vh); }
+  }
+
+  /* scanline effect on hero */
+  #hero::after {
+    content: '';
+    position: absolute; left: 0; right: 0; top: 0;
+    height: 2px;
+    background: linear-gradient(transparent, rgba(240,106,0,.15), transparent);
+    animation: scanline 6s linear infinite;
+    pointer-events: none; z-index: 3;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    section { padding: 72px 24px; }
+    .divider { margin: 0 24px; }
+    #hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 72px 24px 40px; }
+    .hero-right { display: none; }
+    .about-grid { grid-template-columns: 1fr; gap: 40px; }
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .projects-grid { grid-template-columns: 1fr; }
+    footer { flex-direction: column; gap: 8px; padding: 20px 24px; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">[ <span>devops</span> // portfolio ]</div>
+  <ul class="nav-links">
+    <li><a href="#about">Sobre</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projetos</a></li>
+    <li><a href="#pipeline">Workflow</a></li>
+    <li><a href="#contact">Contato</a></li>
+  </ul>
+  <div class="nav-status">SYS_ONLINE</div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+
+  <div class="hero-left">
+    <div class="hero-tag">DevOps Engineer</div>
+    <h1 class="hero-name">
+      <span class="placeholder">PAULO</span>
+      RAMOS
+    </h1>
+    <div class="hero-role">
+      Automatizando <strong>Tudo</strong> — Entregando <strong>Valor</strong>
+    </div>
+    <p class="hero-desc">
+      Engenheiro focado em cultura DevOps: pipelines automatizados, infraestrutura como código e observabilidade de ponta a ponta. Acredito que sistemas resilientes começam com colaboração e terminam com métricas.
+    </p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn btn-primary">▶ Ver Projetos</a>
+      <a href="curriculo-paulo-ramos.pdf" target="_blank" class="btn btn-outline">⬡ Currículo</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="pipeline-card">
+      <div class="pipeline-card-header">
+        <span>CI/CD PIPELINE</span>
+        <div class="pipeline-run">#run-0042 · main</div>
+      </div>
+      <div class="pipeline-body">
+        <div class="pipe-stage">
+          <div class="pipe-icon">📦</div>
+          <div class="pipe-info">
+            <div class="pipe-name">checkout &amp; install</div>
+            <div class="pipe-sub">GitHub Actions · 12s</div>
+          </div>
+          <div class="pipe-status status-pass">PASS</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-icon">🔍</div>
+          <div class="pipe-info">
+            <div class="pipe-name">lint &amp; unit tests</div>
+            <div class="pipe-sub">Jest · Pylint · 38s</div>
+          </div>
+          <div class="pipe-status status-pass">PASS</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-icon">🐳</div>
+          <div class="pipe-info">
+            <div class="pipe-name">docker build &amp; push</div>
+            <div class="pipe-sub">Docker · ECR · 1m 14s</div>
+          </div>
+          <div class="pipe-status status-pass">PASS</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-icon">🔐</div>
+          <div class="pipe-info">
+            <div class="pipe-name">security scan</div>
+            <div class="pipe-sub">Trivy · Snyk · 22s</div>
+          </div>
+          <div class="pipe-status status-pass">PASS</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-icon">☸️</div>
+          <div class="pipe-info">
+            <div class="pipe-name">deploy staging (k8s)</div>
+            <div class="pipe-sub">Helm · EKS · running…</div>
+          </div>
+          <div class="pipe-status status-run">RUN</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-icon">🧪</div>
+          <div class="pipe-info">
+            <div class="pipe-name">smoke tests</div>
+            <div class="pipe-sub">k6 · Postman</div>
+          </div>
+          <div class="pipe-status status-queue">QUEUE</div>
+        </div>
+        <div class="pipe-stage">
+          <div class="pipe-icon">🚀</div>
+          <div class="pipe-info">
+            <div class="pipe-name">deploy production</div>
+            <div class="pipe-sub">Blue/Green · ArgoCD</div>
+          </div>
+          <div class="pipe-status status-queue">QUEUE</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">01 — Sobre</div>
+  <h2 class="section-title">Quem eu <em>sou</em></h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>
+        Sou um engenheiro em formação com foco em <strong>DevOps e Cloud</strong>, apaixonado por eliminar silos entre desenvolvimento e operações. Acredito que a verdadeira entrega de valor vem da automação inteligente e da cultura de colaboração contínua.
+      </p>
+      <p>
+        Minha jornada é guiada pelos princípios do <strong>The DevOps Handbook</strong>: fluxo, feedback e aprendizado contínuo. Cada pipeline que construo é uma oportunidade de reduzir lead time e aumentar a confiança nos deploys.
+      </p>
+      <p>
+        Atualmente aprofundando conhecimentos em <strong>Kubernetes, Terraform e observabilidade</strong> para construir infraestruturas cloud-native resilientes e escaláveis.
+      </p>
+    </div>
+    <div class="metrics-grid">
+      <div class="metric">
+        <div class="metric-val">6<span>+</span></div>
+        <div class="metric-label">Tecnologias de Stack</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val">∞</div>
+        <div class="metric-label">Pipelines Possíveis</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val">99<span>%</span></div>
+        <div class="metric-label">Meta de Disponibilidade</div>
+      </div>
+      <div class="metric">
+        <div class="metric-val">0<span>s</span></div>
+        <div class="metric-label">Downtime Tolerado</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">02 — Habilidades</div>
+  <h2 class="section-title">Stack <em>Técnico</em></h2>
+
+  <div class="skills-grid">
+
+    <div class="skill-block">
+      <span class="skill-icon">🐳</span>
+      <div class="skill-name">Containers</div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>Docker & Kubernetes</span><span>80%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:80%"></div></div>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">Docker</span>
+        <span class="tag">Kubernetes</span>
+        <span class="tag">Docker Compose</span>
+        <span class="tag">Helm</span>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <span class="skill-icon">⚙️</span>
+      <div class="skill-name">CI/CD</div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>Automação de Pipeline</span><span>75%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:75%"></div></div>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">GitHub Actions</span>
+        <span class="tag">Jenkins</span>
+        <span class="tag">ArgoCD</span>
+        <span class="tag">GitLab CI</span>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <span class="skill-icon">☁️</span>
+      <div class="skill-name">Cloud</div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>AWS · Azure · GCP · Oracle</span><span>70%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:70%"></div></div>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">AWS</span>
+        <span class="tag">Azure</span>
+        <span class="tag">GCP</span>
+        <span class="tag">Oracle Cloud</span>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <span class="skill-icon">🏗️</span>
+      <div class="skill-name">IaC</div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>Infraestrutura como Código</span><span>72%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:72%"></div></div>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">Terraform</span>
+        <span class="tag">Ansible</span>
+        <span class="tag">CloudFormation</span>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <span class="skill-icon">🐧</span>
+      <div class="skill-name">Linux & Shell</div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>Admin & Scripting</span><span>85%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:85%"></div></div>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">Bash</span>
+        <span class="tag">Python</span>
+        <span class="tag">Ubuntu/Debian</span>
+        <span class="tag">systemd</span>
+      </div>
+    </div>
+
+    <div class="skill-block">
+      <span class="skill-icon">📊</span>
+      <div class="skill-name">Observabilidade</div>
+      <div class="skill-bar-wrap">
+        <div class="skill-bar-label"><span>Monitoring & Alerting</span><span>68%</span></div>
+        <div class="skill-bar-track"><div class="skill-bar-fill" style="width:68%"></div></div>
+      </div>
+      <div class="skill-tags">
+        <span class="tag">Grafana</span>
+        <span class="tag">Prometheus</span>
+        <span class="tag">Noções de Redes</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">03 — Projetos</div>
+  <h2 class="section-title">O que já <em>construí</em></h2>
+
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-num">// PROJECT_001</div>
+      <div class="project-name">Configuração de Ambiente com Docker Compose</div>
+      <p class="project-desc">
+        Ambiente containerizado completo com Node.js e PostgreSQL orquestrados via Docker Compose. Rede isolada entre serviços, volume persistente para o banco de dados e configuração via variáveis de ambiente — pronto para desenvolvimento e produção.
+      </p>
+      <div class="project-stack">
+        <span class="project-tag">Docker</span>
+        <span class="project-tag">Docker Compose</span>
+        <span class="project-tag">Node.js</span>
+        <span class="project-tag">PostgreSQL</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">// PROJECT_002</div>
+      <div class="project-name">Infraestrutura AWS Multi-Ambiente com Terraform</div>
+      <p class="project-desc">
+        Infraestrutura como Código para provisionar aplicação web distribuída em três ambientes isolados (dev, staging e prod) na AWS. Módulos reutilizáveis para VPC, ALB, EC2 e Security Groups com Auto Scaling, IMDSv2, EBS criptografado e state remoto via S3 + DynamoDB.
+      </p>
+      <div class="project-stack">
+        <span class="project-tag">Terraform</span>
+        <span class="project-tag">AWS</span>
+        <span class="project-tag">EC2 / ALB</span>
+        <span class="project-tag">VPC</span>
+        <span class="project-tag">Auto Scaling</span>
+        <span class="project-tag">IaC</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-num">// PROJECT_003</div>
+      <div class="project-name">CI/CD com GitHub Actions & AWS AppRunner</div>
+      <p class="project-desc">
+        Pipeline completo de integração e entrega contínua para aplicação hospedada no AWS AppRunner. Automação do build, testes e deploy via GitHub Actions, com repositórios separados para aplicação e infraestrutura como código.
+      </p>
+      <div class="project-stack">
+        <span class="project-tag">GitHub Actions</span>
+        <span class="project-tag">AWS AppRunner</span>
+        <span class="project-tag">CI/CD</span>
+        <span class="project-tag">Terraform</span>
+        <span class="project-tag">Docker</span>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+<div class="divider"></div>
+
+<!-- PIPELINE -->
+<section id="pipeline">
+  <div class="section-label">04 — Filosofia</div>
+  <h2 class="section-title">Meu <em>Workflow</em></h2>
+
+  <div class="pipeline-visual">
+    <div class="p-stage">
+      <div class="p-stage-icon">☸️</div>
+      <div class="p-stage-name">Kubernetes</div>
+      <div class="p-stage-tools">Orquestração<br>de containers</div>
+    </div>
+    <div class="p-stage">
+      <div class="p-stage-icon">🏗️</div>
+      <div class="p-stage-name">Terraform</div>
+      <div class="p-stage-tools">Infraestrutura<br>como Código</div>
+    </div>
+    <div class="p-stage">
+      <div class="p-stage-icon">☁️</div>
+      <div class="p-stage-name">AWS</div>
+      <div class="p-stage-tools">Cloud · EC2<br>EKS · S3</div>
+    </div>
+    <div class="p-stage">
+      <div class="p-stage-icon">🔷</div>
+      <div class="p-stage-name">Azure</div>
+      <div class="p-stage-tools">Azure DevOps<br>AKS · Pipelines</div>
+    </div>
+    <div class="p-stage">
+      <div class="p-stage-icon">🌐</div>
+      <div class="p-stage-name">GCP</div>
+      <div class="p-stage-tools">Google Cloud<br>GKE · Cloud Run</div>
+    </div>
+    <div class="p-stage">
+      <div class="p-stage-icon">⚙️</div>
+      <div class="p-stage-name">CI/CD</div>
+      <div class="p-stage-tools">GitHub Actions<br>Jenkins · ArgoCD</div>
+    </div>
+    <div class="p-stage">
+      <div class="p-stage-icon">🐳</div>
+      <div class="p-stage-name">Docker</div>
+      <div class="p-stage-tools">Containers<br>Registry · Compose</div>
+    </div>
+    <div class="p-stage">
+      <div class="p-stage-icon">🧱</div>
+      <div class="p-stage-name">Bloquinho Backend</div>
+      <div class="p-stage-tools">Serviços<br>Microsserviços</div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label">05 — Contato</div>
+    <h2 class="section-title">Vamos <em>colaborar?</em></h2>
+    <p>
+      Disponível para oportunidades CLT e PJ em DevOps e Cloud. Baseado no Brasil — aberto a trabalho remoto.
+    </p>
+    <div class="contact-links">
+      <a href="/cdn-cgi/l/email-protection#cda9acbba4aba9fbf9ff8daaa0aca4a1e3aea2a0" class="btn btn-primary">✉ Email</a>
+      <a href="https://www.linkedin.com/in/paulo-ramos-b605a9209/" class="btn btn-outline" target="_blank">⬡ LinkedIn</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>[ <span>de
