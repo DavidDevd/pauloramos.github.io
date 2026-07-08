@@ -1,0 +1,41 @@
+import {
+  ArrowUpRight,
+  BadgeCheck,
+  BookOpen,
+  BriefcaseBusiness,
+  Cloud,
+  Code2,
+  Cpu,
+  Database,
+  Download,
+  Github,
+  Layers3,
+  Linkedin,
+  Mail,
+  Menu,
+  Sparkles,
+  Terminal,
+  X,
+} from "lucide-react";
+
+export const icons = {
+  arrowUpRight: ArrowUpRight,
+  badgeCheck: BadgeCheck,
+  bookOpen: BookOpen,
+  briefcase: BriefcaseBusiness,
+  cloud: Cloud,
+  code: Code2,
+  cpu: Cpu,
+  database: Database,
+  download: Download,
+  github: Github,
+  layers: Layers3,
+  linkedin: Linkedin,
+  mail: Mail,
+  menu: Menu,
+  sparkles: Sparkles,
+  terminal: Terminal,
+  x: X,
+};
+
+export type IconName = keyof typeof icons;

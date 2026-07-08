@@ -1,0 +1,10 @@
+export { AnimatedText } from "@/components/visual/animated-text";
+export { ExternalLink } from "@/components/visual/external-link";
+export { Glow } from "@/components/visual/glow";
+export { GradientBackground } from "@/components/visual/gradient-background";
+export { GridPattern } from "@/components/visual/grid-pattern";
+export { ProjectCard } from "@/components/visual/project-card";
+export { SectionHeader } from "@/components/visual/section-header";
+export { SocialLink } from "@/components/visual/social-link";
+export { StatCard } from "@/components/visual/stat-card";
+export { TechCard } from "@/components/visual/tech-card";
