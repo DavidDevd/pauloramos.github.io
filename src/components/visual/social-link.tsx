@@ -1,4 +1,5 @@
 import { Icon } from "@/components/icons/icon";
+import { withBasePath } from "@/i18n/config";
 import type { SocialLink as SocialLinkData } from "@/types";
 import { cn } from "@/lib/utils";
 
@@ -15,7 +16,7 @@ export function SocialLink({ link, className }: SocialLinkProps) {
         "inline-flex size-10 items-center justify-center rounded-md border border-border text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
         className,
       )}
-      href={link.href}
+      href={withBasePath(link.href)}
       target={link.target}
       rel={link.target === "_blank" ? "noreferrer" : undefined}
     >

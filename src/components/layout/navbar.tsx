@@ -10,6 +10,7 @@ import {
   getLocaleFromPathname,
   localeStorageKey,
   localizePathname,
+  withBasePath,
 } from "@/i18n/config";
 import { cn } from "@/lib/utils";
 import type { ContentLink, Locale, NavigationItem } from "@/types";
@@ -60,7 +61,7 @@ function SocialAction({ action }: { action: ContentLink }) {
     <Button asChild variant={action.variant ?? "ghost"} size="icon" className="size-9">
       <a
         aria-label={action.ariaLabel}
-        href={action.href}
+        href={withBasePath(action.href)}
         target={action.target}
         rel={action.target === "_blank" ? "noopener noreferrer" : undefined}
       >
@@ -195,7 +196,7 @@ export function Navbar() {
       <div className="mx-auto flex h-16 w-full max-w-6xl items-center justify-between px-4 sm:px-6">
         <a
           aria-label={data.logo.ariaLabel}
-          href={data.logo.href}
+          href={withBasePath(data.logo.href)}
           className="inline-flex size-9 items-center justify-center rounded-md border border-border/80 bg-surface/75 text-sm font-semibold text-foreground shadow-[0_1px_0_hsl(var(--foreground)/0.05)] outline-none transition-colors hover:border-primary/45 hover:bg-surface-elevated focus-visible:ring-2 focus-visible:ring-ring"
           onClick={closeMenu}
         >
@@ -215,7 +216,7 @@ export function Navbar() {
           <LanguageSwitcher currentLocale={currentLocale} />
 
           <Button asChild variant={data.resume.variant ?? "primary"} size="sm">
-            <a aria-label={data.resume.ariaLabel} href={data.resume.href}>
+            <a aria-label={data.resume.ariaLabel} href={withBasePath(data.resume.href)}>
               {data.resume.icon ? <Icon name={data.resume.icon} className="size-4" /> : null}
               {data.resume.label}
             </a>
@@ -264,7 +265,7 @@ export function Navbar() {
                 <LanguageSwitcher currentLocale={currentLocale} className="w-full justify-center" />
 
                 <Button asChild variant={data.resume.variant ?? "primary"} size="lg">
-                  <a aria-label={data.resume.ariaLabel} href={data.resume.href} onClick={closeMenu}>
+                  <a aria-label={data.resume.ariaLabel} href={withBasePath(data.resume.href)} onClick={closeMenu}>
                     {data.resume.icon ? <Icon name={data.resume.icon} className="size-4" /> : null}
                     {data.resume.label}
                   </a>
@@ -280,7 +281,7 @@ export function Navbar() {
                     >
                       <a
                         aria-label={action.ariaLabel}
-                        href={action.href}
+                        href={withBasePath(action.href)}
                         target={action.target}
                         rel={action.target === "_blank" ? "noopener noreferrer" : undefined}
                         onClick={closeMenu}

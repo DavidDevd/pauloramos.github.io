@@ -10,6 +10,16 @@ export const localePathPrefix = {
   "en-US": "/en",
 } as const satisfies Record<Locale, string>;
 
+export const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
+export function withBasePath(pathname: string) {
+  if (!publicBasePath || pathname.startsWith("http") || pathname.startsWith("#")) {
+    return pathname;
+  }
+
+  return `${publicBasePath}${pathname.startsWith("/") ? pathname : `/${pathname}`}`;
+}
+
 export const localeOptions = [
   {
     locale: "pt-BR",
@@ -51,6 +61,6 @@ export function localizePathname(pathname: string, locale: Locale) {
   }
 
   return pathnameWithoutEnglishPrefix === "/"
-    ? localePathPrefix[locale]
-    : `${localePathPrefix[locale]}${pathnameWithoutEnglishPrefix}`;
+    ? withBasePath(localePathPrefix[locale] || "/")
+    : withBasePath(`${localePathPrefix[locale]}${pathnameWithoutEnglishPrefix}`);
 }

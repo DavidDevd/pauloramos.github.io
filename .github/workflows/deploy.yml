@@ -47,7 +47,9 @@ jobs:
       - name: Build static site
         run: pnpm build
         env:
-          NEXT_PUBLIC_SITE_URL: https://pauloramos.github.io
+          GITHUB_PAGES: true
+          NEXT_PUBLIC_BASE_PATH: /pauloramos.github.io
+          NEXT_PUBLIC_SITE_URL: https://daviddevd.github.io/pauloramos.github.io
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

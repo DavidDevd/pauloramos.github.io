@@ -9,6 +9,7 @@ import { Section } from "@/components/ui/section";
 import { Glow } from "@/components/visual/glow";
 import { GradientBackground } from "@/components/visual/gradient-background";
 import { GridPattern } from "@/components/visual/grid-pattern";
+import { withBasePath } from "@/i18n/config";
 import { fadeUp, motionDurations, motionEasing, scaleIn, staggerContainer } from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import type { HeroData } from "@/types";
@@ -76,7 +77,7 @@ export function HeroSection({ data }: HeroSectionProps) {
               >
                 <a
                   aria-label={action.ariaLabel}
-                  href={action.href}
+                  href={withBasePath(action.href)}
                   target={action.target}
                   rel={action.target === "_blank" ? "noopener noreferrer" : undefined}
                 >
