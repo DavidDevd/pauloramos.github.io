@@ -2,18 +2,18 @@ import type { AboutData } from "@/types";
 
 export const aboutData = {
   eyebrow: "About",
-  title: "From technical support to building modern software.",
+  title: "From technical support to AI engineering and cloud automation.",
   story: [
-    "Minha carreira começou no suporte técnico. Foi nesse ambiente que desenvolvi uma base sólida em troubleshooting, infraestrutura, redes e atendimento ao usuário. Aprendi que tecnologia não existe apenas para funcionar — ela precisa resolver problemas reais.",
-    "Com o tempo, passei a estudar desenvolvimento de software, computação em nuvem e automação. Hoje construo aplicações Full Stack, APIs modernas, infraestrutura em Cloud e soluções utilizando Inteligência Artificial, sempre buscando escrever código limpo, reutilizável e preparado para produção.",
-    "Meu objetivo é crescer como Software Engineer, criando produtos que unam engenharia de software, IA, Cloud Computing e automação para gerar impacto real em pessoas e empresas.",
+    "Minha carreira comecou no suporte tecnico. Foi nesse ambiente que desenvolvi base pratica em troubleshooting, infraestrutura, redes, atendimento ao usuario e resolucao de incidentes.",
+    "Com o tempo, direcionei essa experiencia para engenharia de software, automacao e cloud. Hoje construo agentes de IA, workflows com n8n, APIs modernas e infraestrutura containerizada para transformar tarefas operacionais em sistemas mais inteligentes.",
+    "Meu objetivo e crescer como Software Engineer especializado em AI Engineering, Intelligent Automation e Cloud Platform, criando solucoes que conectam LLMs, backend e infraestrutura para resolver problemas reais.",
   ],
   highlights: [
-    "Full Stack Development",
-    "Backend Engineering",
+    "AI Engineering",
     "AI Automation",
-    "Cloud Computing",
-    "DevOps",
+    "Backend Engineering",
+    "Cloud & Platform",
+    "DevOps Practices",
     "Clean Architecture",
     "Continuous Learning",
   ],
@@ -34,6 +34,6 @@ export const aboutData = {
   },
   currentFocus: {
     title: "Currently building with",
-    items: ["Python", "FastAPI", "React", "Next.js", "Docker", "Kubernetes", "AWS", "AI Agents"],
+    items: ["AI Agents", "CrewAI", "n8n", "Python", "FastAPI", "Docker", "Kubernetes", "AWS"],
   },
 } as const satisfies AboutData;

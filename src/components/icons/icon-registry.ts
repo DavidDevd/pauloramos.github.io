@@ -2,6 +2,7 @@ import {
   ArrowUpRight,
   BadgeCheck,
   BookOpen,
+  BrainCircuit,
   BriefcaseBusiness,
   Cloud,
   Code2,
@@ -15,6 +16,7 @@ import {
   Menu,
   Sparkles,
   Terminal,
+  Workflow,
   X,
 } from "lucide-react";
 
@@ -22,6 +24,7 @@ export const icons = {
   arrowUpRight: ArrowUpRight,
   badgeCheck: BadgeCheck,
   bookOpen: BookOpen,
+  brain: BrainCircuit,
   briefcase: BriefcaseBusiness,
   cloud: Cloud,
   code: Code2,
@@ -35,6 +38,7 @@ export const icons = {
   menu: Menu,
   sparkles: Sparkles,
   terminal: Terminal,
+  workflow: Workflow,
   x: X,
 };
 

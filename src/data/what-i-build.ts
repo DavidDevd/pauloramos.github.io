@@ -2,47 +2,50 @@ import type { WhatIBuildData } from "@/types";
 
 export const whatIBuildData = {
   eyebrow: "What I Build",
-  title: "Building across software, automation and cloud.",
+  title: "AI-first engineering for automation, backend and cloud.",
   description:
-    "A focused view of the systems, automations and infrastructure I build while evolving as a Software Engineer.",
+    "Uma visao objetiva dos sistemas que construo: agentes de IA, automacoes operacionais, APIs modernas e infraestrutura cloud preparada para evoluir.",
   technologyLabel: "Featured Technologies",
   items: [
     {
-      icon: "layers",
-      title: "Full Stack Applications",
-      description:
-        "Building modern web applications using React, Next.js, FastAPI and Spring Boot.",
-      badge: "Main Focus",
-      technologies: ["React", "Next.js", "FastAPI", "Spring Boot", "PostgreSQL"],
-    },
-    {
-      icon: "terminal",
-      title: "Backend Systems",
-      description: "Designing scalable APIs, databases and integrations.",
-      badge: "Main Focus",
-      technologies: ["Python", "Java", "REST APIs", "PostgreSQL", "Integrations"],
-    },
-    {
       icon: "sparkles",
-      title: "AI Automation",
-      description: "Creating intelligent workflows with AI Agents, n8n, APIs and LLMs.",
-      badge: "Currently Building",
-      technologies: ["OpenAI", "AI Agents", "n8n", "Python", "FastAPI"],
+      title: "AI Engineering",
+      description:
+        "Building AI agents, LLM integrations, RAG-ready workflows and multi-step agent systems.",
+      badge: "Main Focus",
+      technologies: ["OpenAI", "CrewAI", "AI Agents", "RAG", "Python"],
+    },
+    {
+      icon: "workflow",
+      title: "Automation Platforms",
+      description:
+        "Creating intelligent automations with n8n, APIs, chatbots and operational workflows.",
+      badge: "Main Focus",
+      technologies: ["n8n", "Webhooks", "REST APIs", "Chatbots", "FastAPI"],
     },
     {
       icon: "cloud",
       title: "Cloud Infrastructure",
       description:
-        "Deploying reliable infrastructure using AWS, Docker, Kubernetes and Terraform.",
+        "Deploying reliable systems using AWS, Docker, Kubernetes, Terraform and CI/CD pipelines.",
       badge: "Currently Building",
-      technologies: ["AWS", "Docker", "Kubernetes", "Terraform", "Linux"],
+      technologies: ["AWS", "Docker", "Kubernetes", "Terraform", "GitHub Actions"],
     },
     {
-      icon: "database",
-      title: "Data Engineering",
-      description: "Building data workflows with Python, SQL, dashboards and automation.",
+      icon: "terminal",
+      title: "Backend Systems",
+      description:
+        "Designing APIs, integrations, databases and backend services for automation-heavy products.",
       badge: "Currently Building",
-      technologies: ["Python", "SQL", "Pipelines", "Dashboards", "Automation"],
+      technologies: ["Python", "FastAPI", "Java", "Spring Boot", "PostgreSQL"],
+    },
+    {
+      icon: "layers",
+      title: "Platform Engineering",
+      description:
+        "Connecting developer experience, deployment automation and infrastructure practices for scalable delivery.",
+      badge: "Currently Building",
+      technologies: ["CI/CD", "Linux", "Observability", "Containers", "DevOps"],
     },
   ],
 } as const satisfies WhatIBuildData;

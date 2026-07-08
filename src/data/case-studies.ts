@@ -2,9 +2,9 @@ import type { CaseStudyData } from "@/types";
 
 export const caseStudiesData = {
   eyebrow: "Featured Case Studies",
-  title: "Engineering stories behind real projects.",
+  title: "AI engineering cases, automation systems and cloud delivery.",
   description:
-    "A curated view of projects presented as problems, solutions and technical decisions, showing how each build connects software engineering, automation and cloud infrastructure.",
+    "Projetos apresentados como problemas reais, solucoes tecnicas e decisoes de engenharia, conectando agentes de IA, automacao, backend e infraestrutura cloud.",
   page: {
     backLabel: "Back to projects",
     overview: "Overview",
@@ -36,68 +36,70 @@ export const caseStudiesData = {
   },
   cases: [
     {
-      slug: "ai-automation-platform",
-      title: "AI Automation Platform",
-      category: "AI Automation",
+      slug: "ana-ai-customer-support-agent",
+      title: "Ana — AI Customer Support Agent",
+      category: "Production AI Agent",
       status: "in-progress",
       year: "2026",
-      duration: "4 weeks",
+      duration: "Production case",
       problem:
-        "Teams lose time moving information manually between chat, APIs and operational tools.",
+        "Support teams need to answer customers faster without losing context, quality or control over sensitive operational workflows.",
       objective:
-        "Build an automation foundation that connects AI agents, workflow orchestration and external APIs with clear operational boundaries.",
+        "Build an AI customer support agent capable of understanding requests, orchestrating workflows and preparing reliable handoff when human review is needed.",
       solution:
-        "Designed an automation platform that connects AI agents, API integrations and workflow orchestration to reduce repetitive work.",
-      architecture: ["AI Agent", "FastAPI", "n8n", "PostgreSQL", "External APIs"],
-      flow: ["User request", "AI intent analysis", "API orchestration", "Workflow execution", "Human handoff"],
-      technologies: ["Python", "FastAPI", "OpenAI", "n8n", "PostgreSQL"],
+        "Designed an AI agent workflow connected to messaging, automation and API integrations, with clear boundaries for intent detection, tool execution and human escalation.",
+      architecture: ["AI Agent", "LLM", "n8n", "API Integrations", "Human Handoff"],
+      flow: ["Customer message", "Intent analysis", "Context lookup", "Workflow execution", "Response or handoff"],
+      technologies: ["OpenAI", "n8n", "Webhooks", "APIs", "Prompt Engineering"],
       engineeringDecisions: [
         {
-          question: "Why separate orchestration from API endpoints?",
-          decision: "Keep workflow execution outside the request handler.",
+          question: "Why keep human handoff in the architecture?",
+          decision: "Use the agent to automate repetitive support, not to remove operational control.",
           rationale:
-            "This makes the API easier to test and allows automation flows to evolve independently.",
+            "Customer support automation needs reliability, escalation paths and clear safety boundaries.",
         },
         {
-          question: "Why use reusable workflow units?",
-          decision: "Structure prompts and integrations as isolated steps.",
+          question: "Why separate intent detection from workflow execution?",
+          decision: "Keep AI reasoning and operational actions in different steps.",
           rationale:
-            "Small workflow boundaries reduce coupling between AI behavior and business integrations.",
+            "This makes the automation easier to monitor, debug and improve without coupling every action to one prompt.",
         },
       ],
       screenshots: [
         {
-          title: "Workflow overview",
-          src: "/case-studies/ai-automation-platform/workflow-overview.png",
-          alt: "AI automation workflow connecting agent, API and external tools",
+          title: "AI support workflow",
+          src: "/case-studies/ana-ai-customer-support-agent/workflow-overview.png",
+          alt: "AI customer support agent workflow with intent analysis, automation and handoff",
           type: "diagram",
         },
       ],
       metrics: [
         {
-          label: "Manual steps",
-          value: "Planned",
-          description: "Measure reduction of repetitive steps after workflow validation.",
+          label: "Operational focus",
+          value: "Support automation",
+          description: "Designed to reduce repetitive support work while preserving human control.",
         },
       ],
       challenges: [
-        "Designing predictable AI behavior for operational workflows.",
-        "Preparing clear fallback points for human review.",
+        "Designing predictable AI behavior for customer support scenarios.",
+        "Avoiding exposure of sensitive customer or company data.",
+        "Creating fallback paths when confidence or context is insufficient.",
       ],
       lessonsLearned: [
-        "AI automation needs observability, fallbacks and clear human handoff points.",
-        "Small workflow boundaries make integrations easier to test and evolve.",
+        "AI agents for support need safety boundaries, context control and escalation paths.",
+        "Automation becomes more reliable when each workflow step has a clear responsibility.",
       ],
       futureImprovements: [
-        "Add workflow execution logs.",
-        "Create an admin view for monitoring automation runs.",
+        "Add conversation evaluation metrics.",
+        "Add observability for agent decisions and workflow execution.",
+        "Create a sanitized public case page with architecture diagrams.",
       ],
       links: {
         github: {
-          label: "View repository",
+          label: "View GitHub",
           href: "https://github.com/DavidDevd",
           target: "_blank",
-          ariaLabel: "Open AI Automation Platform repository on GitHub",
+          ariaLabel: "Open Paulo Ramos GitHub profile",
           icon: "github",
           variant: "ghost",
         },
@@ -105,68 +107,69 @@ export const caseStudiesData = {
       featured: true,
     },
     {
-      slug: "terraform-multi-environment",
-      title: "Terraform Multi Environment",
-      category: "Cloud Infrastructure",
+      slug: "crewai-multi-agent-pipeline",
+      title: "CrewAI Multi-Agent Pipeline",
+      category: "AI Engineering",
       status: "in-progress",
       year: "2026",
-      duration: "3 weeks",
+      duration: "Research build",
       problem:
-        "Cloud environments become inconsistent when infrastructure is configured manually.",
+        "Complex tasks often require multiple reasoning steps, but a single prompt becomes hard to control, evaluate and evolve.",
       objective:
-        "Create a repeatable infrastructure model that separates environments and keeps cloud resources versioned.",
+        "Design a multi-agent pipeline where each agent has a clear role, responsibility and output boundary.",
       solution:
-        "Created a Terraform structure for reusable modules, environment separation and repeatable infrastructure provisioning.",
-      architecture: ["Terraform Modules", "Dev Environment", "Prod Environment", "AWS"],
-      flow: ["Plan infrastructure", "Review changes", "Apply environment config", "Validate resources"],
-      technologies: ["Terraform", "AWS", "IaC", "GitHub Actions"],
+        "Structured a CrewAI-based workflow to coordinate specialized agents for planning, execution, review and documentation.",
+      architecture: ["CrewAI", "Agent Roles", "Task Orchestration", "Review Step"],
+      flow: ["Input task", "Planner agent", "Executor agent", "Reviewer agent", "Structured output"],
+      technologies: ["Python", "CrewAI", "LLMs", "Prompt Engineering", "Automation"],
       engineeringDecisions: [
         {
-          question: "Why use modules?",
-          decision: "Extract reusable infrastructure blocks.",
+          question: "Why use multiple agents instead of one large prompt?",
+          decision: "Split reasoning responsibilities across specialized agents.",
           rationale:
-            "Modules reduce duplication and make environment differences explicit through variables.",
+            "Smaller roles make the workflow easier to debug, evaluate and improve.",
         },
         {
-          question: "Why separate environments?",
-          decision: "Keep dev and production configuration isolated.",
+          question: "Why add a review agent?",
+          decision: "Add a validation step before accepting the final output.",
           rationale:
-            "Environment boundaries reduce drift and make changes easier to review before production.",
+            "AI workflows need quality gates, especially when outputs are used for engineering or operations.",
         },
       ],
       screenshots: [
         {
-          title: "Infrastructure module map",
-          src: "/case-studies/terraform-multi-environment/module-map.png",
-          alt: "Terraform module map for multiple AWS environments",
+          title: "Multi-agent workflow",
+          src: "/case-studies/crewai-multi-agent-pipeline/agent-workflow.png",
+          alt: "CrewAI multi-agent pipeline with planning, execution and review agents",
           type: "diagram",
         },
       ],
       metrics: [
         {
-          label: "Provisioning",
-          value: "Repeatable",
-          description: "Infrastructure can be recreated from versioned configuration.",
+          label: "Workflow quality",
+          value: "Role-based",
+          description: "Each agent has a specific responsibility and output boundary.",
         },
       ],
       challenges: [
-        "Designing modules without over-engineering the first version.",
-        "Keeping environment variables clear and auditable.",
+        "Avoiding prompt coupling between agents.",
+        "Defining outputs that are easy to validate.",
       ],
       lessonsLearned: [
-        "Infrastructure code benefits from the same review discipline as application code.",
-        "Clear module boundaries reduce configuration drift.",
+        "Multi-agent systems need orchestration discipline, not just better prompts.",
+        "Review steps make AI workflows more useful for engineering tasks.",
       ],
       futureImprovements: [
-        "Add remote state configuration.",
-        "Add policy checks before apply.",
+        "Add memory and task history.",
+        "Add evaluation metrics for agent outputs.",
+        "Connect the pipeline to real automation tasks.",
       ],
       links: {
         github: {
-          label: "View repository",
+          label: "View GitHub",
           href: "https://github.com/DavidDevd",
           target: "_blank",
-          ariaLabel: "Open Terraform Multi Environment repository on GitHub",
+          ariaLabel: "Open Paulo Ramos GitHub profile",
           icon: "github",
           variant: "ghost",
         },

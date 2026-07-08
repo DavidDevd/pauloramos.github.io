@@ -4,21 +4,21 @@ export const heroData = {
   eyebrow: "Paulo Ramos",
   name: "Paulo Ramos",
   title: "Software Engineer",
-  subtitle: "AI Automation • Full Stack • Cloud & DevOps",
-  headline: "Building AI-powered cloud solutions.",
+  subtitle: "AI Engineering | Intelligent Automation | Cloud & Platform",
+  headline: "Building AI Agents, Cloud Platforms and Modern Backend Systems.",
   description:
-    "Desenvolvedor Full Stack apaixonado por IA e Cloud, criando aplicações escaláveis, automações inteligentes e infraestrutura moderna com foco em produtividade, confiabilidade e impacto real.",
+    "Construo agentes de IA, automacoes inteligentes e sistemas backend modernos, conectando LLMs, APIs, n8n, Docker, Kubernetes e AWS para resolver problemas reais com confiabilidade e impacto.",
   actions: [
     {
       label: "Ver Projetos",
       href: "#projects",
-      ariaLabel: "Ver projetos em destaque",
+      ariaLabel: "Ver projetos de AI Engineering, automacao e cloud",
       variant: "primary",
     },
     {
-      label: "Baixar Currículo",
+      label: "Baixar Curriculo",
       href: "/resume.pdf",
-      ariaLabel: "Baixar currículo em PDF",
+      ariaLabel: "Baixar curriculo em PDF",
       variant: "outline",
     },
     {
@@ -39,26 +39,26 @@ export const heroData = {
     },
   ],
   workflow: {
-    ariaLabel: "Fluxo técnico: AI Agent, API, Docker, Kubernetes, AWS e Production Ready",
+    ariaLabel: "Fluxo tecnico: AI Agent, LLM, API, Workflow, Cloud e Production Ready",
     items: [
       {
         label: "AI Agent",
         icon: "sparkles",
       },
       {
+        label: "LLM Integration",
+        icon: "brain",
+      },
+      {
         label: "API",
         icon: "code",
       },
       {
-        label: "Docker",
-        icon: "terminal",
+        label: "Automation Workflow",
+        icon: "workflow",
       },
       {
-        label: "Kubernetes",
-        icon: "cpu",
-      },
-      {
-        label: "AWS",
+        label: "Cloud Platform",
         icon: "cloud",
       },
       {

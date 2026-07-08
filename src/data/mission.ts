@@ -2,27 +2,27 @@ import type { MissionData } from "@/types";
 
 export const missionData = {
   eyebrow: "Mission",
-  title: "Building software beyond code.",
+  title: "Engineering intelligent systems that solve real problems.",
   description:
-    "Software is more than code. It is the ability to solve real problems through engineering, automation and continuous learning.",
+    "Meu foco e transformar IA, automacao e infraestrutura cloud em solucoes praticas: agentes que executam tarefas, APIs que integram sistemas e plataformas que sustentam operacoes reais.",
   pillars: [
     {
-      icon: "code",
-      title: "Software Engineering",
+      icon: "sparkles",
+      title: "AI Engineering",
       description:
-        "Designing scalable applications with clean architecture, APIs and maintainable code.",
+        "Building AI agents, LLM integrations, RAG-ready workflows and reliable agent behavior.",
     },
     {
-      icon: "sparkles",
-      title: "AI Automation",
+      icon: "workflow",
+      title: "Intelligent Automation",
       description:
-        "Creating intelligent workflows with AI agents, API integrations and automation tools.",
+        "Creating automations with n8n, APIs, chatbots and human handoff for operational workflows.",
     },
     {
       icon: "cloud",
-      title: "Cloud Computing",
+      title: "Cloud & Platform",
       description:
-        "Designing reliable infrastructure with cloud services, containers and DevOps practices.",
+        "Designing containerized, observable and deployable systems using AWS, Docker, Kubernetes and CI/CD.",
     },
   ],
 } as const satisfies MissionData;

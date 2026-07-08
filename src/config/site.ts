@@ -3,68 +3,71 @@ import type { SiteConfig } from "@/types";
 const domain = "pauloramos.dev";
 const url = process.env.NEXT_PUBLIC_SITE_URL ?? `https://${domain}`;
 
+const ptDescription =
+  "Software Engineer focado em AI Engineering, automacao inteligente, backend moderno e cloud platform.";
+
+const enDescription =
+  "Software Engineer focused on AI Engineering, intelligent automation, modern backend systems and cloud platforms.";
+
 const ptSeo = {
   title: "Paulo Ramos | Software Engineer",
   titleTemplate: "%s | Paulo Ramos",
-  description:
-    "Software Engineer focado em AI Automation, Full Stack, Cloud e DevOps.",
+  description: ptDescription,
   keywords: [
     "Paulo Ramos",
     "Software Engineer",
-    "Desenvolvedor Full Stack",
+    "AI Engineer",
+    "Engenheiro de IA",
+    "Automacao com IA",
     "AI Automation",
-    "Cloud",
-    "DevOps",
+    "Backend Engineering",
+    "Cloud Platform",
   ],
   canonicalPath: "/",
   openGraph: {
     title: "Paulo Ramos | Software Engineer",
-    description:
-      "Software Engineer focado em AI Automation, Full Stack, Cloud e DevOps.",
+    description: ptDescription,
     type: "website",
     locale: "pt-BR",
   },
   twitter: {
     card: "summary_large_image",
     title: "Paulo Ramos | Software Engineer",
-    description:
-      "Software Engineer focado em AI Automation, Full Stack, Cloud e DevOps.",
+    description: ptDescription,
   },
 } as const;
 
 const enSeo = {
   title: "Paulo Ramos | Software Engineer",
   titleTemplate: "%s | Paulo Ramos",
-  description:
-    "Software Engineer focused on AI Automation, Full Stack, Cloud and DevOps.",
+  description: enDescription,
   keywords: [
     "Paulo Ramos",
     "Software Engineer",
-    "Full Stack Developer",
+    "AI Engineer",
+    "AI Automation Engineer",
     "AI Automation",
-    "Cloud",
-    "DevOps",
+    "Backend Engineering",
+    "Cloud Platform",
   ],
   canonicalPath: "/en",
   openGraph: {
     title: "Paulo Ramos | Software Engineer",
-    description:
-      "Software Engineer focused on AI Automation, Full Stack, Cloud and DevOps.",
+    description: enDescription,
     type: "website",
     locale: "en-US",
   },
   twitter: {
     card: "summary_large_image",
     title: "Paulo Ramos | Software Engineer",
-    description:
-      "Software Engineer focused on AI Automation, Full Stack, Cloud and DevOps.",
+    description: enDescription,
   },
 } as const;
 
 export const siteConfig = {
   name: "Paulo Ramos",
   title: "Software Engineer",
-  description: "AI Automation | Full Stack | Cloud & DevOps",
+  description: "AI Engineering | Intelligent Automation | Cloud & Platform",
   domain,
   url,
   locale: "pt-BR",
