@@ -22,7 +22,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: ProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const caseStudy = getCaseStudyBySlug(slug);
+  const caseStudy = getCaseStudyBySlug(slug, "pt-BR");
 
   if (!caseStudy) {
     return {};
@@ -43,13 +43,21 @@ export async function generateMetadata({ params }: ProjectPageProps): Promise<Me
 
 export default async function ProjectPage({ params }: ProjectPageProps) {
   const { slug } = await params;
-  const caseStudy = getCaseStudyBySlug(slug);
+  const caseStudy = getCaseStudyBySlug(slug, "pt-BR");
 
   if (!caseStudy) {
     notFound();
   }
 
-  const { previous, next } = getCaseStudyNavigation(slug);
+  const { previous, next } = getCaseStudyNavigation(slug, "pt-BR");
 
-  return <CaseStudyPage caseStudy={caseStudy} previous={previous} next={next} />;
+  return (
+    <CaseStudyPage
+      data={caseStudiesData}
+      caseStudy={caseStudy}
+      previous={previous}
+      next={next}
+      projectBasePath="/projects"
+    />
+  );
 }

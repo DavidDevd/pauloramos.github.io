@@ -9,15 +9,16 @@ import { Heading } from "@/components/ui/heading";
 import { Glow } from "@/components/visual/glow";
 import { GradientBackground } from "@/components/visual/gradient-background";
 import { GridPattern } from "@/components/visual/grid-pattern";
-import { caseStudiesData } from "@/data/case-studies";
 import type { CaseStudyData } from "@/types";
 
 type CaseStudy = CaseStudyData["cases"][number];
 
 type CaseStudyPageProps = {
+  data: CaseStudyData;
   caseStudy: CaseStudy;
   previous?: CaseStudy;
   next?: CaseStudy;
+  projectBasePath: string;
 };
 
 type SectionBlockProps = {
@@ -54,7 +55,7 @@ function ListCard({ items }: { items: readonly string[] }) {
   );
 }
 
-export function CaseStudyPage({ caseStudy, previous, next }: CaseStudyPageProps) {
+export function CaseStudyPage({ data, caseStudy, previous, next, projectBasePath }: CaseStudyPageProps) {
   const githubLink = caseStudy.links.github;
   const demoLink = caseStudy.links.demo;
 
@@ -67,7 +68,7 @@ export function CaseStudyPage({ caseStudy, previous, next }: CaseStudyPageProps)
 
         <Container className="relative z-10 space-y-10">
           <Button asChild variant="ghost" size="sm">
-            <Link href="/#projects">{caseStudiesData.page.backLabel}</Link>
+            <Link href={`${projectBasePath === "/projects" ? "/" : "/en"}#projects`}>{data.page.backLabel}</Link>
           </Button>
 
           <div className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
@@ -118,7 +119,7 @@ export function CaseStudyPage({ caseStudy, previous, next }: CaseStudyPageProps)
             </div>
 
             <Card className="space-y-5" padding="lg" variant="subtle">
-              <p className="text-sm font-medium text-foreground">{caseStudiesData.page.overview}</p>
+              <p className="text-sm font-medium text-foreground">{data.page.overview}</p>
               <div className="grid gap-3">
                 {caseStudy.metrics.map((metric) => (
                   <div key={metric.label} className="rounded-md border border-border/70 bg-background/45 p-4">
@@ -136,7 +137,7 @@ export function CaseStudyPage({ caseStudy, previous, next }: CaseStudyPageProps)
       <Container className="grid gap-12 py-section lg:grid-cols-[0.78fr_1.22fr]">
         <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
           <Card className="space-y-4" padding="lg" variant="outline">
-            <p className="text-sm font-medium text-foreground">{caseStudiesData.page.technologyStack}</p>
+            <p className="text-sm font-medium text-foreground">{data.page.technologyStack}</p>
             <div className="flex flex-wrap gap-2">
               {caseStudy.technologies.map((technology) => (
                 <Badge key={technology} variant="outline">
@@ -147,7 +148,7 @@ export function CaseStudyPage({ caseStudy, previous, next }: CaseStudyPageProps)
           </Card>
 
           <Card className="space-y-4" padding="lg" variant="outline">
-            <p className="text-sm font-medium text-foreground">{caseStudiesData.page.architecture}</p>
+            <p className="text-sm font-medium text-foreground">{data.page.architecture}</p>
             <div className="flex flex-wrap gap-2">
               {caseStudy.architecture.map((item) => (
                 <Badge key={item} variant="subtle">
@@ -159,19 +160,19 @@ export function CaseStudyPage({ caseStudy, previous, next }: CaseStudyPageProps)
         </aside>
 
         <div className="space-y-14">
-          <SectionBlock title={caseStudiesData.page.problem}>
+          <SectionBlock title={data.page.problem}>
             <TextCard>{caseStudy.problem}</TextCard>
           </SectionBlock>
 
-          <SectionBlock title={caseStudiesData.page.objective}>
+          <SectionBlock title={data.page.objective}>
             <TextCard>{caseStudy.objective}</TextCard>
           </SectionBlock>
 
-          <SectionBlock title={caseStudiesData.page.solution}>
+          <SectionBlock title={data.page.solution}>
             <TextCard>{caseStudy.solution}</TextCard>
           </SectionBlock>
 
-          <SectionBlock title={caseStudiesData.page.architectureDiagram}>
+          <SectionBlock title={data.page.architectureDiagram}>
             <Card className="space-y-5" padding="lg" variant="subtle">
               <div className="grid gap-3 md:grid-cols-2">
                 {caseStudy.flow.map((step, index) => (
@@ -191,7 +192,7 @@ export function CaseStudyPage({ caseStudy, previous, next }: CaseStudyPageProps)
             </Card>
           </SectionBlock>
 
-          <SectionBlock title={caseStudiesData.page.engineeringDecisions}>
+          <SectionBlock title={data.page.engineeringDecisions}>
             <div className="grid gap-4">
               {caseStudy.engineeringDecisions.map((decision) => (
                 <Card key={decision.question} className="space-y-3" padding="lg" variant="subtle">
@@ -203,19 +204,19 @@ export function CaseStudyPage({ caseStudy, previous, next }: CaseStudyPageProps)
             </div>
           </SectionBlock>
 
-          <SectionBlock title={caseStudiesData.page.challenges}>
+          <SectionBlock title={data.page.challenges}>
             <ListCard items={caseStudy.challenges} />
           </SectionBlock>
 
-          <SectionBlock title={caseStudiesData.page.lessonsLearned}>
+          <SectionBlock title={data.page.lessonsLearned}>
             <ListCard items={caseStudy.lessonsLearned} />
           </SectionBlock>
 
-          <SectionBlock title={caseStudiesData.page.futureImprovements}>
+          <SectionBlock title={data.page.futureImprovements}>
             <ListCard items={caseStudy.futureImprovements} />
           </SectionBlock>
 
-          <SectionBlock title={caseStudiesData.page.metrics}>
+          <SectionBlock title={data.page.metrics}>
             <div className="grid gap-4 md:grid-cols-2">
               {caseStudy.metrics.map((metric) => (
                 <Card key={metric.label} className="space-y-2" padding="lg" variant="subtle">
@@ -227,7 +228,7 @@ export function CaseStudyPage({ caseStudy, previous, next }: CaseStudyPageProps)
             </div>
           </SectionBlock>
 
-          <SectionBlock title={caseStudiesData.page.github}>
+          <SectionBlock title={data.page.github}>
             <Card className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between" padding="lg" variant="subtle">
               <p className="text-sm leading-7 text-muted-foreground">{githubLink.ariaLabel}</p>
               <Button asChild variant={githubLink.variant ?? "primary"}>
@@ -244,10 +245,10 @@ export function CaseStudyPage({ caseStudy, previous, next }: CaseStudyPageProps)
             </Card>
           </SectionBlock>
 
-          <SectionBlock title={caseStudiesData.page.demo}>
+          <SectionBlock title={data.page.demo}>
             <Card className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between" padding="lg" variant="outline">
               <p className="text-sm leading-7 text-muted-foreground">
-                {demoLink?.ariaLabel ?? caseStudiesData.page.unavailableDemo}
+                {demoLink?.ariaLabel ?? data.page.unavailableDemo}
               </p>
               {demoLink ? (
                 <Button asChild variant={demoLink.variant ?? "primary"}>
@@ -265,17 +266,17 @@ export function CaseStudyPage({ caseStudy, previous, next }: CaseStudyPageProps)
             </Card>
           </SectionBlock>
 
-          <nav className="grid gap-4 border-t border-border/70 pt-8 md:grid-cols-2" aria-label={caseStudiesData.page.nextCase}>
+          <nav className="grid gap-4 border-t border-border/70 pt-8 md:grid-cols-2" aria-label={data.page.nextCase}>
             {previous ? (
-              <Link href={`/projects/${previous.slug}`} className="group rounded-lg border border-border/70 bg-card p-5 transition-colors hover:border-primary/40 hover:bg-surface-elevated">
-                <p className="text-sm text-muted-foreground">{caseStudiesData.page.previousCase}</p>
+              <Link href={`${projectBasePath}/${previous.slug}`} className="group rounded-lg border border-border/70 bg-card p-5 transition-colors hover:border-primary/40 hover:bg-surface-elevated">
+                <p className="text-sm text-muted-foreground">{data.page.previousCase}</p>
                 <p className="mt-2 font-medium text-foreground">{previous.title}</p>
               </Link>
             ) : null}
 
             {next ? (
-              <Link href={`/projects/${next.slug}`} className="group rounded-lg border border-border/70 bg-card p-5 transition-colors hover:border-primary/40 hover:bg-surface-elevated md:text-right">
-                <p className="text-sm text-muted-foreground">{caseStudiesData.page.nextCase}</p>
+              <Link href={`${projectBasePath}/${next.slug}`} className="group rounded-lg border border-border/70 bg-card p-5 transition-colors hover:border-primary/40 hover:bg-surface-elevated md:text-right">
+                <p className="text-sm text-muted-foreground">{data.page.nextCase}</p>
                 <p className="mt-2 font-medium text-foreground">{next.title}</p>
               </Link>
             ) : null}

@@ -100,7 +100,7 @@ export type WhatIBuildData = {
     readonly icon: IconName;
     readonly title: string;
     readonly description: string;
-    readonly badge: "Main Focus" | "Currently Building";
+    readonly badge: string;
     readonly technologies: readonly string[];
   }[];
 };

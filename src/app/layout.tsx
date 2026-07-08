@@ -58,6 +58,16 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
+function LocaleAttributeScript() {
+  const script = `
+    document.documentElement.lang = window.location.pathname.startsWith("/pauloramos.github.io/en") || window.location.pathname.startsWith("/en")
+      ? "en-US"
+      : "pt-BR";
+  `;
+
+  return <script dangerouslySetInnerHTML={{ __html: script }} />;
+}
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -66,6 +76,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="dark" suppressHydrationWarning>
       <body className="min-h-screen bg-background font-sans antialiased">
+        <LocaleAttributeScript />
         <Providers>
           <Navbar />
           {children}

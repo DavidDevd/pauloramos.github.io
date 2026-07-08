@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 
 import {
-  caseStudiesData,
+  caseStudiesDataByLocale,
   getCaseStudyBySlug,
   getCaseStudyNavigation,
 } from "@/data/case-studies";
@@ -15,7 +15,7 @@ type EnglishProjectPageProps = {
 };
 
 export function generateStaticParams() {
-  return caseStudiesData.cases.map((caseStudy) => ({
+  return caseStudiesDataByLocale["en-US"].cases.map((caseStudy) => ({
     slug: caseStudy.slug,
   }));
 }
@@ -24,7 +24,7 @@ export async function generateMetadata({
   params,
 }: EnglishProjectPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const caseStudy = getCaseStudyBySlug(slug);
+  const caseStudy = getCaseStudyBySlug(slug, "en-US");
 
   if (!caseStudy) {
     return {};
@@ -45,13 +45,22 @@ export async function generateMetadata({
 
 export default async function EnglishProjectPage({ params }: EnglishProjectPageProps) {
   const { slug } = await params;
-  const caseStudy = getCaseStudyBySlug(slug);
+  const caseStudy = getCaseStudyBySlug(slug, "en-US");
 
   if (!caseStudy) {
     notFound();
   }
 
-  const { previous, next } = getCaseStudyNavigation(slug);
+  const data = caseStudiesDataByLocale["en-US"];
+  const { previous, next } = getCaseStudyNavigation(slug, "en-US");
 
-  return <CaseStudyPage caseStudy={caseStudy} previous={previous} next={next} />;
+  return (
+    <CaseStudyPage
+      data={data}
+      caseStudy={caseStudy}
+      previous={previous}
+      next={next}
+      projectBasePath="/en/projects"
+    />
+  );
 }
