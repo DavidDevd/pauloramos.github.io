@@ -2,70 +2,81 @@ import type { CaseStudyData, Locale } from "@/types";
 
 const ptCases = [
   {
-    slug: "ana-ai-customer-support-agent",
-    title: "Ana - Agente de IA para Atendimento",
-    category: "Agente de IA em Producao",
+    slug: "ai-development-team",
+    title: "AI Development Team",
+    subtitle: "A multi-agent workflow for planning, coding, reviewing and documenting software tasks.",
+    category: "AI Engineering",
     status: "in-progress",
     year: "2026",
-    duration: "Case em producao",
+    duration: "Engineering case",
     problem:
-      "Equipes de atendimento precisam responder clientes com mais velocidade sem perder contexto, qualidade ou controle sobre fluxos operacionais sensiveis.",
+      "Software tasks often require planning, implementation, review and documentation, but these steps are usually handled manually or compressed into a single prompt with limited control.",
+    summary:
+      "AI Development Team is an experimental multi-agent system that simulates a small engineering team. Each agent has a defined responsibility, clear inputs and a bounded output so the workflow can be inspected, improved and reused.",
     objective:
-      "Construir um agente de atendimento com IA capaz de entender solicitacoes, orquestrar workflows e preparar transferencia segura para revisao humana quando necessario.",
+      "Create a structured AI-assisted development workflow that can decompose a software task, generate implementation steps, review the output and produce useful technical documentation.",
     solution:
-      "Desenhei um workflow de agente de IA conectado a mensageria, automacao e APIs, com limites claros para deteccao de intencao, execucao de ferramentas e escalonamento humano.",
-    architecture: ["Agente de IA", "LLM", "n8n", "Integracoes via API", "Handoff Humano"],
-    flow: ["Mensagem do cliente", "Analise de intencao", "Busca de contexto", "Execucao do workflow", "Resposta ou handoff"],
-    technologies: ["OpenAI", "n8n", "Webhooks", "APIs", "Prompt Engineering"],
+      "The project separates the workflow into specialized agents for product analysis, architecture, implementation, code review and documentation. The output of each step becomes context for the next one.",
+    architecture: ["Coordinator", "Product Agent", "Architect Agent", "Developer Agent", "Reviewer Agent", "Docs Agent"],
+    flow: ["Task input", "Requirement analysis", "Architecture plan", "Implementation draft", "Review pass", "Documentation output"],
+    technologies: ["Python", "CrewAI", "OpenAI", "Prompt Engineering", "Markdown"],
     engineeringDecisions: [
       {
-        question: "Por que manter handoff humano na arquitetura?",
-        decision: "Usar o agente para automatizar atendimento repetitivo sem remover o controle operacional.",
+        question: "Why split the workflow into multiple agents?",
+        decision: "Give each agent a specific responsibility instead of asking one prompt to solve the whole task.",
         rationale:
-          "Automacao de atendimento exige confiabilidade, rotas de escalonamento e limites claros de seguranca.",
+          "Smaller responsibilities make the system easier to debug, evaluate and improve over time.",
       },
       {
-        question: "Por que separar deteccao de intencao da execucao?",
-        decision: "Manter raciocinio de IA e acoes operacionais em etapas diferentes.",
+        question: "Why include a review step?",
+        decision: "Treat AI-generated work as a draft that must pass a quality gate.",
         rationale:
-          "Isso facilita monitoramento, depuracao e evolucao sem acoplar toda acao a um unico prompt.",
+          "Review improves reliability and makes the workflow closer to a real engineering process.",
       },
     ],
+    myRole:
+      "I designed the agent responsibilities, structured the execution flow, wrote the prompts, tested the outputs and refined the workflow to make each step easier to inspect and maintain.",
     screenshots: [
       {
-        title: "Workflow de atendimento com IA",
-        src: "/case-studies/ana-ai-customer-support-agent/workflow-overview.png",
-        alt: "Workflow do agente de IA com analise de intencao, automacao e handoff",
+        title: "AI development workflow",
+        src: "/case-studies/ai-development-team/workflow-overview.png",
+        alt: "AI Development Team workflow with planning, architecture, implementation, review and documentation steps",
         type: "diagram",
       },
     ],
     metrics: [
       {
-        label: "Foco operacional",
-        value: "Automacao de suporte",
-        description: "Projetado para reduzir trabalho repetitivo preservando controle humano.",
+        label: "Workflow model",
+        value: "Multi-agent",
+        description: "The task is handled by role-based agents with explicit responsibilities.",
       },
     ],
     challenges: [
-      "Projetar comportamento previsivel de IA em cenarios de atendimento.",
-      "Evitar exposicao de dados sensiveis de clientes ou da empresa.",
-      "Criar fallback quando confianca ou contexto forem insuficientes.",
+      "Defining agent roles without overlapping responsibilities.",
+      "Keeping outputs structured enough to be reused by the next agent.",
+      "Avoiding vague prompts that produce impressive but hard-to-verify answers.",
+    ],
+    results: [
+      "Created a reusable workflow for AI-assisted software task execution.",
+      "Separated planning, implementation, review and documentation into clear steps.",
+      "Improved the quality of outputs by adding an explicit review stage.",
     ],
     lessonsLearned: [
-      "Agentes de IA para suporte precisam de limites, controle de contexto e escalonamento.",
-      "A automacao fica mais confiavel quando cada etapa tem responsabilidade clara.",
+      "Multi-agent systems need process design, not only better prompts.",
+      "A useful AI workflow depends on clear interfaces between agents.",
+      "Review and documentation steps make AI outputs easier to trust and maintain.",
     ],
     futureImprovements: [
-      "Adicionar metricas de avaliacao de conversas.",
-      "Adicionar observabilidade para decisoes do agente e execucao do workflow.",
-      "Criar case publico sanitizado com diagramas de arquitetura.",
+      "Add persistent memory for task history.",
+      "Add automated evaluation for agent outputs.",
+      "Connect the workflow to a real repository and issue tracker.",
     ],
     links: {
       github: {
         label: "Ver GitHub",
         href: "https://github.com/DavidDevd",
         target: "_blank",
-        ariaLabel: "Abrir perfil de Paulo Ramos no GitHub",
+        ariaLabel: "Abrir perfil de Paulo Ramos no GitHub para ver projetos de IA",
         icon: "github",
         variant: "ghost",
       },
@@ -322,61 +333,72 @@ const ptCases = [
 
 const enCases = [
   {
-    slug: "ana-ai-customer-support-agent",
-    title: "Ana - AI Customer Support Agent",
-    category: "Production AI Agent",
+    slug: "ai-development-team",
+    title: "AI Development Team",
+    subtitle: "A multi-agent workflow for planning, coding, reviewing and documenting software tasks.",
+    category: "AI Engineering",
     status: "in-progress",
     year: "2026",
-    duration: "Production case",
+    duration: "Engineering case",
     problem:
-      "Support teams need to answer customers faster without losing context, quality or control over sensitive operational workflows.",
+      "Software tasks often require planning, implementation, review and documentation, but these steps are usually handled manually or compressed into a single prompt with limited control.",
+    summary:
+      "AI Development Team is an experimental multi-agent system that simulates a small engineering team. Each agent has a defined responsibility, clear inputs and a bounded output so the workflow can be inspected, improved and reused.",
     objective:
-      "Build an AI customer support agent capable of understanding requests, orchestrating workflows and preparing reliable handoff when human review is needed.",
+      "Create a structured AI-assisted development workflow that can decompose a software task, generate implementation steps, review the output and produce useful technical documentation.",
     solution:
-      "Designed an AI agent workflow connected to messaging, automation and API integrations, with clear boundaries for intent detection, tool execution and human escalation.",
-    architecture: ["AI Agent", "LLM", "n8n", "API Integrations", "Human Handoff"],
-    flow: ["Customer message", "Intent analysis", "Context lookup", "Workflow execution", "Response or handoff"],
-    technologies: ["OpenAI", "n8n", "Webhooks", "APIs", "Prompt Engineering"],
+      "The project separates the workflow into specialized agents for product analysis, architecture, implementation, code review and documentation. The output of each step becomes context for the next one.",
+    architecture: ["Coordinator", "Product Agent", "Architect Agent", "Developer Agent", "Reviewer Agent", "Docs Agent"],
+    flow: ["Task input", "Requirement analysis", "Architecture plan", "Implementation draft", "Review pass", "Documentation output"],
+    technologies: ["Python", "CrewAI", "OpenAI", "Prompt Engineering", "Markdown"],
     engineeringDecisions: [
       {
-        question: "Why keep human handoff in the architecture?",
-        decision: "Use the agent to automate repetitive support, not to remove operational control.",
-        rationale: "Customer support automation needs reliability, escalation paths and clear safety boundaries.",
+        question: "Why split the workflow into multiple agents?",
+        decision: "Give each agent a specific responsibility instead of asking one prompt to solve the whole task.",
+        rationale: "Smaller responsibilities make the system easier to debug, evaluate and improve over time.",
       },
       {
-        question: "Why separate intent detection from workflow execution?",
-        decision: "Keep AI reasoning and operational actions in different steps.",
-        rationale: "This makes the automation easier to monitor, debug and improve without coupling every action to one prompt.",
+        question: "Why include a review step?",
+        decision: "Treat AI-generated work as a draft that must pass a quality gate.",
+        rationale: "Review improves reliability and makes the workflow closer to a real engineering process.",
       },
     ],
+    myRole:
+      "I designed the agent responsibilities, structured the execution flow, wrote the prompts, tested the outputs and refined the workflow to make each step easier to inspect and maintain.",
     screenshots: [
       {
-        title: "AI support workflow",
-        src: "/case-studies/ana-ai-customer-support-agent/workflow-overview.png",
-        alt: "AI customer support agent workflow with intent analysis, automation and handoff",
+        title: "AI development workflow",
+        src: "/case-studies/ai-development-team/workflow-overview.png",
+        alt: "AI Development Team workflow with planning, architecture, implementation, review and documentation steps",
         type: "diagram",
       },
     ],
     metrics: [
       {
-        label: "Operational focus",
-        value: "Support automation",
-        description: "Designed to reduce repetitive support work while preserving human control.",
+        label: "Workflow model",
+        value: "Multi-agent",
+        description: "The task is handled by role-based agents with explicit responsibilities.",
       },
     ],
     challenges: [
-      "Designing predictable AI behavior for customer support scenarios.",
-      "Avoiding exposure of sensitive customer or company data.",
-      "Creating fallback paths when confidence or context is insufficient.",
+      "Defining agent roles without overlapping responsibilities.",
+      "Keeping outputs structured enough to be reused by the next agent.",
+      "Avoiding vague prompts that produce impressive but hard-to-verify answers.",
+    ],
+    results: [
+      "Created a reusable workflow for AI-assisted software task execution.",
+      "Separated planning, implementation, review and documentation into clear steps.",
+      "Improved the quality of outputs by adding an explicit review stage.",
     ],
     lessonsLearned: [
-      "AI agents for support need safety boundaries, context control and escalation paths.",
-      "Automation becomes more reliable when each workflow step has a clear responsibility.",
+      "Multi-agent systems need process design, not only better prompts.",
+      "A useful AI workflow depends on clear interfaces between agents.",
+      "Review and documentation steps make AI outputs easier to trust and maintain.",
     ],
     futureImprovements: [
-      "Add conversation evaluation metrics.",
-      "Add observability for agent decisions and workflow execution.",
-      "Create a sanitized public case page with architecture diagrams.",
+      "Add persistent memory for task history.",
+      "Add automated evaluation for agent outputs.",
+      "Connect the workflow to a real repository and issue tracker.",
     ],
     links: {
       github: {
@@ -633,6 +655,7 @@ export const caseStudiesDataByLocale = {
     page: {
       backLabel: "Voltar para projetos",
       overview: "Visao geral",
+      summary: "Resumo",
       problem: "Problema",
       objective: "Objetivo",
       solution: "Solucao",
@@ -641,6 +664,8 @@ export const caseStudiesDataByLocale = {
       technologyStack: "Stack tecnica",
       engineeringDecisions: "Decisoes de engenharia",
       challenges: "Desafios",
+      myRole: "Meu papel no projeto",
+      results: "Resultados",
       lessonsLearned: "Licoes aprendidas",
       futureImprovements: "Melhorias futuras",
       metrics: "Metricas",
@@ -669,6 +694,7 @@ export const caseStudiesDataByLocale = {
     page: {
       backLabel: "Back to projects",
       overview: "Overview",
+      summary: "Summary",
       problem: "Problem",
       objective: "Objective",
       solution: "Solution",
@@ -677,6 +703,8 @@ export const caseStudiesDataByLocale = {
       technologyStack: "Technology Stack",
       engineeringDecisions: "Engineering Decisions",
       challenges: "Challenges",
+      myRole: "My Role",
+      results: "Results",
       lessonsLearned: "Lessons Learned",
       futureImprovements: "Future Improvements",
       metrics: "Metrics",

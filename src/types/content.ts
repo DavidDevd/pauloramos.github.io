@@ -138,6 +138,7 @@ export type CaseStudyData = {
   readonly page: {
     readonly backLabel: string;
     readonly overview: string;
+    readonly summary: string;
     readonly problem: string;
     readonly objective: string;
     readonly solution: string;
@@ -146,6 +147,8 @@ export type CaseStudyData = {
     readonly technologyStack: string;
     readonly engineeringDecisions: string;
     readonly challenges: string;
+    readonly myRole: string;
+    readonly results: string;
     readonly lessonsLearned: string;
     readonly futureImprovements: string;
     readonly metrics: string;
@@ -167,19 +170,23 @@ export type CaseStudyData = {
   readonly cases: readonly {
     readonly slug: string;
     readonly title: string;
+    readonly subtitle?: string;
     readonly category: string;
     readonly status: CaseStudyStatus;
     readonly year: string;
     readonly duration: string;
     readonly problem: string;
+    readonly summary?: string;
     readonly objective: string;
     readonly solution: string;
     readonly architecture: readonly string[];
     readonly flow: readonly string[];
     readonly technologies: readonly string[];
     readonly engineeringDecisions: readonly CaseStudyDecision[];
+    readonly myRole?: string;
     readonly screenshots: readonly CaseStudyMedia[];
     readonly metrics: readonly CaseStudyMetric[];
+    readonly results?: readonly string[];
     readonly challenges: readonly string[];
     readonly lessonsLearned: readonly string[];
     readonly futureImprovements: readonly string[];

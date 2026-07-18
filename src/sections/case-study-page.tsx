@@ -84,6 +84,11 @@ export function CaseStudyPage({ data, caseStudy, previous, next, projectBasePath
                 <Heading as="h1" size="xl" className="max-w-4xl">
                   {caseStudy.title}
                 </Heading>
+                {caseStudy.subtitle ? (
+                  <p className="max-w-3xl text-base font-medium leading-7 text-primary">
+                    {caseStudy.subtitle}
+                  </p>
+                ) : null}
                 <p className="max-w-3xl text-lg leading-8 text-muted-foreground">
                   {caseStudy.objective}
                 </p>
@@ -160,6 +165,12 @@ export function CaseStudyPage({ data, caseStudy, previous, next, projectBasePath
         </aside>
 
         <div className="space-y-14">
+          {caseStudy.summary ? (
+            <SectionBlock title={data.page.summary}>
+              <TextCard>{caseStudy.summary}</TextCard>
+            </SectionBlock>
+          ) : null}
+
           <SectionBlock title={data.page.problem}>
             <TextCard>{caseStudy.problem}</TextCard>
           </SectionBlock>
@@ -192,6 +203,12 @@ export function CaseStudyPage({ data, caseStudy, previous, next, projectBasePath
             </Card>
           </SectionBlock>
 
+          {caseStudy.myRole ? (
+            <SectionBlock title={data.page.myRole}>
+              <TextCard>{caseStudy.myRole}</TextCard>
+            </SectionBlock>
+          ) : null}
+
           <SectionBlock title={data.page.engineeringDecisions}>
             <div className="grid gap-4">
               {caseStudy.engineeringDecisions.map((decision) => (
@@ -207,6 +224,12 @@ export function CaseStudyPage({ data, caseStudy, previous, next, projectBasePath
           <SectionBlock title={data.page.challenges}>
             <ListCard items={caseStudy.challenges} />
           </SectionBlock>
+
+          {caseStudy.results ? (
+            <SectionBlock title={data.page.results}>
+              <ListCard items={caseStudy.results} />
+            </SectionBlock>
+          ) : null}
 
           <SectionBlock title={data.page.lessonsLearned}>
             <ListCard items={caseStudy.lessonsLearned} />
