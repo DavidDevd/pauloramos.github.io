@@ -1,13 +1,13 @@
 import type { SiteConfig } from "@/types";
 
-const domain = "pauloramos.dev";
+const domain = "daviddevd.github.io/pauloramos.github.io";
 const url = process.env.NEXT_PUBLIC_SITE_URL ?? `https://${domain}`;
 
 const ptDescription =
-  "Software Engineer focado em AI Engineering, automacao inteligente, backend moderno e cloud platform.";
+  "Portfolio de Paulo Ramos, Software Engineer em inicio de carreira, com projetos verificaveis em backend, APIs, automacao, IA aplicada e cloud.";
 
 const enDescription =
-  "Software Engineer focused on AI Engineering, intelligent automation, modern backend systems and cloud platforms.";
+  "Paulo Ramos' early-career Software Engineering portfolio with verifiable projects across backend, APIs, automation, applied AI and cloud.";
 
 const ptSeo = {
   title: "Paulo Ramos | Software Engineer",
@@ -15,13 +15,15 @@ const ptSeo = {
   description: ptDescription,
   keywords: [
     "Paulo Ramos",
-    "Software Engineer",
-    "AI Engineer",
-    "Engenheiro de IA",
-    "Automacao com IA",
-    "AI Automation",
-    "Backend Engineering",
-    "Cloud Platform",
+    "Software Engineer Junior",
+    "Desenvolvedor Backend",
+    "FastAPI",
+    "TypeScript",
+    "Python",
+    "APIs",
+    "Automacao",
+    "AI Engineering",
+    "Cloud",
   ],
   canonicalPath: "/",
   openGraph: {
@@ -43,12 +45,15 @@ const enSeo = {
   description: enDescription,
   keywords: [
     "Paulo Ramos",
-    "Software Engineer",
-    "AI Engineer",
-    "AI Automation Engineer",
-    "AI Automation",
-    "Backend Engineering",
-    "Cloud Platform",
+    "Junior Software Engineer",
+    "Backend Developer",
+    "FastAPI",
+    "TypeScript",
+    "Python",
+    "APIs",
+    "Automation",
+    "AI Engineering",
+    "Cloud",
   ],
   canonicalPath: "/en",
   openGraph: {
@@ -67,7 +72,7 @@ const enSeo = {
 export const siteConfig = {
   name: "Paulo Ramos",
   title: "Software Engineer",
-  description: "AI Engineering | Intelligent Automation | Cloud & Platform",
+  description: "Backend | APIs | Automation | Applied AI | Cloud",
   domain,
   url,
   locale: "pt-BR",
