@@ -26,7 +26,7 @@ export function HomeSections({ locale }: HomeSectionsProps) {
       <MissionSection data={missionDataByLocale[locale]} />
       <AboutSection data={aboutDataByLocale[locale]} />
       <WhatIBuildSection data={whatIBuildDataByLocale[locale]} />
-      <FeaturedCaseStudiesSection data={caseStudiesDataByLocale[locale]} />
+      <FeaturedCaseStudiesSection data={caseStudiesDataByLocale[locale]} locale={locale} />
       <Experience />
       <Journey />
       <Certifications />
