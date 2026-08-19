@@ -3,99 +3,89 @@ import type { Locale, WhatIBuildData } from "@/types";
 export const whatIBuildDataByLocale = {
   "pt-BR": {
     eyebrow: "O que construo",
-    title: "Engenharia AI-first para automacao, backend e cloud.",
+    title: "Backend, integracoes e automacao com evidencia tecnica.",
     description:
-      "Uma visao objetiva dos sistemas que construo: agentes de IA, automacoes operacionais, APIs modernas e infraestrutura cloud preparada para evoluir.",
+      "Uma visao objetiva das capacidades demonstradas nos projetos: APIs, dados, automacao, IA aplicada e praticas de entrega.",
     technologyLabel: "Tecnologias em destaque",
     items: [
       {
-        icon: "sparkles",
-        title: "Engenharia de IA",
-        description:
-          "Construindo agentes de IA, integracoes com LLMs, fluxos preparados para RAG e sistemas multiagentes.",
+        icon: "terminal",
+        title: "Sistemas Backend",
+        description: "APIs, regras de negocio, autenticacao, persistencia e integracoes para produtos web.",
         badge: "Foco principal",
-        technologies: ["OpenAI", "CrewAI", "AI Agents", "RAG", "Python"],
+        technologies: ["Python", "FastAPI", "PostgreSQL", "REST APIs", "TypeScript"],
       },
       {
         icon: "workflow",
-        title: "Plataformas de Automacao",
-        description:
-          "Criando automacoes inteligentes com n8n, APIs, chatbots e workflows operacionais.",
+        title: "Integracoes & Automacao",
+        description: "Workflows que conectam sistemas por APIs, webhooks e automacao operacional.",
         badge: "Foco principal",
-        technologies: ["n8n", "Webhooks", "REST APIs", "Chatbots", "FastAPI"],
+        technologies: ["n8n", "Webhooks", "REST APIs", "Automation", "FastAPI"],
+      },
+      {
+        icon: "sparkles",
+        title: "IA Aplicada",
+        description: "Uso de LLMs e agentes em fluxos estruturados, com revisao e limites claros de responsabilidade.",
+        badge: "Em evolucao",
+        technologies: ["OpenAI", "CrewAI", "AI Agents", "Python", "Prompt Engineering"],
       },
       {
         icon: "cloud",
-        title: "Infraestrutura Cloud",
-        description:
-          "Publicando sistemas confiaveis com AWS, Docker, Kubernetes, Terraform e pipelines CI/CD.",
-        badge: "Em construcao",
-        technologies: ["AWS", "Docker", "Kubernetes", "Terraform", "GitHub Actions"],
-      },
-      {
-        icon: "terminal",
-        title: "Sistemas Backend",
-        description:
-          "Projetando APIs, integracoes, bancos de dados e servicos backend para produtos orientados a automacao.",
-        badge: "Em construcao",
-        technologies: ["Python", "FastAPI", "Java", "Spring Boot", "PostgreSQL"],
+        title: "Cloud & Containers",
+        description: "Ambientes reproduziveis e fundamentos de deploy para executar aplicacoes alem da maquina local.",
+        badge: "Em evolucao",
+        technologies: ["Docker", "Docker Compose", "Linux", "AWS", "Kubernetes"],
       },
       {
         icon: "layers",
-        title: "Platform Engineering",
-        description:
-          "Conectando experiencia de desenvolvimento, automacao de deploy e praticas de infraestrutura para entregas escalaveis.",
-        badge: "Em construcao",
-        technologies: ["CI/CD", "Linux", "Observability", "Containers", "DevOps"],
+        title: "Qualidade & Entrega",
+        description: "Testes, CI/CD, documentacao e observabilidade como parte do processo de engenharia.",
+        badge: "Pratica aplicada",
+        technologies: ["GitHub Actions", "Testing", "OpenAPI", "Observability", "CI/CD"],
       },
     ],
   },
   "en-US": {
     eyebrow: "What I Build",
-    title: "AI-first engineering for automation, backend and cloud.",
+    title: "Backend, integrations and automation backed by technical evidence.",
     description:
-      "A focused view of the systems I build: AI agents, operational automations, modern APIs and cloud infrastructure prepared to evolve.",
+      "A focused view of the capabilities demonstrated across my projects: APIs, data, automation, applied AI and delivery practices.",
     technologyLabel: "Featured Technologies",
     items: [
       {
-        icon: "sparkles",
-        title: "AI Engineering",
-        description:
-          "Building AI agents, LLM integrations, RAG-ready workflows and multi-agent systems.",
+        icon: "terminal",
+        title: "Backend Systems",
+        description: "APIs, business rules, authentication, persistence and integrations for web products.",
         badge: "Main Focus",
-        technologies: ["OpenAI", "CrewAI", "AI Agents", "RAG", "Python"],
+        technologies: ["Python", "FastAPI", "PostgreSQL", "REST APIs", "TypeScript"],
       },
       {
         icon: "workflow",
-        title: "Automation Platforms",
-        description:
-          "Creating intelligent automations with n8n, APIs, chatbots and operational workflows.",
+        title: "Integrations & Automation",
+        description: "Workflows that connect systems through APIs, webhooks and operational automation.",
         badge: "Main Focus",
-        technologies: ["n8n", "Webhooks", "REST APIs", "Chatbots", "FastAPI"],
+        technologies: ["n8n", "Webhooks", "REST APIs", "Automation", "FastAPI"],
+      },
+      {
+        icon: "sparkles",
+        title: "Applied AI",
+        description: "LLMs and agents used in structured workflows with review steps and clear responsibility boundaries.",
+        badge: "Growing",
+        technologies: ["OpenAI", "CrewAI", "AI Agents", "Python", "Prompt Engineering"],
       },
       {
         icon: "cloud",
-        title: "Cloud Infrastructure",
-        description:
-          "Deploying reliable systems using AWS, Docker, Kubernetes, Terraform and CI/CD pipelines.",
-        badge: "Currently Building",
-        technologies: ["AWS", "Docker", "Kubernetes", "Terraform", "GitHub Actions"],
-      },
-      {
-        icon: "terminal",
-        title: "Backend Systems",
-        description:
-          "Designing APIs, integrations, databases and backend services for automation-heavy products.",
-        badge: "Currently Building",
-        technologies: ["Python", "FastAPI", "Java", "Spring Boot", "PostgreSQL"],
+        title: "Cloud & Containers",
+        description: "Reproducible environments and deployment foundations for running applications beyond a local machine.",
+        badge: "Growing",
+        technologies: ["Docker", "Docker Compose", "Linux", "AWS", "Kubernetes"],
       },
       {
         icon: "layers",
-        title: "Platform Engineering",
-        description:
-          "Connecting developer experience, deployment automation and infrastructure practices for scalable delivery.",
-        badge: "Currently Building",
-        technologies: ["CI/CD", "Linux", "Observability", "Containers", "DevOps"],
+        title: "Quality & Delivery",
+        description: "Testing, CI/CD, documentation and observability treated as part of the engineering process.",
+        badge: "Applied Practice",
+        technologies: ["GitHub Actions", "Testing", "OpenAPI", "Observability", "CI/CD"],
       },
     ],
   },
