@@ -2,54 +2,54 @@ import type { Locale, MissionData } from "@/types";
 
 export const missionDataByLocale = {
   "pt-BR": {
-    eyebrow: "Missao",
-    title: "Criar sistemas inteligentes que resolvem problemas reais.",
+    eyebrow: "Direcao de engenharia",
+    title: "Construir software util, verificavel e pronto para evoluir.",
     description:
-      "Meu foco e transformar IA, automacao e infraestrutura cloud em solucoes praticas: agentes que executam tarefas, APIs que integram sistemas e plataformas que sustentam operacoes reais.",
+      "Meu foco e transformar problemas reais em sistemas claros: APIs que conectam servicos, automacoes que reduzem trabalho manual e software que pode ser testado, documentado e mantido.",
     pillars: [
       {
-        icon: "sparkles",
-        title: "Engenharia de IA",
+        icon: "terminal",
+        title: "Backend & APIs",
         description:
-          "Construindo agentes de IA, integracoes com LLMs, fluxos preparados para RAG e comportamento confiavel de agentes.",
+          "Construindo APIs, integracoes e servicos com contratos claros, persistencia e regras de negocio inspecionaveis.",
       },
       {
         icon: "workflow",
-        title: "Automacao Inteligente",
+        title: "Automacao & IA Aplicada",
         description:
-          "Criando automacoes com n8n, APIs, chatbots e transferencia para atendimento humano em fluxos operacionais.",
+          "Usando n8n, webhooks e IA quando agregam valor ao fluxo, sem esconder a engenharia por tras da automacao.",
       },
       {
         icon: "cloud",
-        title: "Cloud & Platform",
+        title: "Entrega & Confiabilidade",
         description:
-          "Projetando sistemas containerizados, observaveis e prontos para deploy com AWS, Docker, Kubernetes e CI/CD.",
+          "Aplicando containers, CI/CD, testes, observabilidade e documentacao para tornar a entrega reproduzivel e confiavel.",
       },
     ],
   },
   "en-US": {
-    eyebrow: "Mission",
-    title: "Engineering intelligent systems that solve real problems.",
+    eyebrow: "Engineering direction",
+    title: "Build useful, verifiable software that is ready to evolve.",
     description:
-      "My focus is turning AI, automation and cloud infrastructure into practical solutions: agents that execute tasks, APIs that connect systems and platforms that support real operations.",
+      "My focus is turning real problems into clear systems: APIs that connect services, automations that reduce manual work and software that can be tested, documented and maintained.",
     pillars: [
       {
-        icon: "sparkles",
-        title: "AI Engineering",
+        icon: "terminal",
+        title: "Backend & APIs",
         description:
-          "Building AI agents, LLM integrations, RAG-ready workflows and reliable agent behavior.",
+          "Building APIs, integrations and services with clear contracts, persistence and inspectable business rules.",
       },
       {
         icon: "workflow",
-        title: "Intelligent Automation",
+        title: "Automation & Applied AI",
         description:
-          "Creating automations with n8n, APIs, chatbots and human handoff for operational workflows.",
+          "Using n8n, webhooks and AI where they add value to the workflow without hiding the engineering behind the automation.",
       },
       {
         icon: "cloud",
-        title: "Cloud & Platform",
+        title: "Delivery & Reliability",
         description:
-          "Designing containerized, observable and deployable systems using AWS, Docker, Kubernetes and CI/CD.",
+          "Applying containers, CI/CD, testing, observability and documentation to make delivery reproducible and reliable.",
       },
     ],
   },
