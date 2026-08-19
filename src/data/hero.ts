@@ -5,15 +5,15 @@ export const heroDataByLocale = {
     eyebrow: "Paulo Ramos",
     name: "Paulo Ramos",
     title: "Software Engineer",
-    subtitle: "Engenharia de IA | Automacao Inteligente | Cloud & Platform",
-    headline: "Construindo agentes de IA, automacoes e plataformas cloud.",
+    subtitle: "Backend | APIs | Automacao | IA | Cloud",
+    headline: "Construindo software que conecta sistemas, automacao e operacoes reais.",
     description:
-      "Crio agentes de IA, workflows com n8n, APIs modernas e infraestrutura cloud para transformar operacoes complexas em sistemas mais inteligentes, confiaveis e prontos para evoluir.",
+      "Portfolio de engenharia focado em backend, integracoes, automacao e IA aplicada, com projetos documentados, testados e apresentados com decisoes tecnicas verificaveis.",
     actions: [
       {
         label: "Ver Projetos",
         href: "#projects",
-        ariaLabel: "Ver projetos de engenharia de IA, automacao e cloud",
+        ariaLabel: "Ver projetos e estudos de caso de engenharia de software",
         variant: "primary",
       },
       {
@@ -40,32 +40,14 @@ export const heroDataByLocale = {
       },
     ],
     workflow: {
-      ariaLabel: "Fluxo tecnico: agente de IA, LLM, API, workflow, cloud e pronto para producao",
+      ariaLabel: "Fluxo tecnico: problema, arquitetura, implementacao, testes, integracao e entrega",
       items: [
-        {
-          label: "Agente de IA",
-          icon: "sparkles",
-        },
-        {
-          label: "Integracao LLM",
-          icon: "brain",
-        },
-        {
-          label: "API",
-          icon: "code",
-        },
-        {
-          label: "Workflow",
-          icon: "workflow",
-        },
-        {
-          label: "Cloud Platform",
-          icon: "cloud",
-        },
-        {
-          label: "Pronto para Producao",
-          icon: "badgeCheck",
-        },
+        { label: "Problema", icon: "brain" },
+        { label: "Arquitetura", icon: "workflow" },
+        { label: "API", icon: "code" },
+        { label: "Automacao", icon: "sparkles" },
+        { label: "Cloud", icon: "cloud" },
+        { label: "Testado", icon: "badgeCheck" },
       ],
     },
   },
@@ -73,15 +55,15 @@ export const heroDataByLocale = {
     eyebrow: "Paulo Ramos",
     name: "Paulo Ramos",
     title: "Software Engineer",
-    subtitle: "AI Engineering | Intelligent Automation | Cloud & Platform",
-    headline: "Building AI agents, automation systems and cloud platforms.",
+    subtitle: "Backend | APIs | Automation | AI | Cloud",
+    headline: "Building software that connects systems, automation and real operations.",
     description:
-      "I build AI agents, n8n workflows, modern APIs and cloud infrastructure to turn complex operations into smarter, reliable and production-oriented systems.",
+      "An engineering portfolio focused on backend, integrations, automation and applied AI, with documented and tested projects backed by inspectable technical decisions.",
     actions: [
       {
         label: "View Projects",
         href: "#projects",
-        ariaLabel: "View AI engineering, automation and cloud projects",
+        ariaLabel: "View software engineering projects and case studies",
         variant: "primary",
       },
       {
@@ -108,32 +90,14 @@ export const heroDataByLocale = {
       },
     ],
     workflow: {
-      ariaLabel: "Technical workflow: AI agent, LLM, API, workflow, cloud and production ready",
+      ariaLabel: "Technical flow: problem, architecture, implementation, testing, integration and delivery",
       items: [
-        {
-          label: "AI Agent",
-          icon: "sparkles",
-        },
-        {
-          label: "LLM Integration",
-          icon: "brain",
-        },
-        {
-          label: "API",
-          icon: "code",
-        },
-        {
-          label: "Automation Workflow",
-          icon: "workflow",
-        },
-        {
-          label: "Cloud Platform",
-          icon: "cloud",
-        },
-        {
-          label: "Production Ready",
-          icon: "badgeCheck",
-        },
+        { label: "Problem", icon: "brain" },
+        { label: "Architecture", icon: "workflow" },
+        { label: "API", icon: "code" },
+        { label: "Automation", icon: "sparkles" },
+        { label: "Cloud", icon: "cloud" },
+        { label: "Tested", icon: "badgeCheck" },
       ],
     },
   },
