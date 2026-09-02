@@ -5,7 +5,11 @@ import { cn } from "@/lib/utils";
 
 export type ExternalLinkProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
-export function ExternalLink({ className, children, ...props }: ExternalLinkProps) {
+export function ExternalLink({
+  className,
+  children,
+  ...props
+}: ExternalLinkProps) {
   return (
     <a
       className={cn(

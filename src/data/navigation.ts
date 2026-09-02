@@ -26,9 +26,10 @@ export const navigationData = {
       ariaLabel: "Ir para a secao inicial",
     },
     links: [
-      { label: "Sobre", href: "#about" },
-      { label: "O que construo", href: "#what-i-build" },
       { label: "Projetos", href: "#projects" },
+      { label: "Stack", href: "#stack" },
+      { label: "Infraestrutura", href: "#infrastructure" },
+      { label: "Sobre", href: "#about" },
       { label: "Contato", href: "#contact" },
     ],
     resume: {
@@ -65,9 +66,10 @@ export const navigationData = {
       ariaLabel: "Go to home section",
     },
     links: [
-      { label: "About", href: "#about" },
-      { label: "What I Build", href: "#what-i-build" },
       { label: "Projects", href: "#projects" },
+      { label: "Stack", href: "#stack" },
+      { label: "Infrastructure", href: "#infrastructure" },
+      { label: "About", href: "#about" },
       { label: "Contact", href: "#contact" },
     ],
     resume: {

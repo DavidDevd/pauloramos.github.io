@@ -10,7 +10,12 @@ import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/visual/section-header";
-import { fadeUp, motionDurations, motionEasing, staggerContainer } from "@/lib/motion";
+import {
+  fadeUp,
+  motionDurations,
+  motionEasing,
+  staggerContainer,
+} from "@/lib/motion";
 import type { CaseStudyData, ContentLink } from "@/types";
 
 type FeaturedCaseStudiesSectionProps = {
@@ -28,19 +33,28 @@ export function FeaturedCaseStudiesSection({
   data,
   locale = "pt-BR",
 }: FeaturedCaseStudiesSectionProps) {
-  const featuredCases = data.cases.filter((caseStudy) => caseStudy.featured).slice(0, 4);
+  const featuredCases = data.cases
+    .filter((caseStudy) => caseStudy.featured)
+    .slice(0, 4);
   const projectBasePath = locale === "en-US" ? "/en/projects" : "/projects";
-  const caseLabel = locale === "en-US" ? "View case study" : "Ver case completo";
+  const caseLabel =
+    locale === "en-US" ? "View case study" : "Ver case completo";
 
   return (
-    <Section id="projects" className="relative overflow-hidden border-b border-border/60">
+    <Section
+      id="projects"
+      className="relative overflow-hidden border-b border-border/60"
+    >
       <Container className="space-y-12">
         <m.div
           initial={false}
           whileInView="visible"
           viewport={{ once: true, margin: "-12%" }}
           variants={fadeUp}
-          transition={{ duration: motionDurations.normal, ease: motionEasing.standard }}
+          transition={{
+            duration: motionDurations.normal,
+            ease: motionEasing.standard,
+          }}
         >
           <SectionHeader
             eyebrow={data.eyebrow}
@@ -60,7 +74,10 @@ export function FeaturedCaseStudiesSection({
             <m.article
               key={caseStudy.slug}
               variants={fadeUp}
-              transition={{ duration: motionDurations.normal, ease: motionEasing.standard }}
+              transition={{
+                duration: motionDurations.normal,
+                ease: motionEasing.standard,
+              }}
             >
               <Card
                 className="group flex h-full flex-col gap-7 transition-colors hover:border-primary/40 hover:bg-surface-elevated/70"
@@ -77,7 +94,9 @@ export function FeaturedCaseStudiesSection({
                     {caseStudy.title}
                   </h3>
                   {caseStudy.subtitle ? (
-                    <p className="text-sm leading-7 text-muted-foreground">{caseStudy.subtitle}</p>
+                    <p className="text-sm leading-7 text-muted-foreground">
+                      {caseStudy.subtitle}
+                    </p>
                   ) : null}
                 </div>
 
@@ -86,13 +105,17 @@ export function FeaturedCaseStudiesSection({
                     <p className="text-xs font-medium uppercase tracking-[0.16em] text-primary">
                       {data.labels.problem}
                     </p>
-                    <p className="text-sm leading-7 text-muted-foreground">{caseStudy.problem}</p>
+                    <p className="text-sm leading-7 text-muted-foreground">
+                      {caseStudy.problem}
+                    </p>
                   </div>
                   <div className="space-y-2 rounded-md border border-border/70 bg-background/40 p-4">
                     <p className="text-xs font-medium uppercase tracking-[0.16em] text-primary">
                       {data.labels.solution}
                     </p>
-                    <p className="text-sm leading-7 text-muted-foreground">{caseStudy.solution}</p>
+                    <p className="text-sm leading-7 text-muted-foreground">
+                      {caseStudy.solution}
+                    </p>
                   </div>
                 </div>
 
@@ -112,9 +135,16 @@ export function FeaturedCaseStudiesSection({
                 {caseStudy.metrics.length ? (
                   <div className="grid gap-3 sm:grid-cols-2">
                     {caseStudy.metrics.slice(0, 2).map((metric) => (
-                      <div key={metric.label} className="rounded-md border border-border/70 bg-background/40 p-4">
-                        <p className="text-xl font-semibold text-foreground">{metric.value}</p>
-                        <p className="mt-1 text-xs text-muted-foreground">{metric.label}</p>
+                      <div
+                        key={metric.label}
+                        className="rounded-md border border-border/70 bg-background/40 p-4"
+                      >
+                        <p className="text-xl font-semibold text-foreground">
+                          {metric.value}
+                        </p>
+                        <p className="mt-1 text-xs text-muted-foreground">
+                          {metric.label}
+                        </p>
                       </div>
                     ))}
                   </div>
@@ -122,17 +152,30 @@ export function FeaturedCaseStudiesSection({
 
                 <div className="mt-auto flex flex-wrap gap-3 pt-1">
                   <Button asChild variant="primary" size="sm">
-                    <Link href={`${projectBasePath}/${caseStudy.slug}`}>{caseLabel}</Link>
+                    <Link href={`${projectBasePath}/${caseStudy.slug}`}>
+                      {caseLabel}
+                    </Link>
                   </Button>
                   {getCaseStudyLinks(caseStudy).map((link) => (
-                    <Button key={link.href} asChild variant={link.variant ?? "ghost"} size="sm">
+                    <Button
+                      key={link.href}
+                      asChild
+                      variant={link.variant ?? "ghost"}
+                      size="sm"
+                    >
                       <a
                         href={link.href}
                         target={link.target}
-                        rel={link.target === "_blank" ? "noopener noreferrer" : undefined}
+                        rel={
+                          link.target === "_blank"
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
                         aria-label={link.ariaLabel}
                       >
-                        {link.icon ? <Icon name={link.icon} className="size-4" /> : null}
+                        {link.icon ? (
+                          <Icon name={link.icon} className="size-4" />
+                        ) : null}
                         {link.label}
                       </a>
                     </Button>

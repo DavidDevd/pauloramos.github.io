@@ -13,7 +13,11 @@ export const localePathPrefix = {
 export const publicBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
 
 export function withBasePath(pathname: string) {
-  if (!publicBasePath || pathname.startsWith("http") || pathname.startsWith("#")) {
+  if (
+    !publicBasePath ||
+    pathname.startsWith("http") ||
+    pathname.startsWith("#")
+  ) {
     return pathname;
   }
 
@@ -44,7 +48,9 @@ export const localeOptions = [
 }[];
 
 export function getLocaleFromPathname(pathname: string): Locale {
-  return pathname === "/en" || pathname.startsWith("/en/") ? "en-US" : defaultLocale;
+  return pathname === "/en" || pathname.startsWith("/en/")
+    ? "en-US"
+    : defaultLocale;
 }
 
 export function localizePathname(pathname: string, locale: Locale) {
@@ -62,5 +68,7 @@ export function localizePathname(pathname: string, locale: Locale) {
 
   return pathnameWithoutEnglishPrefix === "/"
     ? withBasePath(localePathPrefix[locale] || "/")
-    : withBasePath(`${localePathPrefix[locale]}${pathnameWithoutEnglishPrefix}`);
+    : withBasePath(
+        `${localePathPrefix[locale]}${pathnameWithoutEnglishPrefix}`,
+      );
 }

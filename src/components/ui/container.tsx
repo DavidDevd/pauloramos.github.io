@@ -13,6 +13,10 @@ const containerSizes = {
   full: "w-full px-4 sm:px-6",
 };
 
-export function Container({ className, size = "lg", ...props }: ContainerProps) {
+export function Container({
+  className,
+  size = "lg",
+  ...props
+}: ContainerProps) {
   return <div className={cn(containerSizes[size], className)} {...props} />;
 }

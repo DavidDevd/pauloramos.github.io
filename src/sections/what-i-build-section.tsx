@@ -8,7 +8,12 @@ import { Card } from "@/components/ui/card";
 import { Container } from "@/components/ui/container";
 import { Section } from "@/components/ui/section";
 import { SectionHeader } from "@/components/visual/section-header";
-import { fadeUp, motionDurations, motionEasing, staggerContainer } from "@/lib/motion";
+import {
+  fadeUp,
+  motionDurations,
+  motionEasing,
+  staggerContainer,
+} from "@/lib/motion";
 import type { WhatIBuildData } from "@/types";
 
 type WhatIBuildSectionProps = {
@@ -17,14 +22,20 @@ type WhatIBuildSectionProps = {
 
 export function WhatIBuildSection({ data }: WhatIBuildSectionProps) {
   return (
-    <Section id="what-i-build" className="relative overflow-hidden border-b border-border/60">
+    <Section
+      id="what-i-build"
+      className="relative overflow-hidden border-b border-border/60"
+    >
       <Container className="space-y-12">
         <m.div
           initial={false}
           whileInView="visible"
           viewport={{ once: true, margin: "-12%" }}
           variants={fadeUp}
-          transition={{ duration: motionDurations.normal, ease: motionEasing.standard }}
+          transition={{
+            duration: motionDurations.normal,
+            ease: motionEasing.standard,
+          }}
         >
           <SectionHeader
             eyebrow={data.eyebrow}
@@ -44,7 +55,10 @@ export function WhatIBuildSection({ data }: WhatIBuildSectionProps) {
             <m.div
               key={item.title}
               variants={fadeUp}
-              transition={{ duration: motionDurations.normal, ease: motionEasing.standard }}
+              transition={{
+                duration: motionDurations.normal,
+                ease: motionEasing.standard,
+              }}
             >
               <Card
                 className="group flex h-full flex-col gap-6 transition-colors hover:border-primary/40 hover:bg-surface-elevated/70"
@@ -55,14 +69,20 @@ export function WhatIBuildSection({ data }: WhatIBuildSectionProps) {
                   <div className="flex size-11 shrink-0 items-center justify-center rounded-md border border-border bg-surface-subtle text-primary transition-colors group-hover:border-primary/40">
                     <Icon name={item.icon} className="size-5" />
                   </div>
-                  <Badge variant={item.badge === "Main Focus" ? "primary" : "subtle"}>
+                  <Badge
+                    variant={item.badge === "Main Focus" ? "primary" : "subtle"}
+                  >
                     {item.badge}
                   </Badge>
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-lg font-semibold text-foreground">{item.title}</h3>
-                  <p className="text-sm leading-7 text-muted-foreground">{item.description}</p>
+                  <h3 className="text-lg font-semibold text-foreground">
+                    {item.title}
+                  </h3>
+                  <p className="text-sm leading-7 text-muted-foreground">
+                    {item.description}
+                  </p>
                 </div>
 
                 <div className="mt-auto space-y-3">

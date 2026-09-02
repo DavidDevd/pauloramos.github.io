@@ -43,7 +43,9 @@ export async function generateMetadata({
   };
 }
 
-export default async function EnglishProjectPage({ params }: EnglishProjectPageProps) {
+export default async function EnglishProjectPage({
+  params,
+}: EnglishProjectPageProps) {
   const { slug } = await params;
   const caseStudy = getCaseStudyBySlug(slug, "en-US");
 

@@ -58,7 +58,12 @@ function NavLink({
 
 function SocialAction({ action }: { action: ContentLink }) {
   return (
-    <Button asChild variant={action.variant ?? "ghost"} size="icon" className="size-9">
+    <Button
+      asChild
+      variant={action.variant ?? "ghost"}
+      size="icon"
+      className="size-9"
+    >
       <a
         aria-label={action.ariaLabel}
         href={withBasePath(action.href)}
@@ -105,7 +110,9 @@ function LanguageSwitcher({
             )}
             href={href}
             hrefLang={option.locale}
-            onClick={() => window.localStorage.setItem(localeStorageKey, option.locale)}
+            onClick={() =>
+              window.localStorage.setItem(localeStorageKey, option.locale)
+            }
           >
             <span aria-hidden="true" className="mr-1 text-[10px]">
               {option.flag}
@@ -127,7 +134,10 @@ export function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
 
   const observedIds = useMemo(
-    () => [getSectionId(data.logo.href), ...data.links.map((item) => getSectionId(item.href))],
+    () => [
+      getSectionId(data.logo.href),
+      ...data.links.map((item) => getSectionId(item.href)),
+    ],
     [data.logo.href, data.links],
   );
 
@@ -189,7 +199,7 @@ export function Navbar() {
       className={cn(
         "sticky top-0 z-50 border-b border-transparent transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300",
         isScrolled
-          ? "border-border/70 bg-background/72 shadow-[0_18px_60px_hsl(var(--background)/0.32)] backdrop-blur-xl"
+          ? "bg-background/72 border-border/70 shadow-[0_18px_60px_hsl(var(--background)/0.32)] backdrop-blur-xl"
           : "bg-background/20 backdrop-blur-sm",
       )}
     >
@@ -205,7 +215,7 @@ export function Navbar() {
 
         <nav
           aria-label={data.mobile.menuLabel}
-          className="hidden items-center rounded-lg border border-border/70 bg-surface/48 px-1.5 py-1 shadow-[0_1px_0_hsl(var(--foreground)/0.04)] backdrop-blur-xl lg:flex"
+          className="bg-surface/48 hidden items-center rounded-lg border border-border/70 px-1.5 py-1 shadow-[0_1px_0_hsl(var(--foreground)/0.04)] backdrop-blur-xl lg:flex"
         >
           {data.links.map((item) => (
             <NavLink key={item.href} item={item} activeId={activeId} />
@@ -216,8 +226,13 @@ export function Navbar() {
           <LanguageSwitcher currentLocale={currentLocale} />
 
           <Button asChild variant={data.resume.variant ?? "primary"} size="sm">
-            <a aria-label={data.resume.ariaLabel} href={withBasePath(data.resume.href)}>
-              {data.resume.icon ? <Icon name={data.resume.icon} className="size-4" /> : null}
+            <a
+              aria-label={data.resume.ariaLabel}
+              href={withBasePath(data.resume.href)}
+            >
+              {data.resume.icon ? (
+                <Icon name={data.resume.icon} className="size-4" />
+              ) : null}
               {data.resume.label}
             </a>
           </Button>
@@ -244,12 +259,15 @@ export function Navbar() {
 
       <div
         className={cn(
-          "grid overflow-hidden border-t border-border/60 bg-background/88 backdrop-blur-xl transition-[grid-template-rows,opacity] duration-300 lg:hidden",
+          "bg-background/88 grid overflow-hidden border-t border-border/60 backdrop-blur-xl transition-[grid-template-rows,opacity] duration-300 lg:hidden",
           isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0",
         )}
       >
         <div className="min-h-0">
-          <nav aria-label={data.mobile.menuLabel} className="mx-auto w-full max-w-6xl px-4 pb-4 sm:px-6">
+          <nav
+            aria-label={data.mobile.menuLabel}
+            className="mx-auto w-full max-w-6xl px-4 pb-4 sm:px-6"
+          >
             <div className="space-y-2 rounded-lg border border-border/70 bg-surface/65 p-2 shadow-2xl shadow-primary/10">
               {data.links.map((item) => (
                 <NavLink
@@ -262,11 +280,24 @@ export function Navbar() {
               ))}
 
               <div className="grid gap-2 border-t border-border/70 pt-2">
-                <LanguageSwitcher currentLocale={currentLocale} className="w-full justify-center" />
+                <LanguageSwitcher
+                  currentLocale={currentLocale}
+                  className="w-full justify-center"
+                />
 
-                <Button asChild variant={data.resume.variant ?? "primary"} size="lg">
-                  <a aria-label={data.resume.ariaLabel} href={withBasePath(data.resume.href)} onClick={closeMenu}>
-                    {data.resume.icon ? <Icon name={data.resume.icon} className="size-4" /> : null}
+                <Button
+                  asChild
+                  variant={data.resume.variant ?? "primary"}
+                  size="lg"
+                >
+                  <a
+                    aria-label={data.resume.ariaLabel}
+                    href={withBasePath(data.resume.href)}
+                    onClick={closeMenu}
+                  >
+                    {data.resume.icon ? (
+                      <Icon name={data.resume.icon} className="size-4" />
+                    ) : null}
                     {data.resume.label}
                   </a>
                 </Button>
@@ -283,10 +314,16 @@ export function Navbar() {
                         aria-label={action.ariaLabel}
                         href={withBasePath(action.href)}
                         target={action.target}
-                        rel={action.target === "_blank" ? "noopener noreferrer" : undefined}
+                        rel={
+                          action.target === "_blank"
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
                         onClick={closeMenu}
                       >
-                        {action.icon ? <Icon name={action.icon} className="size-4" /> : null}
+                        {action.icon ? (
+                          <Icon name={action.icon} className="size-4" />
+                        ) : null}
                         {action.label}
                       </a>
                     </Button>

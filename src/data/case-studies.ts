@@ -1,751 +1,504 @@
 import type { CaseStudyData, Locale } from "@/types";
 
-const ptCases = [
-  {
-    slug: "ai-development-team",
-    title: "AI Development Team",
-    subtitle: "A multi-agent workflow for planning, coding, reviewing and documenting software tasks.",
-    category: "AI Engineering",
-    status: "in-progress",
-    year: "2026",
-    duration: "Engineering case",
-    problem:
-      "Software tasks often require planning, implementation, review and documentation, but these steps are usually handled manually or compressed into a single prompt with limited control.",
-    summary:
-      "AI Development Team is an experimental multi-agent system that simulates a small engineering team. Each agent has a defined responsibility, clear inputs and a bounded output so the workflow can be inspected, improved and reused.",
-    objective:
-      "Create a structured AI-assisted development workflow that can decompose a software task, generate implementation steps, review the output and produce useful technical documentation.",
-    solution:
-      "The project separates the workflow into specialized agents for product analysis, architecture, implementation, code review and documentation. The output of each step becomes context for the next one.",
-    architecture: ["Coordinator", "Product Agent", "Architect Agent", "Developer Agent", "Reviewer Agent", "Docs Agent"],
-    flow: ["Task input", "Requirement analysis", "Architecture plan", "Implementation draft", "Review pass", "Documentation output"],
-    technologies: ["Python", "CrewAI", "OpenAI", "Prompt Engineering", "Markdown"],
-    engineeringDecisions: [
-      {
-        question: "Why split the workflow into multiple agents?",
-        decision: "Give each agent a specific responsibility instead of asking one prompt to solve the whole task.",
-        rationale:
-          "Smaller responsibilities make the system easier to debug, evaluate and improve over time.",
-      },
-      {
-        question: "Why include a review step?",
-        decision: "Treat AI-generated work as a draft that must pass a quality gate.",
-        rationale:
-          "Review improves reliability and makes the workflow closer to a real engineering process.",
-      },
-    ],
-    myRole:
-      "I designed the agent responsibilities, structured the execution flow, wrote the prompts, tested the outputs and refined the workflow to make each step easier to inspect and maintain.",
-    screenshots: [
-      {
-        title: "AI development workflow",
-        src: "/case-studies/ai-development-team/workflow-overview.png",
-        alt: "AI Development Team workflow with planning, architecture, implementation, review and documentation steps",
-        type: "diagram",
-      },
-    ],
-    metrics: [
-      {
-        label: "Workflow model",
-        value: "Multi-agent",
-        description: "The task is handled by role-based agents with explicit responsibilities.",
-      },
-    ],
-    challenges: [
-      "Defining agent roles without overlapping responsibilities.",
-      "Keeping outputs structured enough to be reused by the next agent.",
-      "Avoiding vague prompts that produce impressive but hard-to-verify answers.",
-    ],
-    results: [
-      "Created a reusable workflow for AI-assisted software task execution.",
-      "Separated planning, implementation, review and documentation into clear steps.",
-      "Improved the quality of outputs by adding an explicit review stage.",
-    ],
-    lessonsLearned: [
-      "Multi-agent systems need process design, not only better prompts.",
-      "A useful AI workflow depends on clear interfaces between agents.",
-      "Review and documentation steps make AI outputs easier to trust and maintain.",
-    ],
-    futureImprovements: [
-      "Add persistent memory for task history.",
-      "Add automated evaluation for agent outputs.",
-      "Connect the workflow to a real repository and issue tracker.",
-    ],
-    links: {
-      github: {
-        label: "Ver GitHub",
-        href: "https://github.com/DavidDevd",
-        target: "_blank",
-        ariaLabel: "Abrir perfil de Paulo Ramos no GitHub para ver projetos de IA",
-        icon: "github",
-        variant: "ghost",
-      },
-    },
-    featured: true,
-  },
-  {
-    slug: "crewai-multi-agent-pipeline",
-    title: "Pipeline Multiagente com CrewAI",
-    category: "Engenharia de IA",
-    status: "in-progress",
-    year: "2026",
-    duration: "Projeto de pesquisa",
-    problem:
-      "Tarefas complexas exigem varias etapas de raciocinio, mas um unico prompt fica dificil de controlar, avaliar e evoluir.",
-    objective:
-      "Desenhar um pipeline multiagente em que cada agente tenha papel, responsabilidade e fronteira de saida bem definidos.",
-    solution:
-      "Estruturei um workflow com CrewAI para coordenar agentes especializados em planejamento, execucao, revisao e documentacao.",
-    architecture: ["CrewAI", "Papeis de Agente", "Orquestracao", "Etapa de Revisao"],
-    flow: ["Tarefa de entrada", "Agente planejador", "Agente executor", "Agente revisor", "Saida estruturada"],
-    technologies: ["Python", "CrewAI", "LLMs", "Prompt Engineering", "Automacao"],
-    engineeringDecisions: [
-      {
-        question: "Por que usar multiplos agentes em vez de um prompt grande?",
-        decision: "Separar responsabilidades de raciocinio entre agentes especializados.",
-        rationale:
-          "Papeis menores tornam o workflow mais facil de depurar, avaliar e melhorar.",
-      },
-      {
-        question: "Por que adicionar um agente revisor?",
-        decision: "Adicionar um gate de validacao antes de aceitar a saida final.",
-        rationale:
-          "Workflows de IA precisam de controle de qualidade, especialmente em tarefas de engenharia.",
-      },
-    ],
-    screenshots: [
-      {
-        title: "Workflow multiagente",
-        src: "/case-studies/crewai-multi-agent-pipeline/agent-workflow.png",
-        alt: "Pipeline multiagente com planejamento, execucao e revisao",
-        type: "diagram",
-      },
-    ],
-    metrics: [
-      {
-        label: "Qualidade do workflow",
-        value: "Baseado em papeis",
-        description: "Cada agente possui responsabilidade e fronteira de saida especificas.",
-      },
-    ],
-    challenges: ["Evitar acoplamento de prompts entre agentes.", "Definir saidas faceis de validar."],
-    lessonsLearned: [
-      "Sistemas multiagentes precisam de disciplina de orquestracao, nao apenas prompts melhores.",
-      "Etapas de revisao tornam workflows de IA mais uteis para engenharia.",
-    ],
-    futureImprovements: [
-      "Adicionar memoria e historico de tarefas.",
-      "Adicionar metricas de avaliacao das saidas dos agentes.",
-      "Conectar o pipeline a tarefas reais de automacao.",
-    ],
-    links: {
-      github: {
-        label: "Ver GitHub",
-        href: "https://github.com/DavidDevd",
-        target: "_blank",
-        ariaLabel: "Abrir perfil de Paulo Ramos no GitHub",
-        icon: "github",
-        variant: "ghost",
-      },
-    },
-    featured: true,
-  },
-  {
-    slug: "ci-cd-platform",
-    title: "Plataforma CI/CD",
-    category: "Developer Experience",
-    status: "in-progress",
-    year: "2026",
-    duration: "2 semanas",
-    problem: "Entregas manuais tornam releases mais lentos, menos confiaveis e dificeis de reproduzir.",
-    objective:
-      "Criar um fluxo de entrega que valide codigo, construa containers e prepare etapas de deploy de forma consistente.",
-    solution:
-      "Construi um workflow CI/CD focado em validacao automatizada, build de containers e etapas de deploy reproduziveis.",
-    architecture: ["GitHub Actions", "Testes", "Docker Build", "Pipeline de Deploy"],
-    flow: ["Commit", "Lint e typecheck", "Build da imagem", "Quality gates", "Preparacao do deploy"],
-    technologies: ["GitHub Actions", "Docker", "Linux", "YAML"],
-    engineeringDecisions: [
-      {
-        question: "Por que adicionar gates de validacao?",
-        decision: "Executar checks antes de qualquer etapa de deploy.",
-        rationale: "Feedback rapido protege o caminho de entrega e aproxima falhas da mudanca de codigo.",
-      },
-      {
-        question: "Por que separar estagios do pipeline?",
-        decision: "Manter validacao, build e deploy como etapas independentes.",
-        rationale: "Estagios independentes facilitam troubleshooting e evolucao do projeto.",
-      },
-    ],
-    screenshots: [
-      {
-        title: "Execucao do pipeline",
-        src: "/case-studies/ci-cd-platform/pipeline-run.gif",
-        alt: "Pipeline CI/CD executando validacao e build",
-        type: "gif",
-      },
-    ],
-    metrics: [
-      {
-        label: "Processo de release",
-        value: "Automatizado",
-        description: "Etapas manuais foram movidas para um workflow reproduzivel.",
-      },
-    ],
-    challenges: ["Criar gates uteis sem deixar o pipeline lento.", "Manter a configuracao legivel."],
-    lessonsLearned: [
-      "Um pipeline confiavel aumenta a seguranca antes de mudancas em producao.",
-      "Bom CI/CD comeca com fronteiras claras entre validacao e build.",
-    ],
-    futureImprovements: ["Adicionar deploy por ambiente.", "Adicionar artefatos de preview."],
-    links: {
-      github: {
-        label: "Ver repositorio",
-        href: "https://github.com/DavidDevd",
-        target: "_blank",
-        ariaLabel: "Abrir repositorio da Plataforma CI/CD no GitHub",
-        icon: "github",
-        variant: "ghost",
-      },
-    },
-    featured: true,
-  },
-  {
-    slug: "fastapi-kubernetes",
-    title: "FastAPI com Kubernetes",
-    category: "Backend & Kubernetes",
-    status: "in-progress",
-    year: "2026",
-    duration: "4 semanas",
-    problem: "APIs precisam de deploy, configuracao e escala previsiveis ao sair do ambiente local.",
-    objective:
-      "Preparar uma API FastAPI para rodar em ambiente Kubernetes com praticas orientadas a producao.",
-    solution:
-      "Implementei um servico FastAPI containerizado e preparado para Kubernetes, com configuracao e escala explicitas.",
-    architecture: ["FastAPI", "Docker", "Kubernetes", "PostgreSQL", "HPA"],
-    flow: ["Requisicao API", "Servico FastAPI", "Persistencia PostgreSQL", "Container runtime", "Escala Kubernetes"],
-    technologies: ["Python", "FastAPI", "Docker", "Kubernetes", "PostgreSQL"],
-    engineeringDecisions: [
-      {
-        question: "Por que externalizar configuracao?",
-        decision: "Usar primitivas do Kubernetes para configuracao em runtime.",
-        rationale: "Configuracao fora da aplicacao torna deploys mais seguros entre ambientes.",
-      },
-      {
-        question: "Por que containerizar antes do Kubernetes?",
-        decision: "Garantir execucao consistente da API antes da orquestracao.",
-        rationale: "Uma imagem confiavel e a base para deploy previsivel em cluster.",
-      },
-    ],
-    screenshots: [
-      {
-        title: "Fluxo de deploy Kubernetes",
-        src: "/case-studies/fastapi-kubernetes/deployment-flow.png",
-        alt: "Fluxo de deploy de servico FastAPI no Kubernetes",
-        type: "diagram",
-      },
-    ],
-    metrics: [
-      {
-        label: "Deploy",
-        value: "Reproduzivel",
-        description: "A API pode ser implantada a partir de imagem e manifestos.",
-      },
-    ],
-    challenges: ["Equilibrar simplicidade local com prontidao para cluster.", "Evitar exposicao de secrets."],
-    lessonsLearned: [
-      "Production readiness depende de configuracao, health checks e disciplina de deploy.",
-      "Containers tornam a aplicacao portavel; Kubernetes torna a operacao explicita.",
-    ],
-    futureImprovements: ["Adicionar readiness probes.", "Adicionar logs e metricas."],
-    links: {
-      github: {
-        label: "Ver repositorio",
-        href: "https://github.com/DavidDevd",
-        target: "_blank",
-        ariaLabel: "Abrir repositorio FastAPI Kubernetes no GitHub",
-        icon: "github",
-        variant: "ghost",
-      },
-    },
-    featured: true,
-  },
-  {
-    slug: "docker-compose-api",
-    title: "API com Docker Compose",
-    category: "Infraestrutura Backend",
-    status: "in-progress",
-    year: "2026",
-    duration: "1 semana",
-    problem: "Ambientes backend locais frequentemente ficam dificeis de reproduzir entre maquinas.",
-    objective: "Criar um ambiente local reproduzivel para API, banco de dados e configuracao de servicos.",
-    solution:
-      "Criei uma configuracao Docker Compose para executar API, banco e servicos de apoio com fluxo previsivel.",
-    architecture: ["Servico API", "Docker Compose", "PostgreSQL", "Variaveis de Ambiente"],
-    flow: ["Clonar repositorio", "Configurar ambiente", "Subir servicos", "Rodar API", "Validar banco"],
-    technologies: ["Docker", "Docker Compose", "PostgreSQL", "API", "Linux"],
-    engineeringDecisions: [
-      {
-        question: "Por que Docker Compose?",
-        decision: "Usar uma camada simples de orquestracao para servicos locais.",
-        rationale: "Compose traz repetibilidade sem introduzir complexidade de Kubernetes cedo demais.",
-      },
-      {
-        question: "Por que variaveis de ambiente?",
-        decision: "Manter configuracao fora do codigo da aplicacao.",
-        rationale: "Configuracao externa melhora portabilidade e evita ajustes locais hardcoded.",
-      },
-    ],
-    screenshots: [
-      {
-        title: "Servicos locais em execucao",
-        src: "/case-studies/docker-compose-api/local-services.png",
-        alt: "Servicos Docker Compose executando API e banco localmente",
-        type: "screenshot",
-      },
-    ],
-    metrics: [
-      {
-        label: "Setup",
-        value: "Um comando",
-        description: "A stack local pode ser iniciada com um unico comando Compose.",
-      },
-    ],
-    challenges: ["Manter configuracao simples.", "Evitar suposicoes apenas locais no runtime."],
-    lessonsLearned: [
-      "Ambientes locais reproduziveis reduzem atrito de setup.",
-      "Compose e uma ponte pratica entre containers e orquestracao de producao.",
-    ],
-    futureImprovements: ["Adicionar dados de seed.", "Adicionar guia de troubleshooting."],
-    links: {
-      github: {
-        label: "Ver repositorio",
-        href: "https://github.com/DavidDevd",
-        target: "_blank",
-        ariaLabel: "Abrir repositorio Docker Compose API no GitHub",
-        icon: "github",
-        variant: "ghost",
-      },
-    },
-    featured: false,
-  },
-] as const satisfies CaseStudyData["cases"];
+type Case = CaseStudyData["cases"][number];
 
-const enCases = [
-  {
-    slug: "ai-development-team",
-    title: "AI Development Team",
-    subtitle: "A multi-agent workflow for planning, coding, reviewing and documenting software tasks.",
-    category: "AI Engineering",
-    status: "in-progress",
+const link = (label: string, href: string) => ({
+  label,
+  href,
+  target: "_blank" as const,
+  icon: "github" as const,
+  variant: "outline" as const,
+});
+
+function makeCase(
+  input: Pick<
+    Case,
+    | "slug"
+    | "title"
+    | "subtitle"
+    | "category"
+    | "problem"
+    | "summary"
+    | "objective"
+    | "solution"
+    | "architecture"
+    | "flow"
+    | "technologies"
+    | "engineeringDecisions"
+    | "results"
+    | "challenges"
+    | "lessonsLearned"
+    | "futureImprovements"
+    | "links"
+  >,
+): Case {
+  return {
+    ...input,
+    status: "completed",
     year: "2026",
-    duration: "Engineering case",
+    duration: "Hands-on project",
+    screenshots: [],
+    metrics: [],
+    featured: true,
+    myRole:
+      "Design, implementation and documentation of the public portfolio project.",
+  };
+}
+
+const ptCases = [
+  makeCase({
+    slug: "projeto-korp",
+    title: "Projeto Korp",
+    subtitle: "Infraestrutura containerizada com automação e observabilidade",
+    category: "DevOps · Automation · Observability",
     problem:
-      "Software tasks often require planning, implementation, review and documentation, but these steps are usually handled manually or compressed into a single prompt with limited control.",
+      "Executar, expor, provisionar e observar uma aplicação Go de forma organizada.",
     summary:
-      "AI Development Team is an experimental multi-agent system that simulates a small engineering team. Each agent has a defined responsibility, clear inputs and a bounded output so the workflow can be inspected, improved and reused.",
+      "Stack local com Go, NGINX, Prometheus e Grafana orquestrada por Docker Compose e preparada por Ansible.",
     objective:
-      "Create a structured AI-assisted development workflow that can decompose a software task, generate implementation steps, review the output and produce useful technical documentation.",
+      "Construir um fluxo operacional inspecionável, da preparação do host à validação HTTP.",
     solution:
-      "The project separates the workflow into specialized agents for product analysis, architecture, implementation, code review and documentation. The output of each step becomes context for the next one.",
-    architecture: ["Coordinator", "Product Agent", "Architect Agent", "Developer Agent", "Reviewer Agent", "Docs Agent"],
-    flow: ["Task input", "Requirement analysis", "Architecture plan", "Implementation draft", "Review pass", "Documentation output"],
-    technologies: ["Python", "CrewAI", "OpenAI", "Prompt Engineering", "Markdown"],
+      "Build multi-stage, reverse proxy NGINX, métricas Prometheus, container Grafana e playbook Ansible para Docker, rede, deployment e validação.",
+    architecture: [
+      "NGINX recebe tráfego na porta 80 e encaminha para a aplicação Go na porta 8080.",
+      "Prometheus coleta o endpoint /metrics diretamente da aplicação.",
+      "Grafana está presente no Compose, sem datasource provisionado no repositório.",
+      "Ansible prepara o host, cria a rede externa, inicia a stack e valida /health e /projeto-korp.",
+    ],
+    flow: [
+      "Ansible",
+      "Docker Compose",
+      "NGINX",
+      "Go Application",
+      "Prometheus",
+      "Grafana",
+    ],
+    technologies: [
+      "Go",
+      "Docker",
+      "Docker Compose",
+      "NGINX",
+      "Ansible",
+      "Prometheus",
+      "Grafana",
+    ],
     engineeringDecisions: [
       {
-        question: "Why split the workflow into multiple agents?",
-        decision: "Give each agent a specific responsibility instead of asking one prompt to solve the whole task.",
-        rationale: "Smaller responsibilities make the system easier to debug, evaluate and improve over time.",
+        question: "Como expor o serviço?",
+        decision: "NGINX como reverse proxy.",
+        rationale:
+          "Centraliza a entrada HTTP e mantém a aplicação na rede interna do Compose.",
       },
       {
-        question: "Why include a review step?",
-        decision: "Treat AI-generated work as a draft that must pass a quality gate.",
-        rationale: "Review improves reliability and makes the workflow closer to a real engineering process.",
+        question: "Como validar a entrega?",
+        decision: "Chamadas HTTP no playbook.",
+        rationale: "Confirma /health e o endpoint funcional após o deployment.",
       },
-    ],
-    myRole:
-      "I designed the agent responsibilities, structured the execution flow, wrote the prompts, tested the outputs and refined the workflow to make each step easier to inspect and maintain.",
-    screenshots: [
-      {
-        title: "AI development workflow",
-        src: "/case-studies/ai-development-team/workflow-overview.png",
-        alt: "AI Development Team workflow with planning, architecture, implementation, review and documentation steps",
-        type: "diagram",
-      },
-    ],
-    metrics: [
-      {
-        label: "Workflow model",
-        value: "Multi-agent",
-        description: "The task is handled by role-based agents with explicit responsibilities.",
-      },
-    ],
-    challenges: [
-      "Defining agent roles without overlapping responsibilities.",
-      "Keeping outputs structured enough to be reused by the next agent.",
-      "Avoiding vague prompts that produce impressive but hard-to-verify answers.",
     ],
     results: [
-      "Created a reusable workflow for AI-assisted software task execution.",
-      "Separated planning, implementation, review and documentation into clear steps.",
-      "Improved the quality of outputs by adding an explicit review stage.",
+      "Quatro serviços definidos no Compose.",
+      "Métrica de contagem de requisições exposta para Prometheus.",
+      "Provisionamento e validação automatizados via Ansible.",
+    ],
+    challenges: [
+      "O Compose depende de uma rede externa criada pelo playbook.",
+      "O Grafana requer configuração manual de datasource.",
     ],
     lessonsLearned: [
-      "Multi-agent systems need process design, not only better prompts.",
-      "A useful AI workflow depends on clear interfaces between agents.",
-      "Review and documentation steps make AI outputs easier to trust and maintain.",
+      "Distinguir presença de ferramenta de integração completamente provisionada.",
+      "Validar a aplicação depois de subir a stack.",
     ],
     futureImprovements: [
-      "Add persistent memory for task history.",
-      "Add automated evaluation for agent outputs.",
-      "Connect the workflow to a real repository and issue tracker.",
+      "Adicionar healthchecks ao Compose.",
+      "Provisionar o datasource do Grafana.",
+      "Adicionar usuário non-root e graceful shutdown.",
     ],
     links: {
-      github: {
-        label: "View GitHub",
-        href: "https://github.com/DavidDevd",
-        target: "_blank",
-        ariaLabel: "Open Paulo Ramos GitHub profile",
-        icon: "github",
-        variant: "ghost",
-      },
+      github: link(
+        "GitHub",
+        "https://github.com/DavidDevd/http-server-projeto-korp",
+      ),
     },
-    featured: true,
-  },
-  {
-    slug: "crewai-multi-agent-pipeline",
-    title: "CrewAI Multi-Agent Pipeline",
-    category: "AI Engineering",
-    status: "in-progress",
-    year: "2026",
-    duration: "Research build",
-    problem: "Complex tasks often require multiple reasoning steps, but a single prompt becomes hard to control, evaluate and evolve.",
-    objective: "Design a multi-agent pipeline where each agent has a clear role, responsibility and output boundary.",
-    solution: "Structured a CrewAI-based workflow to coordinate specialized agents for planning, execution, review and documentation.",
-    architecture: ["CrewAI", "Agent Roles", "Task Orchestration", "Review Step"],
-    flow: ["Input task", "Planner agent", "Executor agent", "Reviewer agent", "Structured output"],
-    technologies: ["Python", "CrewAI", "LLMs", "Prompt Engineering", "Automation"],
+  }),
+  makeCase({
+    slug: "aws-multi-environment-iac",
+    title: "AWS Multi-Environment IaC",
+    subtitle: "Infraestrutura AWS modular para dev, staging e prod",
+    category: "Terraform · AWS · IaC",
+    problem:
+      "Reutilizar a mesma arquitetura sem misturar configuração e estado entre ambientes.",
+    summary:
+      "Terraform com módulos de VPC, security groups, ALB e EC2/ASG, consumidos por três ambientes isolados.",
+    objective:
+      "Demonstrar infraestrutura reproduzível, versionada e revisável.",
+    solution:
+      "Módulos reutilizáveis, variáveis por ambiente e padrão de backend S3 com lock no DynamoDB.",
+    architecture: [
+      "VPC com subnets públicas e privadas.",
+      "ALB público encaminha tráfego ao Auto Scaling Group em subnets privadas.",
+      "IAM/SSM e fundamentos de CloudWatch fazem parte do módulo EC2.",
+      "Dev, staging e prod mantêm configurações e chaves de estado separadas.",
+    ],
+    flow: [
+      "Terraform",
+      "Environment",
+      "Reusable modules",
+      "VPC",
+      "ALB",
+      "EC2 Auto Scaling",
+    ],
+    technologies: [
+      "Terraform",
+      "AWS",
+      "VPC",
+      "ALB",
+      "EC2",
+      "Auto Scaling",
+      "IAM",
+      "S3",
+      "DynamoDB",
+    ],
     engineeringDecisions: [
       {
-        question: "Why use multiple agents instead of one large prompt?",
-        decision: "Split reasoning responsibilities across specialized agents.",
-        rationale: "Smaller roles make the workflow easier to debug, evaluate and improve.",
-      },
-      {
-        question: "Why add a review agent?",
-        decision: "Add a validation step before accepting the final output.",
-        rationale: "AI workflows need quality gates, especially when outputs are used for engineering or operations.",
+        question: "Como separar ambientes?",
+        decision: "Diretórios e backends por ambiente.",
+        rationale: "Evita compartilhamento implícito de estado.",
       },
     ],
-    screenshots: [
-      {
-        title: "Multi-agent workflow",
-        src: "/case-studies/crewai-multi-agent-pipeline/agent-workflow.png",
-        alt: "CrewAI multi-agent pipeline with planning, execution and review agents",
-        type: "diagram",
-      },
+    results: [
+      "Módulos compartilhados por três ambientes.",
+      "Health checks e sizing específicos por ambiente.",
     ],
-    metrics: [
-      {
-        label: "Workflow quality",
-        value: "Role-based",
-        description: "Each agent has a specific responsibility and output boundary.",
-      },
+    challenges: [
+      "Backend S3/DynamoDB precisa existir antes do terraform init.",
     ],
-    challenges: ["Avoiding prompt coupling between agents.", "Defining outputs that are easy to validate."],
     lessonsLearned: [
-      "Multi-agent systems need orchestration discipline, not just better prompts.",
-      "Review steps make AI workflows more useful for engineering tasks.",
+      "Estado e configuração são limites operacionais diferentes.",
     ],
-    futureImprovements: ["Add memory and task history.", "Add evaluation metrics for agent outputs.", "Connect the pipeline to real automation tasks."],
+    futureImprovements: ["Adicionar CI para terraform fmt, validate e plan."],
     links: {
-      github: {
-        label: "View GitHub",
-        href: "https://github.com/DavidDevd",
-        target: "_blank",
-        ariaLabel: "Open Paulo Ramos GitHub profile",
-        icon: "github",
-        variant: "ghost",
-      },
+      github: link(
+        "GitHub",
+        "https://github.com/DavidDevd/Configuracao-de-Infraestrutura-Multi-Ambiente",
+      ),
     },
-    featured: true,
-  },
-  {
-    slug: "ci-cd-platform",
-    title: "CI/CD Platform",
-    category: "Developer Experience",
-    status: "in-progress",
-    year: "2026",
-    duration: "2 weeks",
-    problem: "Manual delivery makes releases slower, less reliable and harder to reproduce.",
-    objective: "Create a delivery workflow that validates code, builds containers and prepares deployment steps consistently.",
-    solution: "Built a CI/CD workflow focused on automated validation, container builds and repeatable deployment steps.",
-    architecture: ["GitHub Actions", "Tests", "Docker Build", "Deployment Pipeline"],
-    flow: ["Commit", "Lint and typecheck", "Build image", "Run quality gates", "Prepare deployment"],
-    technologies: ["GitHub Actions", "Docker", "Linux", "YAML"],
+  }),
+  makeCase({
+    slug: "aws-ci-cd-pipeline",
+    title: "AWS CI/CD Pipeline",
+    subtitle: "FastAPI do push ao App Runner",
+    category: "CI/CD · AWS",
+    problem: "Substituir entrega manual por um pipeline verificável.",
+    summary:
+      "GitHub Actions testa a API, constrói e publica a imagem no ECR, faz deploy no App Runner e valida o ambiente dev.",
+    objective:
+      "Automatizar a progressão entre teste, artefato e deployment AWS.",
+    solution:
+      "Jobs encadeados com Pytest, Docker, OIDC para AWS, ECR, App Runner e health check.",
+    architecture: [
+      "Push em main dispara o workflow para mudanças relevantes.",
+      "Pytest bloqueia o build em caso de falha.",
+      "Imagens são identificadas pelo SHA curto e publicadas no ECR.",
+      "Dev é implantado e validado antes do build de produção.",
+    ],
+    flow: [
+      "Git Push",
+      "Pytest",
+      "Docker Build",
+      "Amazon ECR",
+      "AWS App Runner",
+      "Health Check",
+    ],
+    technologies: [
+      "GitHub Actions",
+      "Pytest",
+      "Docker",
+      "Amazon ECR",
+      "AWS App Runner",
+      "FastAPI",
+    ],
     engineeringDecisions: [
       {
-        question: "Why add validation gates?",
-        decision: "Run checks before any deployment step.",
-        rationale: "Fast feedback protects the delivery path and keeps failures close to the code change.",
-      },
-      {
-        question: "Why split pipeline stages?",
-        decision: "Keep validation, build and deployment preparation independent.",
-        rationale: "Independent stages are easier to troubleshoot and evolve as the project grows.",
+        question: "Como autenticar na AWS?",
+        decision: "OIDC e roles assumidas pelo workflow.",
+        rationale: "Evita credenciais estáticas no repositório.",
       },
     ],
-    screenshots: [
-      {
-        title: "Pipeline execution",
-        src: "/case-studies/ci-cd-platform/pipeline-run.gif",
-        alt: "CI/CD pipeline running validation and build steps",
-        type: "gif",
-      },
+    results: [
+      "Pipeline dev/prod encadeado.",
+      "Validação HTTP pós-deploy em dev.",
     ],
-    metrics: [
-      {
-        label: "Release process",
-        value: "Automated",
-        description: "Manual release steps are moved into a repeatable workflow.",
-      },
+    challenges: [
+      "O workflow contém identificadores de conta e roles, mas não credenciais secretas.",
     ],
-    challenges: ["Designing useful gates without making the pipeline slow.", "Keeping pipeline configuration readable."],
     lessonsLearned: [
-      "A reliable pipeline increases confidence before production changes.",
-      "Good CI/CD design starts with clear build and validation boundaries.",
+      "Promoção depende de validação explícita, não apenas de build bem-sucedido.",
     ],
-    futureImprovements: ["Add environment-based deployments.", "Add deployment preview artifacts."],
+    futureImprovements: ["Adicionar aprovação manual antes de produção."],
     links: {
-      github: {
-        label: "View repository",
-        href: "https://github.com/DavidDevd",
-        target: "_blank",
-        ariaLabel: "Open CI/CD Platform repository on GitHub",
-        icon: "github",
-        variant: "ghost",
-      },
+      github: link("GitHub", "https://github.com/DavidDevd/devops.ci.api"),
     },
-    featured: true,
-  },
-  {
-    slug: "fastapi-kubernetes",
-    title: "FastAPI Kubernetes",
-    category: "Backend & Kubernetes",
-    status: "in-progress",
-    year: "2026",
-    duration: "4 weeks",
-    problem: "APIs need predictable deployment, configuration and scaling when moving beyond local development.",
-    objective: "Prepare a FastAPI backend to run in a containerized Kubernetes environment with production-oriented practices.",
-    solution: "Implemented a containerized FastAPI service prepared for Kubernetes deployment with explicit configuration and scaling practices.",
-    architecture: ["FastAPI", "Docker", "Kubernetes", "PostgreSQL", "HPA"],
-    flow: ["API request", "FastAPI service", "PostgreSQL persistence", "Container runtime", "Kubernetes scaling"],
-    technologies: ["Python", "FastAPI", "Docker", "Kubernetes", "PostgreSQL"],
+  }),
+  makeCase({
+    slug: "kubernetes-application-stack",
+    title: "Kubernetes Application Stack",
+    subtitle: "FastAPI e PostgreSQL em Kind",
+    category: "Kubernetes · Reliability",
+    problem:
+      "Orquestrar aplicação, banco, configuração e persistência em um cluster local.",
+    summary:
+      "Manifests Kubernetes para Deployments, Services, namespaces, ConfigMap, Secrets de exemplo, PV/PVC, probes e HPA.",
+    objective:
+      "Praticar primitivas de orquestração e fundamentos de confiabilidade.",
+    solution:
+      "Cluster Kind com dois workers, descoberta via DNS interno e recursos separados para API e PostgreSQL.",
+    architecture: [
+      "Service ClusterIP direciona tráfego à API.",
+      "ConfigMap e Secret injetam configuração do banco.",
+      "PostgreSQL usa PV/PVC hostPath para o laboratório local.",
+      "Liveness/readiness probes e HPA atuam sobre a API.",
+    ],
+    flow: [
+      "Client",
+      "API Service",
+      "FastAPI Deployment",
+      "PostgreSQL Service",
+      "PostgreSQL Deployment",
+      "PV/PVC",
+    ],
+    technologies: [
+      "Kubernetes",
+      "Kind",
+      "Docker",
+      "FastAPI",
+      "PostgreSQL",
+      "ConfigMap",
+      "HPA",
+      "PV/PVC",
+    ],
     engineeringDecisions: [
       {
-        question: "Why externalize configuration?",
-        decision: "Use Kubernetes primitives for runtime configuration.",
-        rationale: "Configuration outside the application makes deployments safer across environments.",
-      },
-      {
-        question: "Why containerize before Kubernetes?",
-        decision: "Make the API run consistently before orchestration.",
-        rationale: "A reliable container image is the baseline for predictable cluster deployment.",
+        question: "Como separar configuração sensível?",
+        decision: "Secrets de exemplo e arquivos reais ignorados.",
+        rationale: "O repositório público não inclui valores reais.",
       },
     ],
-    screenshots: [
-      {
-        title: "Kubernetes deployment flow",
-        src: "/case-studies/fastapi-kubernetes/deployment-flow.png",
-        alt: "FastAPI service deployment flow on Kubernetes",
-        type: "diagram",
-      },
+    results: [
+      "API e banco em namespaces separados.",
+      "Probes e autoscaling declarados.",
     ],
-    metrics: [
-      {
-        label: "Deployment",
-        value: "Reproducible",
-        description: "The API can be deployed from container and manifest definitions.",
-      },
+    challenges: [
+      "O laboratório exige criação manual dos namespaces.",
+      "hostPath é apropriado apenas ao escopo local.",
     ],
-    challenges: ["Balancing local development simplicity with cluster readiness.", "Making configuration explicit without exposing secrets."],
     lessonsLearned: [
-      "Production readiness depends on configuration, health checks and deployment discipline.",
-      "Containers make the application portable, but Kubernetes makes operations explicit.",
+      "Service discovery e readiness são parte do runtime, não detalhes acessórios.",
     ],
-    futureImprovements: ["Add readiness probes.", "Add logs and metrics."],
+    futureImprovements: [
+      "Adicionar manifests declarativos de Namespace.",
+      "Adicionar NetworkPolicies.",
+    ],
     links: {
-      github: {
-        label: "View repository",
-        href: "https://github.com/DavidDevd",
-        target: "_blank",
-        ariaLabel: "Open FastAPI Kubernetes repository on GitHub",
-        icon: "github",
-        variant: "ghost",
-      },
+      github: link("GitHub", "https://github.com/DavidDevd/desafio-kubernetes"),
     },
-    featured: true,
-  },
-  {
-    slug: "docker-compose-api",
-    title: "Docker Compose API",
-    category: "Backend Infrastructure",
-    status: "in-progress",
-    year: "2026",
-    duration: "1 week",
-    problem: "Local backend environments often become hard to reproduce across machines and contributors.",
-    objective: "Create a reproducible local environment for API development with database and service configuration.",
-    solution: "Created a Docker Compose setup to run the API, database and supporting services with a predictable developer workflow.",
-    architecture: ["API Service", "Docker Compose", "PostgreSQL", "Environment Variables"],
-    flow: ["Clone repository", "Configure environment", "Start services", "Run API", "Validate database"],
-    technologies: ["Docker", "Docker Compose", "PostgreSQL", "API", "Linux"],
+  }),
+  makeCase({
+    slug: "flowstock",
+    title: "FlowStock",
+    subtitle: "Application engineering como diferencial DevOps",
+    category: "Software Engineering · DevOps Evidence",
+    problem:
+      "Criar uma base de produto verificável sem perder segurança, qualidade e capacidade operacional.",
+    summary:
+      "FastAPI, React e PostgreSQL com testes, containers endurecidos, CI de supply chain e observabilidade local.",
+    objective: "Entender e validar a aplicação que será empacotada e operada.",
+    solution:
+      "Monólito modular, containers multi-stage non-root, Compose com read-only/no-new-privileges, Prometheus/Grafana e CI com Trivy e SBOM.",
+    architecture: [
+      "Caddy atua como edge para React e FastAPI.",
+      "FastAPI acessa PostgreSQL em rede interna.",
+      "Prometheus coleta /metrics e Grafana recebe datasource provisionado.",
+      "Health endpoints, logs estruturados e correlation IDs apoiam diagnóstico.",
+    ],
+    flow: ["Edge", "Web", "FastAPI", "PostgreSQL", "Prometheus", "Grafana"],
+    technologies: [
+      "Python",
+      "FastAPI",
+      "React",
+      "PostgreSQL",
+      "Docker",
+      "GitHub Actions",
+      "Trivy",
+      "Prometheus",
+      "Grafana",
+    ],
     engineeringDecisions: [
       {
-        question: "Why Docker Compose?",
-        decision: "Use a simple orchestration layer for local services.",
-        rationale: "Compose gives repeatability without introducing Kubernetes complexity too early.",
-      },
-      {
-        question: "Why environment variables?",
-        decision: "Keep configuration outside application code.",
-        rationale: "External configuration improves portability and avoids hardcoded local settings.",
+        question: "Como fortalecer containers?",
+        decision:
+          "Usuários non-root, filesystem read-only e no-new-privileges.",
+        rationale: "Reduz privilégios e superfície de alteração no runtime.",
       },
     ],
-    screenshots: [
-      {
-        title: "Local services running",
-        src: "/case-studies/docker-compose-api/local-services.png",
-        alt: "Docker Compose services running an API and database locally",
-        type: "screenshot",
-      },
+    results: [
+      "Gates de backend, frontend e containers.",
+      "Trivy bloqueia findings HIGH/CRITICAL e SBOMs SPDX são gerados.",
     ],
-    metrics: [
-      {
-        label: "Setup",
-        value: "One command",
-        description: "The local stack can be started from a single Compose command.",
-      },
+    challenges: [
+      "O snapshot é uma fundação de engenharia, não um produto em produção.",
     ],
-    challenges: ["Keeping service configuration simple and understandable.", "Avoiding local-only assumptions in the API runtime."],
     lessonsLearned: [
-      "Reproducible local environments reduce setup friction.",
-      "Compose files are a practical bridge between containers and production orchestration.",
+      "Aplicação, supply chain e observabilidade precisam ser avaliadas em conjunto.",
     ],
-    futureImprovements: ["Add seed data for local development.", "Add a development troubleshooting guide."],
+    futureImprovements: [
+      "Continuar os incrementos de produto claramente marcados como planejados.",
+    ],
     links: {
-      github: {
-        label: "View repository",
-        href: "https://github.com/DavidDevd",
-        target: "_blank",
-        ariaLabel: "Open Docker Compose API repository on GitHub",
-        icon: "github",
-        variant: "ghost",
-      },
+      github: link("GitHub", "https://github.com/DavidDevd/flowstock-public"),
     },
-    featured: false,
+  }),
+] as const;
+
+const englishOverrides: Record<string, Partial<Case>> = {
+  "projeto-korp": {
+    title: "Project Korp",
+    subtitle: "Container infrastructure with automation and observability",
+    problem:
+      "Run, expose, provision and observe a Go application in an organized way.",
+    summary:
+      "Local Go, NGINX, Prometheus and Grafana stack orchestrated by Docker Compose and prepared with Ansible.",
   },
-] as const satisfies CaseStudyData["cases"];
+  "aws-multi-environment-iac": {
+    subtitle: "Modular AWS infrastructure for dev, staging and prod",
+    problem:
+      "Reuse one architecture without mixing configuration and state across environments.",
+    summary:
+      "Terraform modules for VPC, security groups, ALB and EC2/ASG consumed by three isolated environments.",
+  },
+  "aws-ci-cd-pipeline": {
+    subtitle: "FastAPI from push to App Runner",
+    problem: "Replace manual delivery with an inspectable pipeline.",
+    summary:
+      "GitHub Actions tests the API, builds and publishes the image to ECR, deploys to App Runner and validates dev.",
+  },
+  "kubernetes-application-stack": {
+    subtitle: "FastAPI and PostgreSQL on Kind",
+    problem:
+      "Orchestrate application, database, configuration and persistence in a local cluster.",
+    summary:
+      "Kubernetes manifests for Deployments, Services, namespaces, ConfigMap, example Secrets, PV/PVC, probes and HPA.",
+  },
+  flowstock: {
+    subtitle: "Application engineering as a DevOps advantage",
+    problem:
+      "Build a verifiable product foundation without losing security, quality or operational insight.",
+    summary:
+      "FastAPI, React and PostgreSQL with tests, hardened containers, supply-chain CI and local observability.",
+  },
+};
+
+const enCases = ptCases.map((item) => ({
+  ...item,
+  ...englishOverrides[item.slug],
+})) satisfies readonly Case[];
+
+const pageLabels = {
+  "pt-BR": {
+    backLabel: "Voltar para projetos",
+    overview: "Visão geral",
+    summary: "Resumo",
+    problem: "Problema",
+    objective: "Objetivo",
+    solution: "Solução",
+    architecture: "Arquitetura",
+    architectureDiagram: "Diagrama de arquitetura",
+    technologyStack: "Stack técnica",
+    engineeringDecisions: "Decisões de engenharia",
+    challenges: "Desafios",
+    myRole: "Meu papel",
+    results: "Resultados",
+    lessonsLearned: "Aprendizados",
+    futureImprovements: "Próximas melhorias",
+    metrics: "Métricas",
+    github: "GitHub",
+    demo: "Demo",
+    previousCase: "Case anterior",
+    nextCase: "Próximo case",
+    unavailableDemo: "Este projeto não possui demo pública.",
+  },
+  "en-US": {
+    backLabel: "Back to projects",
+    overview: "Overview",
+    summary: "Summary",
+    problem: "Problem",
+    objective: "Objective",
+    solution: "Solution",
+    architecture: "Architecture",
+    architectureDiagram: "Architecture diagram",
+    technologyStack: "Technology stack",
+    engineeringDecisions: "Engineering decisions",
+    challenges: "Challenges",
+    myRole: "My role",
+    results: "Results",
+    lessonsLearned: "Lessons learned",
+    futureImprovements: "Future improvements",
+    metrics: "Metrics",
+    github: "GitHub",
+    demo: "Demo",
+    previousCase: "Previous case",
+    nextCase: "Next case",
+    unavailableDemo: "This project has no public demo.",
+  },
+} as const;
 
 export const caseStudiesDataByLocale = {
   "pt-BR": {
-    eyebrow: "Cases em destaque",
-    title: "Cases de engenharia de IA, automacao e cloud.",
+    eyebrow: "Cases DevOps & Cloud",
+    title: "Projetos práticos e verificáveis.",
     description:
-      "Projetos apresentados como problemas reais, solucoes tecnicas e decisoes de engenharia, conectando agentes de IA, automacao, backend e infraestrutura cloud.",
-    page: {
-      backLabel: "Voltar para projetos",
-      overview: "Visao geral",
-      summary: "Resumo",
-      problem: "Problema",
-      objective: "Objetivo",
-      solution: "Solucao",
-      architecture: "Arquitetura",
-      architectureDiagram: "Diagrama de arquitetura",
-      technologyStack: "Stack tecnica",
-      engineeringDecisions: "Decisoes de engenharia",
-      challenges: "Desafios",
-      myRole: "Meu papel no projeto",
-      results: "Resultados",
-      lessonsLearned: "Licoes aprendidas",
-      futureImprovements: "Melhorias futuras",
-      metrics: "Metricas",
-      github: "GitHub",
-      demo: "Demo",
-      previousCase: "Case anterior",
-      nextCase: "Proximo case",
-      unavailableDemo: "A demo sera adicionada quando o projeto tiver deploy publico.",
-    },
+      "Arquitetura, automação, entrega e operação documentadas a partir dos repositórios públicos.",
+    page: pageLabels["pt-BR"],
     labels: {
       featured: "Destaque",
       problem: "Problema",
-      solution: "Solucao",
+      solution: "Solução",
       architecture: "Arquitetura",
       technologies: "Tecnologias",
-      engineeringDecisions: "Decisoes de engenharia",
-      learnings: "Licoes aprendidas",
+      engineeringDecisions: "Decisões",
+      learnings: "Aprendizados",
     },
     cases: ptCases,
   },
   "en-US": {
-    eyebrow: "Featured Case Studies",
-    title: "AI engineering cases, automation systems and cloud delivery.",
+    eyebrow: "DevOps & Cloud Cases",
+    title: "Hands-on, verifiable projects.",
     description:
-      "Projects presented as real problems, technical solutions and engineering decisions, connecting AI agents, automation, backend systems and cloud infrastructure.",
-    page: {
-      backLabel: "Back to projects",
-      overview: "Overview",
-      summary: "Summary",
-      problem: "Problem",
-      objective: "Objective",
-      solution: "Solution",
-      architecture: "Architecture",
-      architectureDiagram: "Architecture Diagram",
-      technologyStack: "Technology Stack",
-      engineeringDecisions: "Engineering Decisions",
-      challenges: "Challenges",
-      myRole: "My Role",
-      results: "Results",
-      lessonsLearned: "Lessons Learned",
-      futureImprovements: "Future Improvements",
-      metrics: "Metrics",
-      github: "GitHub",
-      demo: "Live Demo",
-      previousCase: "Previous Case",
-      nextCase: "Next Case",
-      unavailableDemo: "Demo will be added when the project has a public deployment.",
-    },
+      "Architecture, automation, delivery and operations documented from the public repositories.",
+    page: pageLabels["en-US"],
     labels: {
       featured: "Featured",
       problem: "Problem",
       solution: "Solution",
       architecture: "Architecture",
       technologies: "Technologies",
-      engineeringDecisions: "Engineering Decisions",
-      learnings: "Lessons Learned",
+      engineeringDecisions: "Decisions",
+      learnings: "Learnings",
     },
     cases: enCases,
   },
 } as const satisfies Record<Locale, CaseStudyData>;
 
 export const caseStudiesData = caseStudiesDataByLocale["pt-BR"];
-
 export function getCaseStudyBySlug(slug: string, locale: Locale = "pt-BR") {
-  return caseStudiesDataByLocale[locale].cases.find((caseStudy) => caseStudy.slug === slug);
+  return caseStudiesDataByLocale[locale].cases.find(
+    (item) => item.slug === slug,
+  );
 }
-
 export function getCaseStudyNavigation(slug: string, locale: Locale = "pt-BR") {
   const cases = caseStudiesDataByLocale[locale].cases;
-  const currentIndex = cases.findIndex((caseStudy) => caseStudy.slug === slug);
-
-  if (currentIndex < 0) {
-    return {
-      previous: undefined,
-      next: undefined,
-    };
-  }
-
+  const index = cases.findIndex((item) => item.slug === slug);
   return {
-    previous: currentIndex > 0 ? cases[currentIndex - 1] : undefined,
-    next: currentIndex < cases.length - 1 ? cases[currentIndex + 1] : undefined,
+    previous: index > 0 ? cases[index - 1] : undefined,
+    next: index >= 0 && index < cases.length - 1 ? cases[index + 1] : undefined,
   };
 }

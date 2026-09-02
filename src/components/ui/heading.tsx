@@ -18,13 +18,21 @@ const headingVariants = cva("text-balance font-semibold tracking-normal", {
 });
 
 interface HeadingProps
-  extends React.HTMLAttributes<HTMLHeadingElement>,
+  extends
+    React.HTMLAttributes<HTMLHeadingElement>,
     VariantProps<typeof headingVariants> {
   as?: "h1" | "h2" | "h3";
 }
 
-export function Heading({ as: Comp = "h2", size, className, ...props }: HeadingProps) {
-  return <Comp className={cn(headingVariants({ size, className }))} {...props} />;
+export function Heading({
+  as: Comp = "h2",
+  size,
+  className,
+  ...props
+}: HeadingProps) {
+  return (
+    <Comp className={cn(headingVariants({ size, className }))} {...props} />
+  );
 }
 
 export { headingVariants };

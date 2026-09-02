@@ -6,7 +6,7 @@ import { HomeSections } from "@/sections/home-sections";
 const seo = siteConfig.seoByLocale["en-US"];
 
 export const metadata: Metadata = {
-  title: seo.title,
+  title: { absolute: seo.title },
   description: seo.description,
   alternates: {
     canonical: seo.canonicalPath,

@@ -64,7 +64,12 @@ const config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
-        mono: ["var(--font-jetbrains-mono)", "JetBrains Mono", "ui-monospace", "monospace"],
+        mono: [
+          "var(--font-jetbrains-mono)",
+          "JetBrains Mono",
+          "ui-monospace",
+          "monospace",
+        ],
       },
       animation: {
         "fade-in": "fade-in var(--duration-normal) var(--ease-standard) both",

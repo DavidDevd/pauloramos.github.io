@@ -37,7 +37,11 @@ function SectionBlock({ title, children }: SectionBlockProps) {
 
 function TextCard({ children }: { children: React.ReactNode }) {
   return (
-    <Card className="leading-8 text-muted-foreground" padding="lg" variant="subtle">
+    <Card
+      className="leading-8 text-muted-foreground"
+      padding="lg"
+      variant="subtle"
+    >
       {children}
     </Card>
   );
@@ -55,7 +59,13 @@ function ListCard({ items }: { items: readonly string[] }) {
   );
 }
 
-export function CaseStudyPage({ data, caseStudy, previous, next, projectBasePath }: CaseStudyPageProps) {
+export function CaseStudyPage({
+  data,
+  caseStudy,
+  previous,
+  next,
+  projectBasePath,
+}: CaseStudyPageProps) {
   const githubLink = caseStudy.links.github;
   const demoLink = caseStudy.links.demo;
 
@@ -68,7 +78,11 @@ export function CaseStudyPage({ data, caseStudy, previous, next, projectBasePath
 
         <Container className="relative z-10 space-y-10">
           <Button asChild variant="ghost" size="sm">
-            <Link href={`${projectBasePath === "/projects" ? "/" : "/en"}#projects`}>{data.page.backLabel}</Link>
+            <Link
+              href={`${projectBasePath === "/projects" ? "/" : "/en"}#projects`}
+            >
+              {data.page.backLabel}
+            </Link>
           </Button>
 
           <div className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-end">
@@ -100,9 +114,15 @@ export function CaseStudyPage({ data, caseStudy, previous, next, projectBasePath
                     aria-label={githubLink.ariaLabel}
                     href={githubLink.href}
                     target={githubLink.target}
-                    rel={githubLink.target === "_blank" ? "noopener noreferrer" : undefined}
+                    rel={
+                      githubLink.target === "_blank"
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
                   >
-                    {githubLink.icon ? <Icon name={githubLink.icon} className="size-4" /> : null}
+                    {githubLink.icon ? (
+                      <Icon name={githubLink.icon} className="size-4" />
+                    ) : null}
                     {githubLink.label}
                   </a>
                 </Button>
@@ -113,9 +133,15 @@ export function CaseStudyPage({ data, caseStudy, previous, next, projectBasePath
                       aria-label={demoLink.ariaLabel}
                       href={demoLink.href}
                       target={demoLink.target}
-                      rel={demoLink.target === "_blank" ? "noopener noreferrer" : undefined}
+                      rel={
+                        demoLink.target === "_blank"
+                          ? "noopener noreferrer"
+                          : undefined
+                      }
                     >
-                      {demoLink.icon ? <Icon name={demoLink.icon} className="size-4" /> : null}
+                      {demoLink.icon ? (
+                        <Icon name={demoLink.icon} className="size-4" />
+                      ) : null}
                       {demoLink.label}
                     </a>
                   </Button>
@@ -124,13 +150,24 @@ export function CaseStudyPage({ data, caseStudy, previous, next, projectBasePath
             </div>
 
             <Card className="space-y-5" padding="lg" variant="subtle">
-              <p className="text-sm font-medium text-foreground">{data.page.overview}</p>
+              <p className="text-sm font-medium text-foreground">
+                {data.page.overview}
+              </p>
               <div className="grid gap-3">
                 {caseStudy.metrics.map((metric) => (
-                  <div key={metric.label} className="rounded-md border border-border/70 bg-background/45 p-4">
-                    <p className="font-mono text-sm text-primary">{metric.value}</p>
-                    <p className="mt-1 text-sm font-medium text-foreground">{metric.label}</p>
-                    <p className="mt-2 text-sm leading-6 text-muted-foreground">{metric.description}</p>
+                  <div
+                    key={metric.label}
+                    className="rounded-md border border-border/70 bg-background/45 p-4"
+                  >
+                    <p className="font-mono text-sm text-primary">
+                      {metric.value}
+                    </p>
+                    <p className="mt-1 text-sm font-medium text-foreground">
+                      {metric.label}
+                    </p>
+                    <p className="mt-2 text-sm leading-6 text-muted-foreground">
+                      {metric.description}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -142,7 +179,9 @@ export function CaseStudyPage({ data, caseStudy, previous, next, projectBasePath
       <Container className="grid gap-12 py-section lg:grid-cols-[0.78fr_1.22fr]">
         <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
           <Card className="space-y-4" padding="lg" variant="outline">
-            <p className="text-sm font-medium text-foreground">{data.page.technologyStack}</p>
+            <p className="text-sm font-medium text-foreground">
+              {data.page.technologyStack}
+            </p>
             <div className="flex flex-wrap gap-2">
               {caseStudy.technologies.map((technology) => (
                 <Badge key={technology} variant="outline">
@@ -153,7 +192,9 @@ export function CaseStudyPage({ data, caseStudy, previous, next, projectBasePath
           </Card>
 
           <Card className="space-y-4" padding="lg" variant="outline">
-            <p className="text-sm font-medium text-foreground">{data.page.architecture}</p>
+            <p className="text-sm font-medium text-foreground">
+              {data.page.architecture}
+            </p>
             <div className="flex flex-wrap gap-2">
               {caseStudy.architecture.map((item) => (
                 <Badge key={item} variant="subtle">
@@ -187,9 +228,16 @@ export function CaseStudyPage({ data, caseStudy, previous, next, projectBasePath
             <Card className="space-y-5" padding="lg" variant="subtle">
               <div className="grid gap-3 md:grid-cols-2">
                 {caseStudy.flow.map((step, index) => (
-                  <div key={step} className="rounded-md border border-border/70 bg-background/45 p-4">
-                    <p className="font-mono text-xs text-primary">{String(index + 1).padStart(2, "0")}</p>
-                    <p className="mt-2 text-sm font-medium text-foreground">{step}</p>
+                  <div
+                    key={step}
+                    className="rounded-md border border-border/70 bg-background/45 p-4"
+                  >
+                    <p className="font-mono text-xs text-primary">
+                      {String(index + 1).padStart(2, "0")}
+                    </p>
+                    <p className="mt-2 text-sm font-medium text-foreground">
+                      {step}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -212,10 +260,21 @@ export function CaseStudyPage({ data, caseStudy, previous, next, projectBasePath
           <SectionBlock title={data.page.engineeringDecisions}>
             <div className="grid gap-4">
               {caseStudy.engineeringDecisions.map((decision) => (
-                <Card key={decision.question} className="space-y-3" padding="lg" variant="subtle">
-                  <p className="text-sm font-medium text-primary">{decision.question}</p>
-                  <p className="text-base font-medium text-foreground">{decision.decision}</p>
-                  <p className="text-sm leading-7 text-muted-foreground">{decision.rationale}</p>
+                <Card
+                  key={decision.question}
+                  className="space-y-3"
+                  padding="lg"
+                  variant="subtle"
+                >
+                  <p className="text-sm font-medium text-primary">
+                    {decision.question}
+                  </p>
+                  <p className="text-base font-medium text-foreground">
+                    {decision.decision}
+                  </p>
+                  <p className="text-sm leading-7 text-muted-foreground">
+                    {decision.rationale}
+                  </p>
                 </Card>
               ))}
             </div>
@@ -242,26 +301,47 @@ export function CaseStudyPage({ data, caseStudy, previous, next, projectBasePath
           <SectionBlock title={data.page.metrics}>
             <div className="grid gap-4 md:grid-cols-2">
               {caseStudy.metrics.map((metric) => (
-                <Card key={metric.label} className="space-y-2" padding="lg" variant="subtle">
-                  <p className="font-mono text-sm text-primary">{metric.value}</p>
+                <Card
+                  key={metric.label}
+                  className="space-y-2"
+                  padding="lg"
+                  variant="subtle"
+                >
+                  <p className="font-mono text-sm text-primary">
+                    {metric.value}
+                  </p>
                   <p className="font-medium text-foreground">{metric.label}</p>
-                  <p className="text-sm leading-7 text-muted-foreground">{metric.description}</p>
+                  <p className="text-sm leading-7 text-muted-foreground">
+                    {metric.description}
+                  </p>
                 </Card>
               ))}
             </div>
           </SectionBlock>
 
           <SectionBlock title={data.page.github}>
-            <Card className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between" padding="lg" variant="subtle">
-              <p className="text-sm leading-7 text-muted-foreground">{githubLink.ariaLabel}</p>
+            <Card
+              className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+              padding="lg"
+              variant="subtle"
+            >
+              <p className="text-sm leading-7 text-muted-foreground">
+                {githubLink.ariaLabel}
+              </p>
               <Button asChild variant={githubLink.variant ?? "primary"}>
                 <a
                   aria-label={githubLink.ariaLabel}
                   href={githubLink.href}
                   target={githubLink.target}
-                  rel={githubLink.target === "_blank" ? "noopener noreferrer" : undefined}
+                  rel={
+                    githubLink.target === "_blank"
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
                 >
-                  {githubLink.icon ? <Icon name={githubLink.icon} className="size-4" /> : null}
+                  {githubLink.icon ? (
+                    <Icon name={githubLink.icon} className="size-4" />
+                  ) : null}
                   {githubLink.label}
                 </a>
               </Button>
@@ -269,7 +349,11 @@ export function CaseStudyPage({ data, caseStudy, previous, next, projectBasePath
           </SectionBlock>
 
           <SectionBlock title={data.page.demo}>
-            <Card className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between" padding="lg" variant="outline">
+            <Card
+              className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between"
+              padding="lg"
+              variant="outline"
+            >
               <p className="text-sm leading-7 text-muted-foreground">
                 {demoLink?.ariaLabel ?? data.page.unavailableDemo}
               </p>
@@ -279,9 +363,15 @@ export function CaseStudyPage({ data, caseStudy, previous, next, projectBasePath
                     aria-label={demoLink.ariaLabel}
                     href={demoLink.href}
                     target={demoLink.target}
-                    rel={demoLink.target === "_blank" ? "noopener noreferrer" : undefined}
+                    rel={
+                      demoLink.target === "_blank"
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
                   >
-                    {demoLink.icon ? <Icon name={demoLink.icon} className="size-4" /> : null}
+                    {demoLink.icon ? (
+                      <Icon name={demoLink.icon} className="size-4" />
+                    ) : null}
                     {demoLink.label}
                   </a>
                 </Button>
@@ -289,17 +379,32 @@ export function CaseStudyPage({ data, caseStudy, previous, next, projectBasePath
             </Card>
           </SectionBlock>
 
-          <nav className="grid gap-4 border-t border-border/70 pt-8 md:grid-cols-2" aria-label={data.page.nextCase}>
+          <nav
+            className="grid gap-4 border-t border-border/70 pt-8 md:grid-cols-2"
+            aria-label={data.page.nextCase}
+          >
             {previous ? (
-              <Link href={`${projectBasePath}/${previous.slug}`} className="group rounded-lg border border-border/70 bg-card p-5 transition-colors hover:border-primary/40 hover:bg-surface-elevated">
-                <p className="text-sm text-muted-foreground">{data.page.previousCase}</p>
-                <p className="mt-2 font-medium text-foreground">{previous.title}</p>
+              <Link
+                href={`${projectBasePath}/${previous.slug}`}
+                className="group rounded-lg border border-border/70 bg-card p-5 transition-colors hover:border-primary/40 hover:bg-surface-elevated"
+              >
+                <p className="text-sm text-muted-foreground">
+                  {data.page.previousCase}
+                </p>
+                <p className="mt-2 font-medium text-foreground">
+                  {previous.title}
+                </p>
               </Link>
             ) : null}
 
             {next ? (
-              <Link href={`${projectBasePath}/${next.slug}`} className="group rounded-lg border border-border/70 bg-card p-5 transition-colors hover:border-primary/40 hover:bg-surface-elevated md:text-right">
-                <p className="text-sm text-muted-foreground">{data.page.nextCase}</p>
+              <Link
+                href={`${projectBasePath}/${next.slug}`}
+                className="group rounded-lg border border-border/70 bg-card p-5 transition-colors hover:border-primary/40 hover:bg-surface-elevated md:text-right"
+              >
+                <p className="text-sm text-muted-foreground">
+                  {data.page.nextCase}
+                </p>
                 <p className="mt-2 font-medium text-foreground">{next.title}</p>
               </Link>
             ) : null}

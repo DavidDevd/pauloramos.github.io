@@ -10,7 +10,13 @@ import { Glow } from "@/components/visual/glow";
 import { GradientBackground } from "@/components/visual/gradient-background";
 import { GridPattern } from "@/components/visual/grid-pattern";
 import { withBasePath } from "@/i18n/config";
-import { fadeUp, motionDurations, motionEasing, scaleIn, staggerContainer } from "@/lib/motion";
+import {
+  fadeUp,
+  motionDurations,
+  motionEasing,
+  scaleIn,
+  staggerContainer,
+} from "@/lib/motion";
 import { cn } from "@/lib/utils";
 import type { HeroData } from "@/types";
 
@@ -18,7 +24,13 @@ type HeroSectionProps = {
   data: HeroData;
 };
 
-const workflowStatuses = ["Connected", "Healthy", "Running", "Ready"] as const;
+const workflowStatuses = [
+  "source",
+  "image",
+  "infra",
+  "delivery",
+  "signals",
+] as const;
 
 export function HeroSection({ data }: HeroSectionProps) {
   return (
@@ -42,9 +54,15 @@ export function HeroSection({ data }: HeroSectionProps) {
           <m.div
             className="inline-flex items-center gap-2 rounded-md border border-border/80 bg-surface/75 px-3 py-1.5 text-sm text-muted-foreground shadow-[0_1px_0_hsl(var(--foreground)/0.04)] backdrop-blur-xl"
             variants={fadeUp}
-            transition={{ duration: motionDurations.normal, ease: motionEasing.standard }}
+            transition={{
+              duration: motionDurations.normal,
+              ease: motionEasing.standard,
+            }}
           >
-            <span className="size-1.5 rounded-full bg-accent shadow-[0_0_18px_hsl(var(--accent))]" aria-hidden="true" />
+            <span
+              className="size-1.5 rounded-full bg-accent shadow-[0_0_18px_hsl(var(--accent))]"
+              aria-hidden="true"
+            />
             <span>{data.eyebrow}</span>
           </m.div>
 
@@ -58,16 +76,25 @@ export function HeroSection({ data }: HeroSectionProps) {
               </h1>
             </m.div>
 
-            <m.p className="max-w-2xl text-balance text-lg font-medium text-muted-foreground sm:text-xl" variants={fadeUp}>
+            <m.p
+              className="max-w-2xl text-balance text-lg font-medium text-muted-foreground sm:text-xl"
+              variants={fadeUp}
+            >
               {data.subtitle}
             </m.p>
 
-            <m.p className="max-w-2xl text-pretty text-base leading-8 text-muted-foreground sm:text-lg sm:leading-9" variants={fadeUp}>
+            <m.p
+              className="max-w-2xl text-pretty text-base leading-8 text-muted-foreground sm:text-lg sm:leading-9"
+              variants={fadeUp}
+            >
               {data.description}
             </m.p>
           </div>
 
-          <m.div className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap" variants={fadeUp}>
+          <m.div
+            className="flex flex-col gap-3 pt-1 sm:flex-row sm:flex-wrap"
+            variants={fadeUp}
+          >
             {data.actions.map((action) => (
               <Button
                 key={action.href}
@@ -79,9 +106,15 @@ export function HeroSection({ data }: HeroSectionProps) {
                   aria-label={action.ariaLabel}
                   href={withBasePath(action.href)}
                   target={action.target}
-                  rel={action.target === "_blank" ? "noopener noreferrer" : undefined}
+                  rel={
+                    action.target === "_blank"
+                      ? "noopener noreferrer"
+                      : undefined
+                  }
                 >
-                  {action.icon ? <Icon name={action.icon} className="size-4" /> : null}
+                  {action.icon ? (
+                    <Icon name={action.icon} className="size-4" />
+                  ) : null}
                   {action.label}
                 </a>
               </Button>
@@ -94,9 +127,15 @@ export function HeroSection({ data }: HeroSectionProps) {
           initial={false}
           animate="visible"
           variants={scaleIn}
-          transition={{ duration: motionDurations.slow, ease: motionEasing.emphasized }}
+          transition={{
+            duration: motionDurations.slow,
+            ease: motionEasing.emphasized,
+          }}
         >
-          <div className="absolute -inset-6 rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
+          <div
+            className="absolute -inset-6 rounded-full bg-primary/10 blur-3xl"
+            aria-hidden="true"
+          />
           <div className="relative rounded-lg border border-border/80 bg-surface/80 p-4 shadow-2xl shadow-primary/10 backdrop-blur-xl sm:p-6">
             <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
             <div className="mb-5 flex items-center justify-between border-b border-border/70 pb-4">
@@ -106,18 +145,25 @@ export function HeroSection({ data }: HeroSectionProps) {
                 <span className="size-2.5 rounded-full bg-success" />
               </div>
               <div className="flex items-center gap-2 rounded-md border border-border/70 bg-background/50 px-2.5 py-1 text-xs text-muted-foreground">
-                <span className="size-1.5 rounded-full bg-success shadow-[0_0_14px_hsl(var(--success))]" aria-hidden="true" />
-                {workflowStatuses[3]}
+                <span
+                  className="size-1.5 rounded-full bg-success shadow-[0_0_14px_hsl(var(--success))]"
+                  aria-hidden="true"
+                />
+                pipeline.ready
               </div>
             </div>
 
-            <div className="mb-5 grid grid-cols-2 gap-2 sm:grid-cols-4" aria-hidden="true">
+            <div
+              className="mb-5 grid grid-cols-2 gap-2 sm:grid-cols-4"
+              aria-hidden="true"
+            >
               {workflowStatuses.map((status, index) => (
                 <div
                   key={status}
                   className={cn(
                     "rounded-md border border-border/70 bg-background/45 px-2.5 py-2 text-center text-[0.7rem] font-medium text-muted-foreground",
-                    index === workflowStatuses.length - 1 && "border-success/40 text-foreground",
+                    index === workflowStatuses.length - 1 &&
+                      "border-success/40 text-foreground",
                   )}
                 >
                   {status}
@@ -172,10 +218,17 @@ function WorkflowNode({ icon, label, isLast, index }: WorkflowNodeProps) {
           <Icon name={icon} className="size-4" />
         </div>
         <div className="min-w-0 flex-1">
-          <p className="truncate text-sm font-medium text-foreground">{label}</p>
-          <p className="mt-0.5 text-xs text-muted-foreground">{workflowStatuses[index % workflowStatuses.length]}</p>
+          <p className="truncate text-sm font-medium text-foreground">
+            {label}
+          </p>
+          <p className="mt-0.5 text-xs text-muted-foreground">
+            {workflowStatuses[index % workflowStatuses.length]}
+          </p>
         </div>
-        <div className="h-2 w-16 overflow-hidden rounded-full bg-muted/70" aria-hidden="true">
+        <div
+          className="h-2 w-16 overflow-hidden rounded-full bg-muted/70"
+          aria-hidden="true"
+        >
           <m.div
             className="h-full rounded-full bg-gradient-to-r from-primary via-accent to-success"
             initial={false}

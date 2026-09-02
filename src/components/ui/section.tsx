@@ -13,5 +13,7 @@ const sectionSpacing = {
 };
 
 export function Section({ className, spacing = "md", ...props }: SectionProps) {
-  return <section className={cn(sectionSpacing[spacing], className)} {...props} />;
+  return (
+    <section className={cn(sectionSpacing[spacing], className)} {...props} />
+  );
 }

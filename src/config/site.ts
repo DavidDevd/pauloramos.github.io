@@ -4,75 +4,76 @@ const domain = "daviddevd.github.io/pauloramos.github.io";
 const url = process.env.NEXT_PUBLIC_SITE_URL ?? `https://${domain}`;
 
 const ptDescription =
-  "Portfolio de Paulo Ramos, Software Engineer em inicio de carreira, com projetos verificaveis em backend, APIs, automacao, IA aplicada e cloud.";
+  "Portfolio DevOps e Cloud de Paulo Ramos, com projetos verificaveis em AWS, Docker, Kubernetes, Terraform, CI/CD, automacao e observabilidade.";
 
 const enDescription =
-  "Paulo Ramos' early-career Software Engineering portfolio with verifiable projects across backend, APIs, automation, applied AI and cloud.";
+  "Paulo Ramos' early-career DevOps and Cloud portfolio with verifiable projects across AWS, Docker, Kubernetes, Terraform, CI/CD, automation and observability.";
 
 const ptSeo = {
-  title: "Paulo Ramos | Software Engineer",
+  title: "Paulo Ramos | DevOps & Cloud",
   titleTemplate: "%s | Paulo Ramos",
   description: ptDescription,
   keywords: [
     "Paulo Ramos",
-    "Software Engineer Junior",
-    "Desenvolvedor Backend",
-    "FastAPI",
-    "TypeScript",
-    "Python",
-    "APIs",
+    "DevOps Junior",
+    "Cloud Infrastructure",
+    "AWS",
+    "Docker",
+    "Kubernetes",
+    "Terraform",
+    "CI/CD",
     "Automacao",
-    "AI Engineering",
-    "Cloud",
+    "Observabilidade",
   ],
   canonicalPath: "/",
   openGraph: {
-    title: "Paulo Ramos | Software Engineer",
+    title: "Paulo Ramos | DevOps & Cloud",
     description: ptDescription,
     type: "website",
     locale: "pt-BR",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Paulo Ramos | Software Engineer",
+    title: "Paulo Ramos | DevOps & Cloud",
     description: ptDescription,
   },
 } as const;
 
 const enSeo = {
-  title: "Paulo Ramos | Software Engineer",
+  title: "Paulo Ramos | DevOps & Cloud",
   titleTemplate: "%s | Paulo Ramos",
   description: enDescription,
   keywords: [
     "Paulo Ramos",
-    "Junior Software Engineer",
-    "Backend Developer",
-    "FastAPI",
-    "TypeScript",
-    "Python",
-    "APIs",
+    "Junior DevOps",
+    "Cloud Infrastructure",
+    "AWS",
+    "Docker",
+    "Kubernetes",
+    "Terraform",
+    "CI/CD",
     "Automation",
-    "AI Engineering",
-    "Cloud",
+    "Observability",
   ],
   canonicalPath: "/en",
   openGraph: {
-    title: "Paulo Ramos | Software Engineer",
+    title: "Paulo Ramos | DevOps & Cloud",
     description: enDescription,
     type: "website",
     locale: "en-US",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Paulo Ramos | Software Engineer",
+    title: "Paulo Ramos | DevOps & Cloud",
     description: enDescription,
   },
 } as const;
 
 export const siteConfig = {
   name: "Paulo Ramos",
-  title: "Software Engineer",
-  description: "Backend | APIs | Automation | Applied AI | Cloud",
+  title: "DevOps & Cloud",
+  description:
+    "AWS | Containers | Infrastructure as Code | CI/CD | Observability",
   domain,
   url,
   locale: "pt-BR",

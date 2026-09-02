@@ -7,7 +7,11 @@ type ProjectCardProps = CardProps & {
   project: Project;
 };
 
-export function ProjectCard({ project, className, ...props }: ProjectCardProps) {
+export function ProjectCard({
+  project,
+  className,
+  ...props
+}: ProjectCardProps) {
   return (
     <Card className={cn("space-y-4", className)} {...props}>
       <div className="space-y-2">

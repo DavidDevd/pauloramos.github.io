@@ -12,7 +12,11 @@ export function Glow({ className, tone = "primary", ...props }: GlowProps) {
   return (
     <div
       aria-hidden="true"
-      className={cn("pointer-events-none absolute size-80 rounded-full blur-3xl", color, className)}
+      className={cn(
+        "pointer-events-none absolute size-80 rounded-full blur-3xl",
+        color,
+        className,
+      )}
       {...props}
     />
   );

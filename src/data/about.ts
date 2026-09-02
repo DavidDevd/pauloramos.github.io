@@ -3,7 +3,8 @@ import type { AboutData, Locale } from "@/types";
 export const aboutDataByLocale = {
   "pt-BR": {
     eyebrow: "Sobre",
-    title: "Do suporte tecnico para a construcao de sistemas de software verificaveis.",
+    title:
+      "Do suporte tecnico para a construcao de sistemas de software verificaveis.",
     story: [
       "Minha carreira comecou no suporte tecnico, onde desenvolvi uma base pratica em troubleshooting, infraestrutura, redes, atendimento ao usuario e resolucao de incidentes.",
       "Hoje estou direcionando essa experiencia para engenharia de software. Construo projetos em backend, APIs, automacao e IA aplicada, usando documentacao, testes e decisoes de arquitetura para tornar o trabalho inspecionavel.",
@@ -18,15 +19,33 @@ export const aboutDataByLocale = {
       "Testes & Documentacao",
       "Aprendizado Continuo",
     ],
-    professionalJourneyAriaLabel: "Jornada profissional do suporte tecnico a engenharia de software",
+    professionalJourneyAriaLabel:
+      "Jornada profissional do suporte tecnico a engenharia de software",
     journey: {
       year: "2024",
       start: "Suporte Tecnico",
-      steps: ["Infraestrutura", "Linux", "Docker", "Backend", "APIs", "Automacao", "Engenharia de Software"],
+      steps: [
+        "Infraestrutura",
+        "Linux",
+        "Docker",
+        "Backend",
+        "APIs",
+        "Automacao",
+        "Engenharia de Software",
+      ],
     },
     currentFocus: {
       title: "Construindo atualmente com",
-      items: ["Python", "FastAPI", "TypeScript", "React", "PostgreSQL", "Docker", "n8n", "GitHub Actions"],
+      items: [
+        "Python",
+        "FastAPI",
+        "TypeScript",
+        "React",
+        "PostgreSQL",
+        "Docker",
+        "n8n",
+        "GitHub Actions",
+      ],
     },
   },
   "en-US": {
@@ -46,15 +65,33 @@ export const aboutDataByLocale = {
       "Testing & Documentation",
       "Continuous Learning",
     ],
-    professionalJourneyAriaLabel: "Professional journey from technical support to software engineering",
+    professionalJourneyAriaLabel:
+      "Professional journey from technical support to software engineering",
     journey: {
       year: "2024",
       start: "Technical Support",
-      steps: ["Infrastructure", "Linux", "Docker", "Backend", "APIs", "Automation", "Software Engineering"],
+      steps: [
+        "Infrastructure",
+        "Linux",
+        "Docker",
+        "Backend",
+        "APIs",
+        "Automation",
+        "Software Engineering",
+      ],
     },
     currentFocus: {
       title: "Currently building with",
-      items: ["Python", "FastAPI", "TypeScript", "React", "PostgreSQL", "Docker", "n8n", "GitHub Actions"],
+      items: [
+        "Python",
+        "FastAPI",
+        "TypeScript",
+        "React",
+        "PostgreSQL",
+        "Docker",
+        "n8n",
+        "GitHub Actions",
+      ],
     },
   },
 } as const satisfies Record<Locale, AboutData>;
