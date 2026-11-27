@@ -28,23 +28,20 @@ export const localeOptions = [
   {
     locale: "pt-BR",
     shortLabel: "PT",
-    label: "Portugues",
-    ariaLabel: "Ver portfolio em portugues",
-    flag: "BR",
+    label: "Português",
+    ariaLabel: "Ver portfólio em português",
   },
   {
     locale: "en-US",
     shortLabel: "EN",
     label: "English",
     ariaLabel: "View portfolio in English",
-    flag: "US",
   },
 ] as const satisfies readonly {
   readonly locale: Locale;
   readonly shortLabel: string;
   readonly label: string;
   readonly ariaLabel: string;
-  readonly flag: string;
 }[];
 
 export function getLocaleFromPathname(pathname: string): Locale {
@@ -53,22 +50,25 @@ export function getLocaleFromPathname(pathname: string): Locale {
     : defaultLocale;
 }
 
+function ensureTrailingSlash(pathname: string) {
+  return pathname.endsWith("/") ? pathname : `${pathname}/`;
+}
+
+/**
+ * Builds the href for `pathname` (as returned by `usePathname`, i.e. without
+ * the basePath) rendered in `locale`. Always includes the basePath so links
+ * work under GitHub Pages project sites, and always ends with "/" to match
+ * `trailingSlash: true` and avoid a redirect hop.
+ */
 export function localizePathname(pathname: string, locale: Locale) {
-  const normalizedPathname = pathname || "/";
-  const pathnameWithoutEnglishPrefix =
-    normalizedPathname === "/en"
-      ? "/"
-      : normalizedPathname.startsWith("/en/")
-        ? normalizedPathname.slice(3)
-        : normalizedPathname;
+  const normalized = ensureTrailingSlash(pathname || "/");
+  const withoutLocale = normalized.startsWith("/en/")
+    ? normalized.slice(3)
+    : normalized;
+  const localized =
+    locale === defaultLocale
+      ? withoutLocale
+      : `${localePathPrefix[locale]}${withoutLocale}`;
 
-  if (locale === defaultLocale) {
-    return pathnameWithoutEnglishPrefix || "/";
-  }
-
-  return pathnameWithoutEnglishPrefix === "/"
-    ? withBasePath(localePathPrefix[locale] || "/")
-    : withBasePath(
-        `${localePathPrefix[locale]}${pathnameWithoutEnglishPrefix}`,
-      );
+  return withBasePath(localized);
 }

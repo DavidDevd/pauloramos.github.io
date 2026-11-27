@@ -1,106 +1,69 @@
-import type { SiteConfig } from "@/types";
+import { profile } from "@/data/profile";
+import type { Locale, SeoData } from "@/types";
 
 const domain = "daviddevd.github.io/pauloramos.github.io";
 const url = process.env.NEXT_PUBLIC_SITE_URL ?? `https://${domain}`;
 
-const ptDescription =
-  "Portfolio DevOps e Cloud de Paulo Ramos, com projetos verificaveis em AWS, Docker, Kubernetes, Terraform, CI/CD, automacao e observabilidade.";
+const title = `${profile.name} | ${profile.role}`;
 
-const enDescription =
-  "Paulo Ramos' early-career DevOps and Cloud portfolio with verifiable projects across AWS, Docker, Kubernetes, Terraform, CI/CD, automation and observability.";
+const descriptions: Record<Locale, string> = {
+  "pt-BR":
+    "Paulo Ramos, DevOps Engineer. Estudos de caso verificáveis em AWS, Terraform, Kubernetes, CI/CD, supply chain e observabilidade, com decisões, trade-offs e runbooks.",
+  "en-US":
+    "Paulo Ramos, DevOps Engineer. Verifiable case studies in AWS, Terraform, Kubernetes, CI/CD, supply chain and observability, with decisions, trade-offs and runbooks.",
+};
 
-const ptSeo = {
-  title: "Paulo Ramos | DevOps & Cloud",
-  titleTemplate: "%s | Paulo Ramos",
-  description: ptDescription,
-  keywords: [
-    "Paulo Ramos",
-    "DevOps Junior",
-    "Cloud Infrastructure",
-    "AWS",
-    "Docker",
-    "Kubernetes",
-    "Terraform",
-    "CI/CD",
-    "Automacao",
-    "Observabilidade",
-  ],
-  canonicalPath: "/",
-  openGraph: {
-    title: "Paulo Ramos | DevOps & Cloud",
-    description: ptDescription,
-    type: "website",
-    locale: "pt-BR",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Paulo Ramos | DevOps & Cloud",
-    description: ptDescription,
-  },
-} as const;
+const sharedKeywords = [
+  "Paulo Ramos",
+  "DevOps Engineer",
+  "Platform Engineering",
+  "Cloud",
+  "AWS",
+  "Terraform",
+  "Kubernetes",
+  "Docker",
+  "CI/CD",
+  "GitHub Actions",
+  "Ansible",
+  "Prometheus",
+  "Grafana",
+  "SRE",
+];
 
-const enSeo = {
-  title: "Paulo Ramos | DevOps & Cloud",
-  titleTemplate: "%s | Paulo Ramos",
-  description: enDescription,
-  keywords: [
-    "Paulo Ramos",
-    "Junior DevOps",
-    "Cloud Infrastructure",
-    "AWS",
-    "Docker",
-    "Kubernetes",
-    "Terraform",
-    "CI/CD",
-    "Automation",
-    "Observability",
-  ],
-  canonicalPath: "/en",
-  openGraph: {
-    title: "Paulo Ramos | DevOps & Cloud",
-    description: enDescription,
-    type: "website",
-    locale: "en-US",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Paulo Ramos | DevOps & Cloud",
-    description: enDescription,
-  },
-} as const;
+function seoFor(locale: Locale): SeoData {
+  const description = descriptions[locale];
+  return {
+    title,
+    titleTemplate: `%s | ${profile.name}`,
+    description,
+    keywords:
+      locale === "pt-BR"
+        ? [...sharedKeywords, "Observabilidade", "Infraestrutura como código"]
+        : [...sharedKeywords, "Observability", "Infrastructure as Code"],
+    canonicalPath: locale === "pt-BR" ? "/" : "/en/",
+    openGraph: {
+      title,
+      description,
+      type: "website",
+      locale,
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+    },
+  };
+}
 
 export const siteConfig = {
-  name: "Paulo Ramos",
-  title: "DevOps & Cloud",
-  description:
-    "AWS | Containers | Infrastructure as Code | CI/CD | Observability",
+  name: profile.name,
+  role: profile.role,
   domain,
   url,
-  locale: "pt-BR",
-  locales: ["pt-BR", "en-US"],
-  social: [
-    {
-      label: "GitHub",
-      href: "https://github.com/DavidDevd",
-      icon: "github",
-      target: "_blank",
-    },
-    {
-      label: "LinkedIn",
-      href: "https://linkedin.com/in/paulo-ramos-b605a9209",
-      icon: "linkedin",
-      target: "_blank",
-    },
-    {
-      label: "Email",
-      href: "mailto:contato@pauloramos.dev",
-      icon: "mail",
-      target: "_self",
-    },
-  ],
-  seo: ptSeo,
+  ogImage: `${url}/og.png`,
+  repository: "https://github.com/DavidDevd/pauloramos.github.io",
   seoByLocale: {
-    "pt-BR": ptSeo,
-    "en-US": enSeo,
-  },
-} as const satisfies SiteConfig;
+    "pt-BR": seoFor("pt-BR"),
+    "en-US": seoFor("en-US"),
+  } satisfies Record<Locale, SeoData>,
+} as const;
