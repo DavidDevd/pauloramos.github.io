@@ -2,95 +2,115 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * Control Plane design tokens.
+ * Colours are RGB channel triplets so Tailwind can apply opacity.
+ * Contrast (WCAG): fg/bg 14.0:1, muted/bg 6.9:1, signal/bg 8.4:1,
+ * signal-fg/signal 8.9:1, ok/bg 7.3:1.
+ */
 @layer base {
   :root {
-    --font-inter:
-      Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
-      "Segoe UI", sans-serif;
-    --font-jetbrains-mono:
-      "JetBrains Mono", "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+    --bg: 26 29 34; /* #1A1D22 graphite */
+    --surface: 33 37 43; /* #21252B */
+    --raised: 40 45 52; /* #282D34 */
+    --line: 50 57 66; /* #323942 */
+    --line-strong: 70 78 90; /* #464E5A */
+    --fg: 232 234 237; /* #E8EAED */
+    --muted: 157 166 177; /* #9DA6B1 */
+    --signal: 246 166 35; /* #F6A623 amber, the only accent */
+    --signal-fg: 26 22 14; /* text on amber */
+    --ok: 79 191 133; /* #4FBF85, only for states that really passed */
 
-    /* Engineering Portfolio 2026 — dark surfaces + focused violet action */
-    --background: 225 22% 4%;
-    --foreground: 220 33% 96%;
-    --card: 228 24% 8%;
-    --card-foreground: 220 33% 96%;
-    --surface: 228 24% 8%;
-    --surface-elevated: 229 22% 11%;
-    --surface-subtle: 229 18% 14%;
-    --primary: 247 100% 69%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 228 18% 14%;
-    --secondary-foreground: 220 33% 96%;
-    --muted: 228 16% 13%;
-    --muted-foreground: 222 17% 61%;
-    --accent: 214 100% 77%;
-    --accent-foreground: 225 22% 4%;
-    --success: 160 64% 55%;
-    --warning: 38 90% 62%;
-    --danger: 0 84% 60%;
-    --border: 228 22% 20%;
-    --input: 228 22% 20%;
-    --ring: 247 100% 69%;
-    --radius: 0.75rem;
-
-    --space-section-sm: 4rem;
-    --space-section: 6rem;
-    --space-section-lg: 8rem;
-
-    --duration-fast: 150ms;
-    --duration-normal: 240ms;
-    --duration-slow: 420ms;
-    --ease-standard: cubic-bezier(0.2, 0, 0, 1);
-    --ease-emphasized: cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  * {
-    @apply border-border;
+    --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   html {
+    background: rgb(var(--bg));
+    color: rgb(var(--fg));
     scroll-behavior: smooth;
-    background: hsl(var(--background));
+    scroll-padding-top: 5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      scroll-padding-top: 2rem;
+    }
   }
 
   body {
-    @apply bg-background text-foreground antialiased;
-    font-family: var(--font-inter);
-    background-image:
-      radial-gradient(
-        circle at 75% 5%,
-        hsl(var(--primary) / 0.08),
-        transparent 30rem
-      ),
-      radial-gradient(
-        circle at 10% 28%,
-        hsl(var(--accent) / 0.04),
-        transparent 26rem
-      );
-    background-attachment: fixed;
-  }
-
-  :focus-visible {
-    outline: 2px solid hsl(var(--ring));
-    outline-offset: 3px;
+    @apply bg-bg font-sans text-[1.0625rem] leading-relaxed text-fg antialiased;
   }
 
   ::selection {
-    background: hsl(var(--primary) / 0.32);
-    color: hsl(var(--foreground));
+    background: rgb(var(--signal) / 0.3);
+    color: rgb(var(--fg));
+  }
+
+  :focus-visible {
+    outline: 2px solid rgb(var(--signal));
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  code,
+  kbd,
+  samp {
+    @apply font-mono;
+    font-size: 0.875em;
   }
 
   @media (prefers-reduced-motion: reduce) {
     html {
       scroll-behavior: auto;
     }
+
     *,
     *::before,
     *::after {
       animation-duration: 0.01ms !important;
+      animation-delay: 0ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
   }
+}
+
+@layer utilities {
+  /* Archivo width axis: expanded for identity and headings. */
+  .font-wide {
+    font-variation-settings: "wdth" 112;
+  }
+
+  /* Engineering paper: only used as the canvas of architecture diagrams. */
+  .bg-blueprint {
+    background-color: rgb(var(--bg));
+    background-image:
+      linear-gradient(rgb(var(--line) / 0.45) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(var(--line) / 0.45) 1px, transparent 1px);
+    background-size: 24px 24px;
+    background-position: -1px -1px;
+  }
+}
+
+/*
+ * The one orchestrated moment: the deploy record replays its gates once,
+ * each check mark appearing in order. Only the icon animates; text is never
+ * faded, so labels are readable and meet contrast from the first frame
+ * (a fade-in once failed axe on fast CI runners mid-animation).
+ */
+@keyframes record-check-in {
+  from {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.record-step .record-check {
+  animation: record-check-in 260ms var(--ease-out) both;
+  animation-delay: calc(var(--step) * 90ms + 250ms);
 }

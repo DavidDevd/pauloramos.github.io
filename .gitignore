@@ -11,3 +11,9 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 *.tsbuildinfo
+
+# Test and audit artifacts
+playwright-report/
+test-results/
+.lighthouseci/
+.playwright-mcp/

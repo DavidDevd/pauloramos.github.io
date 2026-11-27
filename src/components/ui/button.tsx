@@ -5,30 +5,26 @@ import * as React from "react";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium shadow-[0_1px_0_hsl(var(--foreground)/0.05)] transition-[background-color,color,border-color,box-shadow,transform] duration-200 ease-out hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background active:translate-y-0 disabled:pointer-events-none disabled:opacity-50",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-colors duration-150 disabled:pointer-events-none disabled:opacity-50 [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
         primary:
-          "bg-primary text-primary-foreground shadow-primary/20 hover:bg-primary/90 hover:shadow-[0_14px_34px_hsl(var(--primary)/0.22)]",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+          "bg-signal text-signal-fg hover:bg-[#FFB84A] active:bg-[#E0951A]",
         outline:
-          "border border-input bg-background/70 hover:border-primary/50 hover:bg-surface-elevated hover:text-foreground",
-        ghost: "hover:bg-surface-elevated hover:text-foreground",
-        subtle:
-          "bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground",
+          "border border-line-strong text-fg hover:border-fg/50 hover:bg-surface",
+        ghost: "text-muted hover:bg-surface hover:text-fg",
       },
       size: {
-        default: "h-10 px-4 py-2",
-        sm: "h-9 px-3",
-        lg: "h-11 px-5",
+        sm: "h-9 px-3 text-sm",
+        md: "h-10 px-4 text-[0.9375rem]",
+        lg: "h-12 px-5 text-[0.9375rem]",
         icon: "size-10",
       },
     },
     defaultVariants: {
       variant: "primary",
-      size: "default",
+      size: "md",
     },
   },
 );
@@ -43,7 +39,6 @@ export interface ButtonProps
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant, size, asChild = false, ...props }, ref) => {
     const Comp = asChild ? Slot : "button";
-
     return (
       <Comp
         className={cn(buttonVariants({ variant, size, className }))}

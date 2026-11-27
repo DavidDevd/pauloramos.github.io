@@ -1,0 +1,90 @@
+import type { Education, Experience } from "@/types";
+
+export const profile = {
+  name: "Paulo Ramos",
+  role: "DevOps Engineer",
+  email: "davifd642@gmail.com",
+  whatsapp: {
+    display: "+55 71 99269-3940",
+    href: "https://wa.me/5571992693940",
+  },
+  github: "https://github.com/DavidDevd",
+  githubHandle: "DavidDevd",
+  linkedin: "https://linkedin.com/in/paulo-ramos-b605a9209",
+  /** The only resume; it is in Portuguese and both locales say so. */
+  resume: "/curriculo.pdf",
+  location: {
+    locality: "Simões Filho",
+    region: "BA",
+    country: "BR",
+    timeZone: "UTC−3",
+    display: {
+      "pt-BR": "Simões Filho, BA, Brasil",
+      "en-US": "Simões Filho, Bahia, Brazil",
+    },
+  },
+} as const;
+
+export const experience: readonly Experience[] = [
+  {
+    company: "VDSNET",
+    role: {
+      "pt-BR": "Suporte Técnico N2",
+      "en-US": "Tier 2 Technical Support",
+    },
+    segment: { "pt-BR": "Telecom", "en-US": "Telecom" },
+    start: "2024-10",
+    end: null,
+    summary: {
+      "pt-BR":
+        "Operação real: diagnóstico de incidentes de conectividade e serviços de rede, com responsabilidade por restaurar o serviço e escalar com contexto técnico.",
+      "en-US":
+        "Real operations: diagnosing connectivity and network-service incidents, owning service restoration and escalating with technical context.",
+    },
+    responsibilities: [
+      {
+        "pt-BR":
+          "Troubleshooting de conectividade e redes TCP/IP em ambiente de produção.",
+        "en-US":
+          "Troubleshooting connectivity and TCP/IP networking in production.",
+      },
+      {
+        "pt-BR":
+          "Diagnóstico e tratamento de incidentes, isolando a causa antes de agir.",
+        "en-US":
+          "Diagnosing and handling incidents, isolating the cause before acting.",
+      },
+      {
+        "pt-BR":
+          "Suporte operacional e escalonamento técnico com evidências para os times responsáveis.",
+        "en-US":
+          "Operational support and technical escalation with evidence for owning teams.",
+      },
+    ],
+    skills: ["TCP/IP", "Troubleshooting", "Incident response", "Diagnostics"],
+  },
+];
+
+export const education: readonly Education[] = [
+  {
+    title: {
+      "pt-BR": "Formação DevOps",
+      "en-US": "DevOps Program",
+    },
+    institution: "Rocketseat",
+    kind: { "pt-BR": "Formação", "en-US": "Professional program" },
+    status: { "pt-BR": "Concluída em 2026", "en-US": "Completed in 2026" },
+  },
+  {
+    title: {
+      "pt-BR": "Análise e Desenvolvimento de Sistemas",
+      "en-US": "Systems Analysis and Development",
+    },
+    institution: "Uninter",
+    kind: { "pt-BR": "Graduação", "en-US": "Associate degree" },
+    status: {
+      "pt-BR": "Em andamento, conclusão prevista para 07/2027",
+      "en-US": "In progress, expected to finish 07/2027",
+    },
+  },
+];

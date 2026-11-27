@@ -1,58 +1,45 @@
+import { profile } from "@/data/profile";
 import { localeOptions } from "@/i18n/config";
 import type { LocalizedNavigationData } from "@/types";
 
-const socialLinks = [
-  {
-    label: "GitHub",
-    href: "https://github.com/DavidDevd",
-    target: "_blank",
-    icon: "github",
-    variant: "ghost",
-  },
-  {
-    label: "LinkedIn",
-    href: "https://linkedin.com/in/paulo-ramos-b605a9209",
-    target: "_blank",
-    icon: "linkedin",
-    variant: "ghost",
-  },
-] as const;
-
 export const navigationData = {
   "pt-BR": {
-    logo: {
-      label: "PR",
-      href: "#home",
-      ariaLabel: "Ir para a secao inicial",
-    },
     links: [
       { label: "Projetos", href: "#projects" },
+      { label: "Princípios", href: "#principles" },
       { label: "Stack", href: "#stack" },
-      { label: "Infraestrutura", href: "#infrastructure" },
-      { label: "Sobre", href: "#about" },
+      { label: "Trajetória", href: "#journey" },
       { label: "Contato", href: "#contact" },
     ],
     resume: {
-      label: "Baixar curriculo",
-      href: "/curriculo.pdf",
-      ariaLabel: "Baixar curriculo de Paulo Ramos em portugues",
+      label: "Currículo",
+      href: profile.resume,
+      ariaLabel: "Baixar currículo de Paulo Ramos (PDF, português)",
       icon: "download",
       variant: "primary",
     },
     social: [
       {
-        ...socialLinks[0],
-        ariaLabel: "Abrir perfil de Paulo Ramos no GitHub em uma nova aba",
+        label: "GitHub",
+        href: profile.github,
+        target: "_blank",
+        icon: "github",
+        variant: "ghost",
+        ariaLabel: "GitHub de Paulo Ramos (abre em nova aba)",
       },
       {
-        ...socialLinks[1],
-        ariaLabel: "Abrir perfil de Paulo Ramos no LinkedIn em uma nova aba",
+        label: "LinkedIn",
+        href: profile.linkedin,
+        target: "_blank",
+        icon: "linkedin",
+        variant: "ghost",
+        ariaLabel: "LinkedIn de Paulo Ramos (abre em nova aba)",
       },
     ],
     mobile: {
-      openLabel: "Abrir menu de navegacao",
-      closeLabel: "Fechar menu de navegacao",
-      menuLabel: "Navegacao principal",
+      openLabel: "Abrir menu de navegação",
+      closeLabel: "Fechar menu de navegação",
+      menuLabel: "Navegação principal",
     },
     languageSwitcher: {
       ariaLabel: "Selecionar idioma",
@@ -60,33 +47,36 @@ export const navigationData = {
     },
   },
   "en-US": {
-    logo: {
-      label: "PR",
-      href: "#home",
-      ariaLabel: "Go to home section",
-    },
     links: [
       { label: "Projects", href: "#projects" },
+      { label: "Principles", href: "#principles" },
       { label: "Stack", href: "#stack" },
-      { label: "Infrastructure", href: "#infrastructure" },
-      { label: "About", href: "#about" },
+      { label: "Journey", href: "#journey" },
       { label: "Contact", href: "#contact" },
     ],
     resume: {
-      label: "Download Resume",
-      href: "/resume.pdf",
-      ariaLabel: "Download Paulo Ramos resume in English",
+      label: "Resume (PT)",
+      href: profile.resume,
+      ariaLabel: "Download Paulo Ramos' resume (PDF, in Portuguese)",
       icon: "download",
       variant: "primary",
     },
     social: [
       {
-        ...socialLinks[0],
-        ariaLabel: "Open Paulo Ramos GitHub profile in a new tab",
+        label: "GitHub",
+        href: profile.github,
+        target: "_blank",
+        icon: "github",
+        variant: "ghost",
+        ariaLabel: "Paulo Ramos on GitHub (opens in a new tab)",
       },
       {
-        ...socialLinks[1],
-        ariaLabel: "Open Paulo Ramos LinkedIn profile in a new tab",
+        label: "LinkedIn",
+        href: profile.linkedin,
+        target: "_blank",
+        icon: "linkedin",
+        variant: "ghost",
+        ariaLabel: "Paulo Ramos on LinkedIn (opens in a new tab)",
       },
     ],
     mobile: {

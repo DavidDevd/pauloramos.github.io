@@ -1,93 +1,47 @@
 import type { Config } from "tailwindcss";
-import tailwindcssAnimate from "tailwindcss-animate";
+
+const channel = (name: string) => `rgb(var(--${name}) / <alpha-value>)`;
 
 const config = {
-  darkMode: ["class"],
-  content: [
-    "./src/app/**/*.{ts,tsx}",
-    "./src/components/**/*.{ts,tsx}",
-    "./src/sections/**/*.{ts,tsx}",
-  ],
+  content: ["./src/**/*.{ts,tsx}"],
   theme: {
-    container: {
-      center: true,
-      padding: "1rem",
-      screens: {
-        "2xl": "1200px",
-      },
-    },
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
-        primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+        bg: channel("bg"),
+        surface: channel("surface"),
+        raised: channel("raised"),
+        line: {
+          DEFAULT: channel("line"),
+          strong: channel("line-strong"),
         },
-        secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+        fg: channel("fg"),
+        muted: channel("muted"),
+        signal: {
+          DEFAULT: channel("signal"),
+          fg: channel("signal-fg"),
         },
-        muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
-        },
-        accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
-        },
-        card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
-        },
-        surface: {
-          DEFAULT: "hsl(var(--surface))",
-          elevated: "hsl(var(--surface-elevated))",
-          subtle: "hsl(var(--surface-subtle))",
-        },
-        success: "hsl(var(--success))",
-        warning: "hsl(var(--warning))",
-        danger: "hsl(var(--danger))",
-      },
-      spacing: {
-        "section-sm": "var(--space-section-sm)",
-        section: "var(--space-section)",
-        "section-lg": "var(--space-section-lg)",
-      },
-      borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        ok: channel("ok"),
       },
       fontFamily: {
-        sans: ["var(--font-inter)", "Inter", "system-ui", "sans-serif"],
-        mono: [
-          "var(--font-jetbrains-mono)",
-          "JetBrains Mono",
-          "ui-monospace",
-          "monospace",
+        sans: [
+          "var(--font-archivo)",
+          "ui-sans-serif",
+          "system-ui",
+          "sans-serif",
         ],
+        mono: ["var(--font-plex-mono)", "ui-monospace", "monospace"],
       },
-      animation: {
-        "fade-in": "fade-in var(--duration-normal) var(--ease-standard) both",
-        "slide-up": "slide-up var(--duration-normal) var(--ease-standard) both",
+      borderRadius: {
+        sm: "3px",
+        DEFAULT: "4px",
+        md: "6px",
       },
-      keyframes: {
-        "fade-in": {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
-        },
-        "slide-up": {
-          from: { opacity: "0", transform: "translateY(12px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
+      maxWidth: {
+        prose: "68ch",
       },
     },
   },
-  plugins: [tailwindcssAnimate],
+  plugins: [],
 } satisfies Config;
 
 export default config;

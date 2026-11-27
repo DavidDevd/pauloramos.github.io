@@ -1,40 +1,33 @@
 import type { MetadataRoute } from "next";
 
 import { siteConfig } from "@/config/site";
-import { caseStudiesData } from "@/data/case-studies";
+import { caseStudies, casePath } from "@/data/case-studies";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const lastModified = new Date("2026-07-07T00:00:00.000Z");
-  const caseStudyRoutes = caseStudiesData.cases.flatMap((caseStudy) => [
+  const lastModified = new Date();
+  const url = (path: string) => `${siteConfig.url}${path}`;
+
+  const page = (ptPath: string, enPath: string, priority: number) => [
     {
-      url: `${siteConfig.url}/projects/${caseStudy.slug}`,
+      url: url(ptPath),
       lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.8,
+      priority,
+      alternates: { languages: { "pt-BR": url(ptPath), "en-US": url(enPath) } },
     },
     {
-      url: `${siteConfig.url}/en/projects/${caseStudy.slug}`,
+      url: url(enPath),
       lastModified,
-      changeFrequency: "monthly" as const,
-      priority: 0.7,
+      priority: priority - 0.1,
+      alternates: { languages: { "pt-BR": url(ptPath), "en-US": url(enPath) } },
     },
-  ]);
+  ];
 
   return [
-    {
-      url: siteConfig.url,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 1,
-    },
-    {
-      url: `${siteConfig.url}/en`,
-      lastModified,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
-    ...caseStudyRoutes,
+    ...page("/", "/en/", 1),
+    ...caseStudies.flatMap((item) =>
+      page(casePath(item.slug, "pt-BR"), casePath(item.slug, "en-US"), 0.8),
+    ),
   ];
 }
