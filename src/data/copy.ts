@@ -30,6 +30,7 @@ export type HomeCopy = {
       readonly builtAt: string;
       readonly run: string;
       readonly published: string;
+      readonly checkOnly: string;
       readonly ciNote: string;
       readonly localTitle: string;
       readonly localNote: string;
@@ -194,6 +195,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         builtAt: "Build",
         run: "Execução",
         published: "Publicado no GitHub Pages",
+        checkOnly: "Verificação de pull request, não publicado",
         ciNote:
           "Todo deploy deste site passa por estes gates. Se um falhar, nada é publicado.",
         localTitle: "Build local, fora do CI",
@@ -314,6 +316,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         builtAt: "Built",
         run: "Run",
         published: "Published to GitHub Pages",
+        checkOnly: "Pull request check, not published",
         ciNote:
           "Every deploy of this site goes through these gates. If one fails, nothing is published.",
         localTitle: "Local build, outside CI",

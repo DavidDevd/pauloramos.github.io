@@ -103,7 +103,11 @@ export function DeployRecord({ build, copy, locale }: DeployRecordProps) {
           ) : (
             <Icon name="circle" className="size-4 shrink-0 text-line-strong" />
           )}
-          {build.isCi ? copy.published : copy.localTitle}
+          {build.isDeploy
+            ? copy.published
+            : build.isCi
+              ? copy.checkOnly
+              : copy.localTitle}
         </li>
       </ol>
 

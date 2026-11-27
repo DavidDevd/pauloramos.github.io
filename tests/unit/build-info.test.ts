@@ -21,6 +21,7 @@ describe("getBuildInfo", () => {
 
     expect(info).toEqual({
       isCi: true,
+      isDeploy: true,
       sha: SHA,
       shortSha: "a3f9c1e",
       commitUrl: `https://github.com/DavidDevd/pauloramos.github.io/commit/${SHA}`,
@@ -32,9 +33,25 @@ describe("getBuildInfo", () => {
     });
   });
 
+  it("never claims a pull request build was published", () => {
+    const info = getBuildInfo(
+      {
+        GITHUB_ACTIONS: "true",
+        GITHUB_EVENT_NAME: "pull_request",
+        GITHUB_SHA: SHA,
+        GITHUB_RUN_ID: "1",
+        GITHUB_REPOSITORY: "DavidDevd/pauloramos.github.io",
+      },
+      NOW,
+    );
+    expect(info.isCi).toBe(true);
+    expect(info.isDeploy).toBe(false);
+  });
+
   it("reports a local build without inventing CI data", () => {
     const info = getBuildInfo({}, NOW);
     expect(info.isCi).toBe(false);
+    expect(info.isDeploy).toBe(false);
     expect(info.sha).toBeNull();
     expect(info.commitUrl).toBeNull();
     expect(info.runUrl).toBeNull();

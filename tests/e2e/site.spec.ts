@@ -218,7 +218,11 @@ test("deploy record links the exact commit and run that built the page", async (
     "href",
     `${server}/${repository}/actions/runs/${runId}`,
   );
-  await expect(record).toContainText("Publicado no GitHub Pages");
+  await expect(record).toContainText(
+    process.env.GITHUB_EVENT_NAME === "pull_request"
+      ? "Verificação de pull request, não publicado"
+      : "Publicado no GitHub Pages",
+  );
 });
 
 test.describe("accessibility", () => {

@@ -7,6 +7,8 @@
  */
 export type BuildInfo = {
   readonly isCi: boolean;
+  /** True only for builds that get published (not pull request checks). */
+  readonly isDeploy: boolean;
   readonly sha: string | null;
   readonly shortSha: string | null;
   readonly commitUrl: string | null;
@@ -35,9 +37,11 @@ export function getBuildInfo(
     ? env.GITHUB_RUN_ID!
     : null;
   const isCi = env.GITHUB_ACTIONS === "true" && Boolean(repository && sha);
+  const isDeploy = isCi && env.GITHUB_EVENT_NAME !== "pull_request";
 
   return {
     isCi,
+    isDeploy,
     sha: isCi ? sha : null,
     shortSha: isCi && sha ? sha.slice(0, 7) : null,
     commitUrl: isCi && sha ? `${server}/${repository}/commit/${sha}` : null,
