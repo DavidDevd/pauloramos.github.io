@@ -226,6 +226,36 @@ test("deploy record links the exact commit and run that built the page", async (
 });
 
 test.describe("accessibility", () => {
+  // Regression: the deploy record faded its text in from 20% opacity, so
+  // on a fast CI runner axe measured contrast mid-animation. Inspecting the
+  // declared animations makes this deterministic instead of timing-based.
+  for (const path of ["./", "en/"]) {
+    test(`motion never fades text on ${path}`, async ({ page }) => {
+      await page.goto(path);
+      const fadingText = await page.evaluate(() =>
+        document
+          .getAnimations()
+          .filter((animation) => {
+            const effect = animation.effect as KeyframeEffect | null;
+            const target = effect?.target as Element | null;
+            if (!effect || !target?.textContent?.trim()) return false;
+            return effect
+              .getKeyframes()
+              .some(
+                (frame) =>
+                  frame.opacity !== undefined && Number(frame.opacity) < 1,
+              );
+          })
+          .map(
+            (animation) =>
+              ((animation.effect as KeyframeEffect).target as Element)
+                .textContent ?? "",
+          ),
+      );
+      expect(fadingText).toEqual([]);
+    });
+  }
+
   for (const path of [
     "./",
     "en/",

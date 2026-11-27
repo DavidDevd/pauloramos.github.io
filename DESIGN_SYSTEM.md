@@ -39,7 +39,10 @@ Tailwind in `tailwind.config.ts` so opacity modifiers work.
 
 ## Motion
 
-One orchestrated moment: the deploy record replays its gates once on load.
+One orchestrated moment: the deploy record replays its gates once on load,
+with each check mark appearing in order. Text never fades: a fade-in once
+failed axe contrast checks mid-animation on fast CI runners, and an E2E test
+now rejects any animation that lowers the opacity of text.
 Everything else moves only in response to the user (diagram selection
 highlights the connected edges). `prefers-reduced-motion` disables all of it.
 

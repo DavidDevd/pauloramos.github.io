@@ -93,16 +93,12 @@
   }
 }
 
-/* The one orchestrated moment: the deploy record replays its gates once. */
-@keyframes record-step-in {
-  from {
-    opacity: 0.2;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
+/*
+ * The one orchestrated moment: the deploy record replays its gates once,
+ * each check mark appearing in order. Only the icon animates; text is never
+ * faded, so labels are readable and meet contrast from the first frame
+ * (a fade-in once failed axe on fast CI runners mid-animation).
+ */
 @keyframes record-check-in {
   from {
     transform: scale(0.4);
@@ -114,12 +110,7 @@
   }
 }
 
-.record-step {
-  animation: record-step-in 280ms var(--ease-out) both;
-  animation-delay: calc(var(--step) * 90ms + 250ms);
-}
-
 .record-step .record-check {
   animation: record-check-in 260ms var(--ease-out) both;
-  animation-delay: calc(var(--step) * 90ms + 330ms);
+  animation-delay: calc(var(--step) * 90ms + 250ms);
 }
