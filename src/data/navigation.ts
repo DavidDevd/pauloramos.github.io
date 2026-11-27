@@ -13,7 +13,7 @@ export const navigationData = {
     ],
     resume: {
       label: "Currículo",
-      href: profile.resume,
+      href: profile.resume["pt-BR"],
       ariaLabel: "Baixar currículo de Paulo Ramos (PDF, português)",
       icon: "download",
       variant: "primary",
@@ -55,9 +55,9 @@ export const navigationData = {
       { label: "Contact", href: "#contact" },
     ],
     resume: {
-      label: "Resume (PT)",
-      href: profile.resume,
-      ariaLabel: "Download Paulo Ramos' resume (PDF, in Portuguese)",
+      label: "Resume",
+      href: profile.resume["en-US"],
+      ariaLabel: "Download Paulo Ramos' resume (PDF, English)",
       icon: "download",
       variant: "primary",
     },

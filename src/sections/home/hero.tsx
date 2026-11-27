@@ -33,7 +33,7 @@ export function Hero({ locale, build }: HeroProps) {
             <a href="#projects">{copy.primaryCta}</a>
           </Button>
           <Button asChild size="lg" variant="outline">
-            <a href={withBasePath(profile.resume)}>
+            <a href={withBasePath(profile.resume[locale])}>
               <Icon name="download" />
               {copy.resumeCta}
             </a>

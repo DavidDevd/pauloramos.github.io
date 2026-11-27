@@ -67,6 +67,10 @@ pnpm test:e2e                  # serves out/ like GitHub Pages and runs Playwrig
 pnpm dlx @lhci/cli@0.16.1 autorun
 ```
 
+The resume is code too: `pnpm resume` renders
+`scripts/resume/resume-data.mjs` to `public/curriculo.pdf` (pt-BR) and
+`public/resume.pdf` (en-US), one A4 page each with selectable text.
+
 `scripts/serve-static.mjs` serves `out/` exactly like a GitHub Pages project
 site (base path, trailing-slash redirects, `404.html`). E2E and Lighthouse
 both use it, so they test the artifact that gets deployed.

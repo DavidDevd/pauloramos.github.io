@@ -42,7 +42,7 @@ export function Contact({ locale }: { locale: Locale }) {
     {
       label: copy.resume,
       value: copy.resumeFile,
-      href: withBasePath(profile.resume),
+      href: withBasePath(profile.resume[locale]),
       icon: "download",
       external: false,
     },

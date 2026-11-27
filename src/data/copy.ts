@@ -308,7 +308,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
         "I turn code into systems that are reproducible, observable and ready to operate.",
       lede: "Since 2024 I have handled real incidents in Tier 2 support at VDSNET. In my projects I build the other side: pipelines, infrastructure as code and observability. All public and verifiable, limits included.",
       primaryCta: "View case studies",
-      resumeCta: "Download resume (PT)",
+      resumeCta: "Download resume",
       record: {
         title: "Deploy record for this page",
         commit: "Commit",
@@ -411,7 +411,7 @@ export const homeCopy: Record<Locale, HomeCopy> = {
       linkedin: "LinkedIn",
       github: "GitHub",
       resume: "Resume",
-      resumeFile: "PDF, in Portuguese",
+      resumeFile: "PDF in English",
     },
     footer: {
       build: "Build",

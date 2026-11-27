@@ -184,8 +184,10 @@ describe("profile", () => {
     expect(profile.email).not.toContain("pauloramos.dev");
   });
 
-  it("links a resume that is actually published", () => {
-    expect(existsSync(join("public", profile.resume))).toBe(true);
+  it("links a published resume for every locale", () => {
+    for (const path of Object.values(profile.resume)) {
+      expect(existsSync(join("public", path)), path).toBe(true);
+    }
   });
 
   it("dates experience with valid year-months", () => {
