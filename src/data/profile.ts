@@ -33,7 +33,7 @@ export const experience: readonly Experience[] = [
       "en-US": "Tier 2 Technical Support",
     },
     segment: { "pt-BR": "Telecom", "en-US": "Telecom" },
-    start: "2024-09",
+    start: "2024-10",
     end: null,
     summary: {
       "pt-BR":
