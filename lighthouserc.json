@@ -1,0 +1,61 @@
+{
+  "ci": {
+    "collect": {
+      "startServerCommand": "node scripts/serve-static.mjs out",
+      "startServerReadyPattern": "Serving",
+      "url": [
+        "http://localhost:4173/pauloramos.github.io/",
+        "http://localhost:4173/pauloramos.github.io/en/",
+        "http://localhost:4173/pauloramos.github.io/projects/projeto-korp/"
+      ],
+      "numberOfRuns": 3
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": [
+          "error",
+          {
+            "minScore": 0.8,
+            "aggregationMethod": "median-run"
+          }
+        ],
+        "largest-contentful-paint": [
+          "warn",
+          {
+            "maxNumericValue": 2500,
+            "aggregationMethod": "median-run"
+          }
+        ],
+        "total-blocking-time": [
+          "warn",
+          {
+            "maxNumericValue": 300,
+            "aggregationMethod": "median-run"
+          }
+        ],
+        "categories:accessibility": [
+          "error",
+          {
+            "minScore": 0.95
+          }
+        ],
+        "categories:best-practices": [
+          "error",
+          {
+            "minScore": 0.95
+          }
+        ],
+        "categories:seo": [
+          "error",
+          {
+            "minScore": 0.95
+          }
+        ]
+      }
+    },
+    "upload": {
+      "target": "filesystem",
+      "outputDir": ".lighthouseci"
+    }
+  }
+}
